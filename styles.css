@@ -532,3 +532,176 @@ footer {
         margin-bottom: 1.5rem;
     }
 }
+
+.language-switcher {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.lang-btn {
+    background: none;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px 10px;
+    margin: 0 3px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.lang-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.lang-btn.active {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+/* For RTL support (Arabic) */
+body.rtl {
+    direction: rtl;
+    text-align: right;
+}
+
+body.rtl .navbar, 
+body.rtl .nav-links,
+body.rtl .footer-links {
+    flex-direction: row-reverse;
+}
+
+body.rtl .service-card,
+body.rtl .contact-item,
+body.rtl .footer-column {
+    text-align: right;
+}
+
+
+
+
+
+.language-switcher {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+    direction: ltr !important; /* Always force LTR direction for language switcher */
+}
+
+body.rtl .language-switcher {
+    margin-right: 20px;
+    margin-left: 0;
+}
+
+.language-switcher-container {
+    order: 999; /* Ensure it stays at the end in both LTR and RTL modes */
+}
+
+
+
+
+
+
+
+
+
+/* Special handling for language switcher */
+.language-switcher-container {
+    display: flex;
+    margin-left: 20px;
+    order: 999; /* Ensure it stays at the end in both LTR and RTL modes */
+}
+
+body.rtl .language-switcher-container {
+    margin-right: 20px;
+    margin-left: 0;
+}
+
+.language-switcher {
+    display: flex;
+    align-items: center;
+    direction: ltr !important; /* Always force LTR direction for language switcher */
+}
+
+.language-switcher * {
+    direction: ltr !important; /* Ensure all child elements maintain LTR */
+}
+
+
+
+
+
+.logo {
+    display: flex;
+    align-items: center;
+    direction: ltr !important; /* Force logo direction to always be LTR */
+  }
+  
+  body.rtl .logo {
+    /* In RTL mode, ensure the logo container maintains its position */
+    margin-right: 0;
+    margin-left: auto;
+  }
+
+
+  body.rtl .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  body.rtl .nav-links {
+    margin-left: 0;
+    margin-right: 20px;
+    padding-left: 0;
+    padding-right: 0;
+    display: flex;
+    gap: 20px; /* Ensure consistent spacing between nav items */
+  }
+  
+  body.rtl .nav-links li {
+    margin-left: 0;
+    margin-right: 20px;
+  }
+  
+  body.rtl .nav-links li:last-child {
+    margin-right: 0;
+  }
+  
+  /* Ensure the logo has proper spacing */
+  body.rtl .logo {
+    margin-right: 0;
+    margin-left: 20px;
+  }
+  
+  /* Ensure hamburger menu has proper spacing */
+  body.rtl .hamburger {
+    margin-left: 0;
+    margin-right: 20px;
+  }
+  
+  /* Additional fix to ensure all elements maintain their spacing */
+  body.rtl #header .container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+
+  /* Fix for logo spacing in RTL mode */
+body.rtl .logo {
+    margin-right: 0;
+    margin-left: 40px; /* Add more space between logo and navigation */
+  }
+  
+  /* Ensure the navbar has proper justification */
+  body.rtl .navbar {
+    justify-content: flex-start; /* Align items to start rather than space-between */
+    gap: 110px; /* Add significant gap between main elements */
+  }
+  
+  /* Make sure nav links as a group are properly spaced */
+  body.rtl .nav-links {
+    margin-right: auto; /* Push to the right side in RTL */
+    margin-left: 40px; /* Add space between logo and first nav item */
+  }
