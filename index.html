@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stopsit | Professional Land Surveying - Kenitra, Morocco</title>
+    <title>STOPSIT | Topographie Professionnelle - Kenitra, Maroc</title>
+    <meta name="description" content="STOPSIT - Bureau d'études topographiques à Kenitra. Plus de 2900 projets réalisés depuis 2005. Services professionnels pour institutions et particuliers.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -13,14 +14,16 @@
         <div class="container">
             <nav class="navbar">
                 <div class="logo">
-                    <img src="images/logo.png" alt="Stopsit Logo">
-                    <h1>Stopsit</h1>
+                    <img src="images/logo.png" alt="STOPSIT Logo">
+                    <h1>STOPSIT</h1>
                 </div>
                 <ul class="nav-links" id="navLinks">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#home" data-translate="nav-home">Accueil</a></li>
+                    <li><a href="#services" data-translate="nav-services">Services</a></li>
+                    <li><a href="#about" data-translate="nav-about">À propos</a></li>
+                    <li><a href="#portfolio" data-translate="nav-portfolio">Réalisations</a></li>
+                    <li><a href="#testimonials" data-translate="nav-testimonials">Témoignages</a></li>
+                    <li><a href="#contact" data-translate="nav-contact">Contact</a></li>
                 </ul>
                 <div class="hamburger" id="menuBtn">
                     <i class="fas fa-bars"></i>
@@ -32,11 +35,49 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content">
-            <h2>Precision Land Surveying for Smart Development</h2>
-            <p>Serving Kenitra and all of Morocco with cutting-edge surveying technology and unmatched expertise</p>
+            <h2 data-translate="hero-title">Topographie de précision pour un développement intelligent</h2>
+            <p data-translate="hero-subtitle">Au service de Kenitra et de tout le Maroc avec une technologie de topographie de pointe et une expertise inégalée depuis 2005</p>
             <div class="cta-buttons">
-                <a href="#contact" class="btn btn-primary">Request a Quote</a>
-                <a href="#services" class="btn btn-secondary">Our Services</a>
+                <a href="#contact" class="btn btn-primary" data-translate="hero-cta-quote">Demander un devis</a>
+                <a href="#services" class="btn btn-secondary" data-translate="hero-cta-services">Nos services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who We Serve Section -->
+    <section class="section who-we-serve">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-translate="who-title">Qui Nous Servons</h2>
+                <p class="highlight-text" data-translate="who-subtitle">Nous servons aussi bien les institutions que les particuliers</p>
+            </div>
+            <div class="clients-grid">
+                <div class="client-category">
+                    <div class="client-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3 data-translate="who-institutional">Clients Institutionnels</h3>
+                    <ul>
+                        <li data-translate="who-inst-1">Agences gouvernementales</li>
+                        <li data-translate="who-inst-2">Promoteurs immobiliers</li>
+                        <li data-translate="who-inst-3">Architectes & Ingénieurs</li>
+                        <li data-translate="who-inst-4">Entreprises de construction</li>
+                        <li data-translate="who-inst-5">Bureaux d'études</li>
+                    </ul>
+                </div>
+                <div class="client-category">
+                    <div class="client-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 data-translate="who-individuals">Particuliers</h3>
+                    <ul>
+                        <li data-translate="who-ind-1">Propriétaires de terrains</li>
+                        <li data-translate="who-ind-2">Propriétaires de maisons</li>
+                        <li data-translate="who-ind-3">Investisseurs privés</li>
+                        <li data-translate="who-ind-4">Futurs acquéreurs</li>
+                        <li data-translate="who-ind-5">Héritiers en succession</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
@@ -45,17 +86,17 @@
     <section class="section" id="services">
         <div class="container">
             <div class="section-title">
-                <h2>Our Services</h2>
-                <p>We provide comprehensive land surveying solutions to help you make informed decisions about your property</p>
+                <h2 data-translate="services-title">Nos Services</h2>
+                <p data-translate="services-subtitle">Solutions complètes de topographie pour tous vos projets fonciers et cadastraux</p>
             </div>
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-border-all"></i>
+                        <i class="fas fa-file-alt"></i>
                     </div>
                     <div class="service-content">
-                        <h3>Boundary Surveys</h3>
-                        <p>Accurate property line determination for legal documentation and dispute resolution throughout Kenitra and surrounding areas.</p>
+                        <h3 data-translate="service-1-title">Dossiers Techniques Cadastrales</h3>
+                        <p data-translate="service-1-desc">Constitution complète de dossiers pour l'ANCFCC incluant levés, plans et documents administratifs.</p>
                     </div>
                 </div>
 
@@ -64,8 +105,18 @@
                         <i class="fas fa-mountain"></i>
                     </div>
                     <div class="service-content">
-                        <h3>Topographic Surveys</h3>
-                        <p>Detailed elevation mapping for construction planning and land development, utilizing state-of-the-art equipment for precision results.</p>
+                        <h3 data-translate="service-2-title">Levés Topographiques</h3>
+                        <p data-translate="service-2-desc">Cartographie détaillée des élévations pour planification de construction et aménagement du territoire.</p>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-border-all"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 data-translate="service-3-title">Délimitation de Propriété</h3>
+                        <p data-translate="service-3-desc">Détermination précise des limites pour documentation légale et résolution de litiges.</p>
                     </div>
                 </div>
 
@@ -74,18 +125,88 @@
                         <i class="fas fa-ruler-combined"></i>
                     </div>
                     <div class="service-content">
-                        <h3>Construction Staking</h3>
-                        <p>Precise placement of construction elements according to engineered plans, ensuring your project is built exactly to specifications.</p>
+                        <h3 data-translate="service-4-title">Implantation de Construction</h3>
+                        <p data-translate="service-4-desc">Placement précis des éléments de construction selon les plans d'ingénierie.</p>
                     </div>
                 </div>
 
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-file-contract"></i>
+                        <i class="fas fa-home"></i>
                     </div>
                     <div class="service-content">
-                        <h3>ALTA/NSPS Surveys</h3>
-                        <p>Comprehensive surveys meeting national standards for property transactions, providing you with complete confidence in your investment.</p>
+                        <h3 data-translate="service-5-title">Copropriétés</h3>
+                        <p data-translate="service-5-desc">Expertise en division et gestion technique des biens en copropriété.</p>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 data-translate="service-6-title">Mise en Concordance</h3>
+                        <p data-translate="service-6-desc">Mise en concordance des immeubles avec les registres fonciers.</p>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-th"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 data-translate="service-7-title">Lotissements</h3>
+                        <p data-translate="service-7-desc">Subdivision de terrains pour projets de développement résidentiel ou commercial.</p>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-clipboard-list"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 data-translate="service-8-title">Immatriculation Foncière d'Ensemble</h3>
+                        <p data-translate="service-8-desc">Procédures complètes d'immatriculation pour grands ensembles fonciers.</p>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-drafting-compass"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 data-translate="service-9-title">Plans Cotés</h3>
+                        <p data-translate="service-9-desc">Plans détaillés avec dimensions précises pour vos projets.</p>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 data-translate="service-10-title">Plans de Situation</h3>
+                        <p data-translate="service-10-desc">Localisation précise de votre propriété dans son environnement.</p>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-globe-americas"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 data-translate="service-11-title">ALTA/NSPS Surveys</h3>
+                        <p data-translate="service-11-desc">Relevés standards internationaux pour clients internationaux.</p>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-satellite-dish"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 data-translate="service-12-title">SIG & Géomatique</h3>
+                        <p data-translate="service-12-desc">Analyse géospatiale et systèmes d'information géographique.</p>
                     </div>
                 </div>
             </div>
@@ -97,79 +218,312 @@
         <div class="container">
             <div class="about-grid">
                 <div class="about-content">
-                    <h2>Morocco's Trusted Land Surveying Experts</h2>
-                    <p>Stopsit has been providing professional land surveying services in Kenitra and throughout Morocco for over 15 years. Our team combines traditional surveying principles with cutting-edge technology to deliver accurate, reliable results.</p>
-                    <p>We take pride in our attention to detail and commitment to excellence, which has made us the preferred partner for property developers, architects, engineers, and homeowners across the country.</p>
+                    <h2 data-translate="about-title">Les experts en topographie de confiance au Maroc</h2>
+                    <p data-translate="about-paragraph1">Fondée en 2005, STOPSIT est une société professionnelle de topographie basée à Kenitra. Avec plus de 2 900 levés cadastraux réalisés, nous sommes devenus un partenaire de confiance pour l'ANCFCC (Agence Nationale de la Conservation Foncière, du Cadastre et de la Cartographie) et l'Agence Nationale des Eaux et Forêts.</p>
+                    <p data-translate="about-paragraph2">Dirigée par Fayçal Barrouch, Topographe SIG, notre équipe combine les principes traditionnels de topographie avec une technologie de pointe pour fournir des résultats précis et fiables. Notre engagement envers l'excellence nous a permis de servir efficacement Kenitra, Sidi Slimane, Fquih Ben Saleh et l'ensemble du Maroc.</p>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-number">2005</div>
+                            <div class="stat-label" data-translate="stat-founded">Année de création</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">2,900+</div>
+                            <div class="stat-label" data-translate="stat-projects">Projets réalisés</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">20+</div>
+                            <div class="stat-label" data-translate="stat-years">Années d'expérience</div>
+                        </div>
+                    </div>
+
                     <div class="credentials">
                         <div class="credential">
                             <i class="fas fa-certificate"></i>
-                            <span>Licensed Surveyors</span>
+                            <span data-translate="credential-iso">Certification ISO 9001 en cours</span>
+                        </div>
+                        <div class="credential">
+                            <i class="fas fa-award"></i>
+                            <span data-translate="credential-ancfcc">Prestataire Agréé ANCFCC</span>
+                        </div>
+                        <div class="credential">
+                            <i class="fas fa-user-tie"></i>
+                            <span data-translate="credential-licensed">Topographes Agréés</span>
                         </div>
                         <div class="credential">
                             <i class="fas fa-medal"></i>
-                            <span>15+ Years Experience</span>
-                        </div>
-                        <div class="credential">
-                            <i class="fas fa-check-circle"></i>
-                            <span>ISO 9001 Certified</span>
+                            <span data-translate="credential-experience">20+ ans d'expérience</span>
                         </div>
                     </div>
                 </div>
                 <div class="about-image">
-                    <img src="images/team.jpg" alt="Stopsit Team">
+                    <img src="images/team.jpg" alt="Équipe STOPSIT">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="section portfolio-section" id="portfolio">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-translate="portfolio-title">Nos Réalisations</h2>
+                <p data-translate="portfolio-subtitle">Projets majeurs réalisés pour des institutions nationales</p>
+            </div>
+            
+            <div class="portfolio-stats">
+                <div class="portfolio-stat">
+                    <i class="fas fa-building"></i>
+                    <h3>ANCFCC</h3>
+                    <p data-translate="portfolio-ancfcc">Partenaire principal depuis 2006</p>
+                </div>
+                <div class="portfolio-stat">
+                    <i class="fas fa-tree"></i>
+                    <h3 data-translate="portfolio-forests">Agence Eaux et Forêts</h3>
+                    <p data-translate="portfolio-forests-desc">Projets environnementaux</p>
+                </div>
+            </div>
+
+            <div class="projects-timeline">
+                <div class="project-item">
+                    <div class="project-year">2006-2007</div>
+                    <div class="project-details">
+                        <h4>Marché N° 260/2006/ANCFCC (Kenitra)</h4>
+                        <p data-translate="project-1-desc">335 affaires cadastrales traitées</p>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <div class="project-year">2007-2008</div>
+                    <div class="project-details">
+                        <h4>Marché N° 172/2007/ANCFCC/DC (Sidi Slimane)</h4>
+                        <p data-translate="project-2-desc">197 affaires cadastrales traitées</p>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <div class="project-year">2007-2010</div>
+                    <div class="project-details">
+                        <h4>Marché-Cadre N° 200/2007/ANCFCC/DC (Fquih Ben Saleh)</h4>
+                        <p data-translate="project-3-desc">2,025 affaires cadastrales traitées - Notre plus grand projet</p>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <div class="project-year">2010-2013</div>
+                    <div class="project-details">
+                        <h4>Marché-Cadre N° 17/2010 ANCFCC/DC (Kenitra)</h4>
+                        <p data-translate="project-4-desc">404 affaires cadastrales traitées</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Capabilities Section -->
+    <section class="section tech-section">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-translate="tech-title">Moyens Techniques</h2>
+                <p data-translate="tech-subtitle">Équipements de pointe pour des résultats précis</p>
+            </div>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <i class="fas fa-satellite"></i>
+                    </div>
+                    <h3 data-translate="tech-1-title">GNSS/GPS</h3>
+                    <p data-translate="tech-1-desc">Récepteurs de positionnement par satellite pour une précision centimétrique</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <i class="fas fa-compass"></i>
+                    </div>
+                    <h3 data-translate="tech-2-title">Stations Totales</h3>
+                    <p data-translate="tech-2-desc">Instruments de mesure topographique de haute précision</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3 data-translate="tech-3-title">Logiciels CAO/DAO</h3>
+                    <p data-translate="tech-3-desc">Conception assistée par ordinateur pour plans et dessins techniques</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 data-translate="tech-4-title">Traitement GNSS</h3>
+                    <p data-translate="tech-4-desc">Logiciels professionnels de post-traitement des données satellitaires</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <h3 data-translate="tech-5-title">Flotte de Véhicules</h3>
+                    <p data-translate="tech-5-desc">Véhicules professionnels pour opérations sur terrain</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <i class="fas fa-map"></i>
+                    </div>
+                    <h3 data-translate="tech-6-title">Analyse Géospatiale</h3>
+                    <p data-translate="tech-6-desc">Outils modernes d'analyse de données géographiques</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials-section" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-translate="testimonials-title">Témoignages Clients</h2>
+                <p data-translate="testimonials-subtitle">Ce que nos clients disent de nous</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"La société STOPSIT se distingue comme l'une des meilleures entreprises dans le domaine de la topographie. Grâce à la gestion rigoureuse et à la vision stratégique de Monsieur Fayçal Barrouch, elle offre des prestations de grande qualité..."</p>
+                    <div class="testimonial-author">
+                        <strong>Ayoub Bounaaja</strong>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"STOPSIT se distingue par son sérieux, son professionnalisme et la qualité de son travail. Une équipe compétente, réactive et toujours à l'écoute..."</p>
+                    <div class="testimonial-author">
+                        <strong>MARYAM DENNA</strong>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"J'ai eu une excellente expérience avec M. Fayçal Barrrouch Topographe SIG chez STOPSIT. Professionnalisme, précision et réactivité..."</p>
+                    <div class="testimonial-author">
+                        <strong>Sahraoui Sara</strong>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Un espace organisé et fonctionnel, équipé d'outils modernes de mesure et de cartographie..."</p>
+                    <div class="testimonial-author">
+                        <strong>Yassine EL Asraoui</strong>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Service professionnel, précis et d'une grande qualité..."</p>
+                    <div class="testimonial-author">
+                        <strong>Zakaria ELhmaidi</strong>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"مكتب دراسات طبوغرافية جدير بالثقة ويقدم خدمات احترافية"</p>
+                    <div class="testimonial-author">
+                        <strong>ED-DKHISSI MUSTAPHA</strong>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section class="section" id="contact">
-        <div class="container">
-            <div class="section-title">
-                <h2>Get In Touch</h2>
-                <p>Have questions or ready to start your project? Reach out to our team today</p>
-            </div>
-            <div class="contact-grid">
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Full Name</label>
-                            <input type="text" id="name" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="service">Service Needed</label>
-                            <select id="service" class="form-control" required>
-                                <option value="" selected disabled>Select a service</option>
-                                <option value="boundary">Boundary Survey</option>
-                                <option value="topographic">Topographic Survey</option>
-                                <option value="construction">Construction Staking</option>
-                                <option value="alta">ALTA/NSPS Survey</option>
-                                <option value="other">Other Services</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" class="form-control" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit Request</button>
-                    </form>
+        <section class="section" id="contact">
+            <div class="container">
+                <div class="section-title">
+                    <h2 data-translate="contact-title">Contactez-nous</h2>
+                    <p data-translate="contact-subtitle">Vous avez des questions ou êtes prêt à démarrer votre projet? Contactez notre équipe dès aujourd'hui</p>
                 </div>
+                <div class="contact-grid">
+                    <div class="contact-form">
+                        <form id="contactForm" action="https://formsubmit.co/stopsit.sarl@gmail.com" method="POST">
+                            
+                            <!-- FormSubmit Configuration -->
+                            <input type="hidden" name="_subject" value="Nouvelle demande de service depuis le site web">
+                            <input type="hidden" name="_captcha" value="true">
+                            <input type="hidden" name="_template" value="table">
+                            
+                            <div class="form-group">
+                                <label for="name" data-translate="contact-name">Nom complet</label>
+                                <input type="text" id="name" name="name" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" data-translate="contact-email">Adresse e-mail</label>
+                                <input type="email" id="email" name="email" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone" data-translate="contact-phone">Numéro de téléphone</label>
+                                <input type="tel" id="phone" name="phone" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="service" data-translate="contact-service">Service requis</label>
+                                <select id="service" name="service" class="form-control" required>
+                                    <option value="" selected disabled data-translate="contact-select">Sélectionnez un service</option>
+                                    <option value="cadastre" data-translate="contact-opt-1">Dossier Technique Cadastral</option>
+                                    <option value="topographic" data-translate="contact-opt-2">Levé Topographique</option>
+                                    <option value="boundary" data-translate="contact-opt-3">Délimitation de Propriété</option>
+                                    <option value="construction" data-translate="contact-opt-4">Implantation de Construction</option>
+                                    <option value="copropriete" data-translate="contact-opt-5">Copropriété</option>
+                                    <option value="concordance" data-translate="contact-opt-6">Mise en Concordance</option>
+                                    <option value="lotissement" data-translate="contact-opt-7">Lotissement</option>
+                                    <option value="immatriculation" data-translate="contact-opt-8">Immatriculation Foncière</option>
+                                    <option value="other" data-translate="contact-opt-9">Autre Service</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="message" data-translate="contact-message">Message</label>
+                            <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary" data-translate="contact-submit">Envoyer la demande</button>
+                        </form>
+                    </div>
                 <div class="contact-info">
                     <div class="contact-item">
                         <div class="contact-icon">
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
                         <div class="contact-text">
-                            <h3>Our Location</h3>
-                            <p>123 Avenue Mohammed V, Kenitra, Morocco</p>
+                            <h3 data-translate="contact-location">Notre emplacement</h3>
+                            <p>Bureau n°1, Résidence MEFTAHA<br>55, 6 Rue Mohamed Abdou<br>Kenitra 14000, Maroc</p>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -177,8 +531,8 @@
                             <i class="fas fa-phone"></i>
                         </div>
                         <div class="contact-text">
-                            <h3>Phone Number</h3>
-                            <p>+212 5-XX-XX-XX-XX</p>
+                            <h3 data-translate="contact-phone-label">Numéro de téléphone</h3>
+                            <p dir="ltr">+212 661-688603</p>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -186,8 +540,8 @@
                             <i class="fas fa-envelope"></i>
                         </div>
                         <div class="contact-text">
-                            <h3>Email Address</h3>
-                            <p>info@stopsit.ma</p>
+                            <h3 data-translate="contact-email-label">Adresse e-mail</h3>
+                            <p>stopsit.sarl@gmail.com</p>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -195,12 +549,13 @@
                             <i class="fas fa-clock"></i>
                         </div>
                         <div class="contact-text">
-                            <h3>Working Hours</h3>
-                            <p>Monday - Friday: 8:00 AM - 6:00 PM</p>
+                            <h3 data-translate="contact-hours">Heures d'ouverture</h3>
+                            <p data-translate="contact-hours-mon-fri">Lundi - Vendredi: 8h00 - 18h00</p>
+                            <p data-translate="contact-hours-sat">Samedi: 8h00 - 12h00</p>
                         </div>
                     </div>
                     <div class="map-container">
-                        <img src="images/map.jpg" alt="Map Location">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d412.19835958323534!2d-6.582211040277891!3d34.259083838011826!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda759e38b9fcbcb%3A0xd2875d5f92a28d0a!2z2YXYrdmF2K8g2KjYsdmI2LQgLSDZhdmH2YbYr9izINmF2LPYp9itINi32KjZiNi62LHYp9mB2YogLSBTVE9QU0lU!5e0!3m2!1sfr!2sma!4v1770643758283!5m2!1sfr!2sma" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
             </div>
@@ -213,39 +568,42 @@
             <div class="footer-content">
                 <div class="footer-column">
                     <div class="footer-logo">
-                        <h2>Stopsit</h2>
+                        <h2>STOPSIT</h2>
                     </div>
-                    <p>Professional land surveying services in Kenitra and throughout Morocco.</p>
+                    <p data-translate="footer-tagline">Services professionnels de topographie à Kenitra et dans tout le Maroc depuis 2005.</p>
+                    <p class="footer-contact">
+                        <i class="fas fa-phone"></i> <span dir="ltr">+212 661-688603</span><br>
+                        <i class="fas fa-envelope"></i> stopsit.sarl@gmail.com
+                    </p>
                 </div>
                 <div class="footer-column">
-                    <h3>Quick Links</h3>
+                    <h3 data-translate="footer-quicklinks">Liens rapides</h3>
                     <ul class="footer-links">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#home" data-translate="nav-home">Accueil</a></li>
+                        <li><a href="#services" data-translate="nav-services">Services</a></li>
+                        <li><a href="#about" data-translate="nav-about">À propos</a></li>
+                        <li><a href="#portfolio" data-translate="nav-portfolio">Réalisations</a></li>
+                        <li><a href="#contact" data-translate="nav-contact">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h3>Services</h3>
+                    <h3 data-translate="footer-services">Services Principaux</h3>
                     <ul class="footer-links">
-                        <li><a href="#services">Boundary Surveys</a></li>
-                        <li><a href="#services">Topographic Surveys</a></li>
-                        <li><a href="#services">Construction Staking</a></li>
-                        <li><a href="#services">ALTA/NSPS Surveys</a></li>
+                        <li><a href="#services">Dossiers Techniques Cadastrales</a></li>
+                        <li><a href="#services">Levés Topographiques</a></li>
+                        <li><a href="#services">Délimitation de Propriété</a></li>
+                        <li><a href="#services">Copropriétés</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h3>Connect With Us</h3>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    <div class="credentials-footer">
+                        <p><i class="fas fa-certificate"></i> <span data-translate="credential-iso">Certification ISO 9001 en cours</span></p>
+                        <p><i class="fas fa-award"></i> <span data-translate="credential-ancfcc">Agréé ANCFCC</span></p>
                     </div>
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2025 Stopsit Land Surveying. All Rights Reserved.</p>
+                <p data-translate="footer-copyright">&copy; 2025 STOPSIT Topographie. Tous droits réservés.</p>
             </div>
         </div>
     </footer>
