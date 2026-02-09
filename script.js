@@ -20,88 +20,118 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         
         document.getElementById('navLinks').classList.remove('active');
         
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
     });
 });
 
-// Form Submission
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    alert('Thank you for your message! We will get back to you shortly.');
-    this.reset();
-});
-
-// Sticky Header
-window.addEventListener('scroll', function() {
-    const header = document.getElementById('header');
-    if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
-    }
-});
-
-// Mobile Menu Toggle
-document.getElementById('menuBtn').addEventListener('click', function() {
-    document.getElementById('navLinks').classList.toggle('active');
-});
-
-// Smooth Scrolling
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        
-        document.getElementById('navLinks').classList.remove('active');
-        
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
-});
-
-// Form Submission
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    alert('Thank you for your message! We will get back to you shortly.');
-    this.reset();
-});
-
-// Language switcher functionality
+// Comprehensive translations object
 const translations = {
     'fr': {
         // Navigation
         'nav-home': 'Accueil',
         'nav-services': 'Services',
         'nav-about': 'À propos',
+        'nav-portfolio': 'Réalisations',
+        'nav-testimonials': 'Témoignages',
         'nav-contact': 'Contact',
         
         // Hero Section
         'hero-title': 'Topographie de précision pour un développement intelligent',
-        'hero-subtitle': 'Au service de Kenitra et de tout le Maroc avec une technologie de topographie de pointe et une expertise inégalée',
+        'hero-subtitle': 'Au service de Kenitra et de tout le Maroc avec une technologie de topographie de pointe et une expertise inégalée depuis 2007',
         'hero-cta-quote': 'Demander un devis',
         'hero-cta-services': 'Nos services',
         
+        // Who We Serve Section
+        'who-title': 'Qui Nous Servons',
+        'who-subtitle': 'Nous servons aussi bien les institutions que les particuliers',
+        'who-institutional': 'Clients Institutionnels',
+        'who-inst-1': 'Agences gouvernementales',
+        'who-inst-2': 'Promoteurs immobiliers',
+        'who-inst-3': 'Architectes & Ingénieurs',
+        'who-inst-4': 'Entreprises de construction',
+        'who-inst-5': 'Bureaux d\'études',
+        'who-individuals': 'Particuliers',
+        'who-ind-1': 'Propriétaires de terrains',
+        'who-ind-2': 'Propriétaires de maisons',
+        'who-ind-3': 'Investisseurs privés',
+        'who-ind-4': 'Futurs acquéreurs',
+        'who-ind-5': 'Héritiers en succession',
+        
         // Services Section
         'services-title': 'Nos Services',
-        'services-subtitle': 'Nous fournissons des solutions complètes de topographie pour vous aider à prendre des décisions éclairées concernant votre propriété',
-        'service-boundary': 'Relevés de limites',
-        'service-boundary-desc': 'Détermination précise des limites de propriété pour la documentation légale et la résolution des litiges à Kenitra et dans les environs.',
-        'service-topo': 'Relevés topographiques',
-        'service-topo-desc': 'Cartographie détaillée des élévations pour la planification de la construction et l\'aménagement du territoire, utilisant des équipements de pointe pour des résultats précis.',
-        'service-construction': 'Jalonnement de construction',
-        'service-construction-desc': 'Placement précis des éléments de construction selon les plans d\'ingénierie, assurant que votre projet est construit exactement selon les spécifications.',
-        'service-alta': 'Relevés ALTA/NSPS',
-        'service-alta-desc': 'Relevés complets répondant aux normes nationales pour les transactions immobilières, vous donnant une confiance totale dans votre investissement.',
+        'services-subtitle': 'Solutions complètes de topographie pour tous vos projets fonciers et cadastraux',
+        'service-1-title': 'Dossiers Techniques Cadastrales',
+        'service-1-desc': 'Constitution complète de dossiers pour l\'ANCFCC incluant levés, plans et documents administratifs.',
+        'service-2-title': 'Levés Topographiques',
+        'service-2-desc': 'Cartographie détaillée des élévations pour planification de construction et aménagement du territoire.',
+        'service-3-title': 'Délimitation de Propriété',
+        'service-3-desc': 'Détermination précise des limites pour documentation légale et résolution de litiges.',
+        'service-4-title': 'Implantation de Construction',
+        'service-4-desc': 'Placement précis des éléments de construction selon les plans d\'ingénierie.',
+        'service-5-title': 'Copropriétés',
+        'service-5-desc': 'Expertise en division et gestion technique des biens en copropriété.',
+        'service-6-title': 'Mise en Concordance',
+        'service-6-desc': 'Mise en concordance des immeubles avec les registres fonciers.',
+        'service-7-title': 'Lotissements',
+        'service-7-desc': 'Subdivision de terrains pour projets de développement résidentiel ou commercial.',
+        'service-8-title': 'Immatriculation Foncière d\'Ensemble',
+        'service-8-desc': 'Procédures complètes d\'immatriculation pour grands ensembles fonciers.',
+        'service-9-title': 'Plans Cotés',
+        'service-9-desc': 'Plans détaillés avec dimensions précises pour vos projets.',
+        'service-10-title': 'Plans de Situation',
+        'service-10-desc': 'Localisation précise de votre propriété dans son environnement.',
+        'service-11-title': 'ALTA/NSPS Surveys',
+        'service-11-desc': 'Relevés standards internationaux pour clients internationaux.',
+        'service-12-title': 'SIG & Géomatique',
+        'service-12-desc': 'Analyse géospatiale et systèmes d\'information géographique.',
         
         // About Section
         'about-title': 'Les experts en topographie de confiance au Maroc',
-        'about-paragraph1': 'Stopsit fournit des services professionnels de topographie à Kenitra et dans tout le Maroc depuis plus de 15 ans. Notre équipe combine les principes traditionnels de topographie avec une technologie de pointe pour fournir des résultats précis et fiables.',
-        'about-paragraph2': 'Nous sommes fiers de notre attention aux détails et de notre engagement envers l\'excellence, qui ont fait de nous le partenaire privilégié des promoteurs immobiliers, des architectes, des ingénieurs et des propriétaires dans tout le pays.',
-        'credential-licensed': 'Géomètres agréés',
-        'credential-experience': '15+ ans d\'expérience',
-        'credential-iso': 'Certifié ISO 9001',
+        'about-paragraph1': 'Fondée en 2007, STOPSIT est une société professionnelle de topographie basée à Kenitra. Avec plus de 2 900 levés cadastraux réalisés, nous sommes devenus un partenaire de confiance pour l\'ANCFCC (Agence Nationale de la Conservation Foncière, du Cadastre et de la Cartographie) et l\'Agence Nationale des Eaux et Forêts.',
+        'about-paragraph2': 'Dirigée par Fayçal Barrouch, Topographe SIG, notre équipe combine les principes traditionnels de topographie avec une technologie de pointe pour fournir des résultats précis et fiables. Notre engagement envers l\'excellence nous a permis de servir efficacement Kenitra, Sidi Slimane, Fquih Ben Saleh et l\'ensemble du Maroc.',
+        'stat-founded': 'Année de création',
+        'stat-projects': 'Projets réalisés',
+        'stat-years': 'Années d\'expérience',
+        'credential-iso': 'Certification ISO 9001 en cours',
+        'credential-ancfcc': 'Prestataire Agréé ANCFCC',
+        'credential-licensed': 'Topographes Agréés',
+        'credential-experience': '20+ ans d\'expérience',
+        
+        // Portfolio Section
+        'portfolio-title': 'Nos Réalisations',
+        'portfolio-subtitle': 'Projets majeurs réalisés pour des institutions nationales',
+        'portfolio-ancfcc': 'Partenaire principal depuis 2006',
+        'portfolio-forests': 'Agence Eaux et Forêts',
+        'portfolio-forests-desc': 'Projets environnementaux',
+        'project-1-desc': '335 affaires cadastrales traitées',
+        'project-2-desc': '197 affaires cadastrales traitées',
+        'project-3-desc': '2,025 affaires cadastrales traitées - Notre plus grand projet',
+        'project-4-desc': '404 affaires cadastrales traitées',
+        
+        // Technical Capabilities
+        'tech-title': 'Moyens Techniques',
+        'tech-subtitle': 'Équipements de pointe pour des résultats précis',
+        'tech-1-title': 'GNSS/GPS',
+        'tech-1-desc': 'Récepteurs de positionnement par satellite pour une précision centimétrique',
+        'tech-2-title': 'Stations Totales',
+        'tech-2-desc': 'Instruments de mesure topographique de haute précision',
+        'tech-3-title': 'Logiciels CAO/DAO',
+        'tech-3-desc': 'Conception assistée par ordinateur pour plans et dessins techniques',
+        'tech-4-title': 'Traitement GNSS',
+        'tech-4-desc': 'Logiciels professionnels de post-traitement des données satellitaires',
+        'tech-5-title': 'Flotte de Véhicules',
+        'tech-5-desc': 'Véhicules professionnels pour opérations sur terrain',
+        'tech-6-title': 'Analyse Géospatiale',
+        'tech-6-desc': 'Outils modernes d\'analyse de données géographiques',
+        
+        // Testimonials Section
+        'testimonials-title': 'Témoignages Clients',
+        'testimonials-subtitle': 'Ce que nos clients disent de nous',
         
         // Contact Section
         'contact-title': 'Contactez-nous',
@@ -111,25 +141,30 @@ const translations = {
         'contact-phone': 'Numéro de téléphone',
         'contact-service': 'Service requis',
         'contact-select': 'Sélectionnez un service',
-        'contact-boundary': 'Relevé de limites',
-        'contact-topo': 'Relevé topographique',
-        'contact-construction': 'Jalonnement de construction',
-        'contact-alta': 'Relevé ALTA/NSPS',
-        'contact-other': 'Autres services',
+        'contact-opt-1': 'Dossier Technique Cadastral',
+        'contact-opt-2': 'Levé Topographique',
+        'contact-opt-3': 'Délimitation de Propriété',
+        'contact-opt-4': 'Implantation de Construction',
+        'contact-opt-5': 'Copropriété',
+        'contact-opt-6': 'Mise en Concordance',
+        'contact-opt-7': 'Lotissement',
+        'contact-opt-8': 'Immatriculation Foncière',
+        'contact-opt-9': 'Autre Service',
         'contact-message': 'Message',
         'contact-submit': 'Envoyer la demande',
         'contact-location': 'Notre emplacement',
         'contact-phone-label': 'Numéro de téléphone',
         'contact-email-label': 'Adresse e-mail',
         'contact-hours': 'Heures d\'ouverture',
-        'contact-hours-value': 'Lundi - Vendredi: 8h00 - 18h00',
+        'contact-hours-mon-fri': 'Lundi - Vendredi: 8h00 - 18h00',
+        'contact-hours-sat': 'Samedi: 8h00 - 12h00',
         
         // Footer
-        'footer-tagline': 'Services professionnels de topographie à Kenitra et dans tout le Maroc.',
+        'footer-tagline': 'Services professionnels de topographie à Kenitra et dans tout le Maroc depuis 2007.',
         'footer-quicklinks': 'Liens rapides',
-        'footer-services': 'Services',
+        'footer-services': 'Services Principaux',
         'footer-connect': 'Connectez-vous avec nous',
-        'footer-copyright': '© 2025 Stopsit Topographie. Tous droits réservés.',
+        'footer-copyright': '© 2025 STOPSIT Topographie. Tous droits réservés.',
         
         // Form Alert
         'form-success': 'Merci pour votre message! Nous vous répondrons dans les plus brefs délais.'
@@ -139,33 +174,102 @@ const translations = {
         'nav-home': 'Home',
         'nav-services': 'Services',
         'nav-about': 'About',
+        'nav-portfolio': 'Portfolio',
+        'nav-testimonials': 'Testimonials',
         'nav-contact': 'Contact',
         
         // Hero Section
         'hero-title': 'Precision Land Surveying for Smart Development',
-        'hero-subtitle': 'Serving Kenitra and all of Morocco with cutting-edge surveying technology and unmatched expertise',
+        'hero-subtitle': 'Serving Kenitra and all of Morocco with cutting-edge surveying technology and unmatched expertise since 2007',
         'hero-cta-quote': 'Request a Quote',
         'hero-cta-services': 'Our Services',
         
+        // Who We Serve Section
+        'who-title': 'Who We Serve',
+        'who-subtitle': 'We serve both institutions and individuals',
+        'who-institutional': 'Institutional Clients',
+        'who-inst-1': 'Government agencies',
+        'who-inst-2': 'Property developers',
+        'who-inst-3': 'Architects & Engineers',
+        'who-inst-4': 'Construction companies',
+        'who-inst-5': 'Engineering firms',
+        'who-individuals': 'Individuals',
+        'who-ind-1': 'Land owners',
+        'who-ind-2': 'Home owners',
+        'who-ind-3': 'Private investors',
+        'who-ind-4': 'Future buyers',
+        'who-ind-5': 'Inheritance heirs',
+        
         // Services Section
         'services-title': 'Our Services',
-        'services-subtitle': 'We provide comprehensive land surveying solutions to help you make informed decisions about your property',
-        'service-boundary': 'Boundary Surveys',
-        'service-boundary-desc': 'Accurate property line determination for legal documentation and dispute resolution throughout Kenitra and surrounding areas.',
-        'service-topo': 'Topographic Surveys',
-        'service-topo-desc': 'Detailed elevation mapping for construction planning and land development, utilizing state-of-the-art equipment for precision results.',
-        'service-construction': 'Construction Staking',
-        'service-construction-desc': 'Precise placement of construction elements according to engineered plans, ensuring your project is built exactly to specifications.',
-        'service-alta': 'ALTA/NSPS Surveys',
-        'service-alta-desc': 'Comprehensive surveys meeting national standards for property transactions, providing you with complete confidence in your investment.',
+        'services-subtitle': 'Comprehensive surveying solutions for all your land and cadastral projects',
+        'service-1-title': 'Cadastral Technical Files',
+        'service-1-desc': 'Complete file preparation for ANCFCC including surveys, plans and administrative documents.',
+        'service-2-title': 'Topographic Surveys',
+        'service-2-desc': 'Detailed elevation mapping for construction planning and land development.',
+        'service-3-title': 'Boundary Surveys',
+        'service-3-desc': 'Precise boundary determination for legal documentation and dispute resolution.',
+        'service-4-title': 'Construction Staking',
+        'service-4-desc': 'Precise placement of construction elements according to engineering plans.',
+        'service-5-title': 'Co-ownership Surveys',
+        'service-5-desc': 'Expertise in division and technical management of co-owned properties.',
+        'service-6-title': 'Building Concordance',
+        'service-6-desc': 'Alignment of buildings with land registry records.',
+        'service-7-title': 'Land Subdivision',
+        'service-7-desc': 'Land subdivision for residential or commercial development projects.',
+        'service-8-title': 'Comprehensive Land Registration',
+        'service-8-desc': 'Complete registration procedures for large land ensembles.',
+        'service-9-title': 'Dimensioned Plans',
+        'service-9-desc': 'Detailed plans with precise dimensions for your projects.',
+        'service-10-title': 'Site Plans',
+        'service-10-desc': 'Precise location of your property in its environment.',
+        'service-11-title': 'ALTA/NSPS Surveys',
+        'service-11-desc': 'International standard surveys for international clients.',
+        'service-12-title': 'GIS & Geomatics',
+        'service-12-desc': 'Geospatial analysis and geographic information systems.',
         
         // About Section
         'about-title': 'Morocco\'s Trusted Land Surveying Experts',
-        'about-paragraph1': 'Stopsit has been providing professional land surveying services in Kenitra and throughout Morocco for over 15 years. Our team combines traditional surveying principles with cutting-edge technology to deliver accurate, reliable results.',
-        'about-paragraph2': 'We take pride in our attention to detail and commitment to excellence, which has made us the preferred partner for property developers, architects, engineers, and homeowners across the country.',
-        'credential-licensed': 'Licensed Surveyors',
-        'credential-experience': '15+ Years Experience',
+        'about-paragraph1': 'Founded in 2007, STOPSIT is a professional surveying company based in Kenitra. With over 2,900 cadastral surveys completed, we have become a trusted partner for ANCFCC (National Agency for Land Conservation, Cadastre and Cartography) and the National Agency for Water and Forests.',
+        'about-paragraph2': 'Led by Fayçal Barrouch, Surveyor and GIS Engineer, our team combines traditional surveying principles with cutting-edge technology to deliver accurate, reliable results. Our commitment to excellence has enabled us to effectively serve Kenitra, Sidi Slimane, Fquih Ben Saleh and all of Morocco.',
+        'stat-founded': 'Year founded',
+        'stat-projects': 'Projects completed',
+        'stat-years': 'Years of experience',
         'credential-iso': 'ISO 9001 Certified',
+        'credential-ancfcc': 'ANCFCC Approved Contractor',
+        'credential-licensed': 'Licensed Surveyors',
+        'credential-experience': '20+ years experience',
+        
+        // Portfolio Section
+        'portfolio-title': 'Our Portfolio',
+        'portfolio-subtitle': 'Major projects completed for national institutions',
+        'portfolio-ancfcc': 'Main partner since 2006',
+        'portfolio-forests': 'Water and Forests Agency',
+        'portfolio-forests-desc': 'Environmental projects',
+        'project-1-desc': '335 cadastral cases processed',
+        'project-2-desc': '197 cadastral cases processed',
+        'project-3-desc': '2,025 cadastral cases processed - Our largest project',
+        'project-4-desc': '404 cadastral cases processed',
+        
+        // Technical Capabilities
+        'tech-title': 'Technical Capabilities',
+        'tech-subtitle': 'State-of-the-art equipment for precise results',
+        'tech-1-title': 'GNSS/GPS',
+        'tech-1-desc': 'Satellite positioning receivers for centimeter-level precision',
+        'tech-2-title': 'Total Stations',
+        'tech-2-desc': 'High-precision topographic measurement instruments',
+        'tech-3-title': 'CAD Software',
+        'tech-3-desc': 'Computer-aided design for plans and technical drawings',
+        'tech-4-title': 'GNSS Processing',
+        'tech-4-desc': 'Professional satellite data post-processing software',
+        'tech-5-title': 'Vehicle Fleet',
+        'tech-5-desc': 'Professional vehicles for field operations',
+        'tech-6-title': 'Geospatial Analysis',
+        'tech-6-desc': 'Modern geographic data analysis tools',
+        
+        // Testimonials Section
+        'testimonials-title': 'Client Testimonials',
+        'testimonials-subtitle': 'What our clients say about us',
         
         // Contact Section
         'contact-title': 'Get In Touch',
@@ -175,25 +279,30 @@ const translations = {
         'contact-phone': 'Phone Number',
         'contact-service': 'Service Needed',
         'contact-select': 'Select a service',
-        'contact-boundary': 'Boundary Survey',
-        'contact-topo': 'Topographic Survey',
-        'contact-construction': 'Construction Staking',
-        'contact-alta': 'ALTA/NSPS Survey',
-        'contact-other': 'Other Services',
+        'contact-opt-1': 'Cadastral Technical File',
+        'contact-opt-2': 'Topographic Survey',
+        'contact-opt-3': 'Boundary Survey',
+        'contact-opt-4': 'Construction Staking',
+        'contact-opt-5': 'Co-ownership',
+        'contact-opt-6': 'Building Concordance',
+        'contact-opt-7': 'Land Subdivision',
+        'contact-opt-8': 'Land Registration',
+        'contact-opt-9': 'Other Service',
         'contact-message': 'Message',
         'contact-submit': 'Submit Request',
         'contact-location': 'Our Location',
         'contact-phone-label': 'Phone Number',
         'contact-email-label': 'Email Address',
         'contact-hours': 'Working Hours',
-        'contact-hours-value': 'Monday - Friday: 8:00 AM - 6:00 PM',
+        'contact-hours-mon-fri': 'Monday - Friday: 8:00 AM - 6:00 PM',
+        'contact-hours-sat': 'Saturday: 8:00 AM - 12:00 PM',
         
         // Footer
-        'footer-tagline': 'Professional land surveying services in Kenitra and throughout Morocco.',
+        'footer-tagline': 'Professional land surveying services in Kenitra and throughout Morocco since 2007.',
         'footer-quicklinks': 'Quick Links',
-        'footer-services': 'Services',
+        'footer-services': 'Main Services',
         'footer-connect': 'Connect With Us',
-        'footer-copyright': '© 2025 Stopsit Land Surveying. All Rights Reserved.',
+        'footer-copyright': '© 2025 STOPSIT Land Surveying. All Rights Reserved.',
         
         // Form Alert
         'form-success': 'Thank you for your message! We will get back to you shortly.'
@@ -203,33 +312,102 @@ const translations = {
         'nav-home': 'الرئيسية',
         'nav-services': 'الخدمات',
         'nav-about': 'من نحن',
+        'nav-portfolio': 'إنجازاتنا',
+        'nav-testimonials': 'الشهادات',
         'nav-contact': 'اتصل بنا',
         
         // Hero Section
         'hero-title': 'مسح الأراضي بدقة للتطوير الذكي',
-        'hero-subtitle': 'نخدم القنيطرة وجميع أنحاء المغرب بأحدث تقنيات المسح وخبرة لا مثيل لها',
+        'hero-subtitle': 'نخدم القنيطرة وجميع أنحاء المغرب بأحدث تقنيات المسح وخبرة لا مثيل لها منذ عام 2007',
         'hero-cta-quote': 'طلب عرض سعر',
         'hero-cta-services': 'خدماتنا',
         
+        // Who We Serve Section
+        'who-title': 'من نخدم',
+        'who-subtitle': 'نخدم المؤسسات والأفراد على حد سواء',
+        'who-institutional': 'العملاء المؤسسيون',
+        'who-inst-1': 'الوكالات الحكومية',
+        'who-inst-2': 'مطوري العقارات',
+        'who-inst-3': 'المهندسون المعماريون والمدنيون',
+        'who-inst-4': 'شركات البناء',
+        'who-inst-5': 'مكاتب الدراسات',
+        'who-individuals': 'الأفراد',
+        'who-ind-1': 'أصحاب الأراضي',
+        'who-ind-2': 'أصحاب المنازل',
+        'who-ind-3': 'المستثمرون الخاصون',
+        'who-ind-4': 'المشترون المستقبليون',
+        'who-ind-5': 'الورثة في حالات الميراث',
+        
         // Services Section
         'services-title': 'خدماتنا',
-        'services-subtitle': 'نقدم حلول مسح الأراضي الشاملة لمساعدتك على اتخاذ قرارات مستنيرة بشأن عقارك',
-        'service-boundary': 'مسح الحدود',
-        'service-boundary-desc': 'تحديد دقيق لحدود الممتلكات للوثائق القانونية وحل النزاعات في جميع أنحاء القنيطرة والمناطق المحيطة بها.',
-        'service-topo': 'المسح الطبوغرافي',
-        'service-topo-desc': 'رسم خرائط تفصيلية للارتفاعات لتخطيط البناء وتطوير الأراضي، باستخدام أحدث المعدات للحصول على نتائج دقيقة.',
-        'service-construction': 'تخطيط البناء',
-        'service-construction-desc': 'وضع دقيق لعناصر البناء وفقًا للخطط الهندسية، مما يضمن بناء مشروعك وفقًا للمواصفات بالضبط.',
-        'service-alta': 'مسح ALTA/NSPS',
-        'service-alta-desc': 'مسوحات شاملة تلبي المعايير الوطنية لمعاملات العقارات، مما يمنحك ثقة كاملة في استثمارك.',
+        'services-subtitle': 'حلول مسح شاملة لجميع مشاريعك العقارية والعقارية',
+        'service-1-title': 'الملفات التقنية المساحية',
+        'service-1-desc': 'إعداد ملف كامل للوكالة الوطنية للمحافظة العقارية بما في ذلك المسوحات والخطط والوثائق الإدارية.',
+        'service-2-title': 'المسوحات الطبوغرافية',
+        'service-2-desc': 'رسم خرائط تفصيلية للارتفاعات لتخطيط البناء وتطوير الأراضي.',
+        'service-3-title': 'تحديد الحدود',
+        'service-3-desc': 'تحديد دقيق للحدود للوثائق القانونية وحل النزاعات.',
+        'service-4-title': 'تخطيط البناء',
+        'service-4-desc': 'وضع دقيق لعناصر البناء وفقًا للخطط الهندسية.',
+        'service-5-title': 'الملكية المشتركة',
+        'service-5-desc': 'خبرة في تقسيم وإدارة العقارات المشتركة تقنيًا.',
+        'service-6-title': 'مطابقة المباني',
+        'service-6-desc': 'مواءمة المباني مع سجلات الملكية العقارية.',
+        'service-7-title': 'تقسيم الأراضي',
+        'service-7-desc': 'تقسيم الأراضي لمشاريع التطوير السكنية أو التجارية.',
+        'service-8-title': 'التسجيل العقاري الشامل',
+        'service-8-desc': 'إجراءات تسجيل كاملة للأراضي الكبيرة.',
+        'service-9-title': 'الخطط المقاسة',
+        'service-9-desc': 'خطط مفصلة بأبعاد دقيقة لمشاريعك.',
+        'service-10-title': 'خطط الموقع',
+        'service-10-desc': 'موقع دقيق لممتلكاتك في بيئتها.',
+        'service-11-title': 'مسوحات ALTA/NSPS',
+        'service-11-desc': 'مسوحات معايير دولية للعملاء الدوليين.',
+        'service-12-title': 'نظم المعلومات الجغرافية',
+        'service-12-desc': 'التحليل الجغرافي المكاني ونظم المعلومات الجغرافية.',
         
         // About Section
         'about-title': 'خبراء مسح الأراضي الموثوق بهم في المغرب',
-        'about-paragraph1': 'تقدم شركة Stopsit خدمات مسح الأراضي المهنية في القنيطرة وجميع أنحاء المغرب لأكثر من 15 عامًا. يجمع فريقنا بين مبادئ المسح التقليدية والتكنولوجيا المتطورة لتقديم نتائج دقيقة وموثوقة.',
-        'about-paragraph2': 'نحن نفخر باهتمامنا بالتفاصيل والتزامنا بالتميز، مما جعلنا الشريك المفضل لمطوري العقارات والمهندسين المعماريين والمهندسين وأصحاب المنازل في جميع أنحاء البلاد.',
+        'about-paragraph1': 'تأسست شركة STOPSIT في عام 2007، وهي شركة مسح مهنية مقرها القنيطرة. مع أكثر من 2900 مسح عقاري منجز، أصبحنا شريكًا موثوقًا به للوكالة الوطنية للمحافظة العقارية والمسح والخرائط والوكالة الوطنية للمياه والغابات.',
+        'about-paragraph2': 'بقيادة فيصل بروش، المساح ومهندس نظم المعلومات الجغرافية، يجمع فريقنا بين مبادئ المسح التقليدية والتكنولوجيا المتطورة لتقديم نتائج دقيقة وموثوقة. لقد مكننا التزامنا بالتميز من خدمة القنيطرة وسيدي سليمان والفقيه بن صالح وكل المغرب بفعالية.',
+        'stat-founded': 'سنة التأسيس',
+        'stat-projects': 'المشاريع المنجزة',
+        'stat-years': 'سنوات الخبرة',
+        'credential-iso': 'معتمد ISO 9001',
+        'credential-ancfcc': 'مقاول معتمد من الوكالة الوطنية',
         'credential-licensed': 'مساحون مرخصون',
-        'credential-experience': 'خبرة أكثر من 15 عامًا',
-        'credential-iso': 'حاصل على شهادة الأيزو 9001',
+        'credential-experience': 'أكثر من 20 عامًا من الخبرة',
+        
+        // Portfolio Section
+        'portfolio-title': 'إنجازاتنا',
+        'portfolio-subtitle': 'مشاريع رئيسية منجزة للمؤسسات الوطنية',
+        'portfolio-ancfcc': 'شريك رئيسي منذ 2006',
+        'portfolio-forests': 'وكالة المياه والغابات',
+        'portfolio-forests-desc': 'مشاريع بيئية',
+        'project-1-desc': '335 قضية عقارية معالجة',
+        'project-2-desc': '197 قضية عقارية معالجة',
+        'project-3-desc': '2,025 قضية عقارية معالجة - أكبر مشروع لنا',
+        'project-4-desc': '404 قضية عقارية معالجة',
+        
+        // Technical Capabilities
+        'tech-title': 'الوسائل التقنية',
+        'tech-subtitle': 'معدات متطورة لنتائج دقيقة',
+        'tech-1-title': 'GNSS/GPS',
+        'tech-1-desc': 'أجهزة استقبال تحديد المواقع بالأقمار الصناعية بدقة سنتيمترية',
+        'tech-2-title': 'المحطات الشاملة',
+        'tech-2-desc': 'أدوات قياس طبوغرافية عالية الدقة',
+        'tech-3-title': 'برامج CAD',
+        'tech-3-desc': 'التصميم بمساعدة الكمبيوتر للخطط والرسومات التقنية',
+        'tech-4-title': 'معالجة GNSS',
+        'tech-4-desc': 'برامج معالجة بيانات الأقمار الصناعية المهنية',
+        'tech-5-title': 'أسطول المركبات',
+        'tech-5-desc': 'مركبات مهنية للعمليات الميدانية',
+        'tech-6-title': 'التحليل الجغرافي المكاني',
+        'tech-6-desc': 'أدوات حديثة لتحليل البيانات الجغرافية',
+        
+        // Testimonials Section
+        'testimonials-title': 'شهادات العملاء',
+        'testimonials-subtitle': 'ما يقوله عملاؤنا عنا',
         
         // Contact Section
         'contact-title': 'تواصل معنا',
@@ -239,32 +417,37 @@ const translations = {
         'contact-phone': 'رقم الهاتف',
         'contact-service': 'الخدمة المطلوبة',
         'contact-select': 'اختر خدمة',
-        'contact-boundary': 'مسح الحدود',
-        'contact-topo': 'المسح الطبوغرافي',
-        'contact-construction': 'تخطيط البناء',
-        'contact-alta': 'مسح ALTA/NSPS',
-        'contact-other': 'خدمات أخرى',
+        'contact-opt-1': 'ملف تقني عقاري',
+        'contact-opt-2': 'مسح طبوغرافي',
+        'contact-opt-3': 'تحديد الحدود',
+        'contact-opt-4': 'تخطيط البناء',
+        'contact-opt-5': 'ملكية مشتركة',
+        'contact-opt-6': 'مطابقة المباني',
+        'contact-opt-7': 'تقسيم الأراضي',
+        'contact-opt-8': 'التسجيل العقاري',
+        'contact-opt-9': 'خدمة أخرى',
         'contact-message': 'الرسالة',
         'contact-submit': 'إرسال الطلب',
         'contact-location': 'موقعنا',
         'contact-phone-label': 'رقم الهاتف',
         'contact-email-label': 'البريد الإلكتروني',
         'contact-hours': 'ساعات العمل',
-        'contact-hours-value': 'الاثنين - الجمعة: 8:00 صباحًا - 6:00 مساءً',
+        'contact-hours-mon-fri': 'الاثنين - الجمعة: 8:00 صباحًا - 6:00 مساءً',
+        'contact-hours-sat': 'السبت: 8:00 صباحًا - 12:00 ظهرًا',
         
         // Footer
-        'footer-tagline': 'خدمات مسح الأراضي المهنية في القنيطرة وجميع أنحاء المغرب.',
+        'footer-tagline': 'خدمات مسح الأراضي المهنية في القنيطرة وجميع أنحاء المغرب منذ 2007.',
         'footer-quicklinks': 'روابط سريعة',
-        'footer-services': 'الخدمات',
+        'footer-services': 'الخدمات الرئيسية',
         'footer-connect': 'تواصل معنا',
-        'footer-copyright': '© 2025 Stopsit لمسح الأراضي. جميع الحقوق محفوظة.',
+        'footer-copyright': '© 2025 STOPSIT لمسح الأراضي. جميع الحقوق محفوظة.',
         
         // Form Alert
         'form-success': 'شكرًا لرسالتك! سنرد عليك في أقرب وقت ممكن.'
     }
 };
 
-// Set default language to French 
+// Set default language to French - CRITICAL FIX
 let currentLang = localStorage.getItem('selectedLanguage') || 'fr';
 
 // Function to update all text content on the page
@@ -280,147 +463,90 @@ function updatePageLanguage(lang) {
     if (lang === 'ar') {
         document.body.classList.add('rtl');
         
-        // Force logo to maintain LTR direction with proper spacing
+        // Force logo to maintain LTR direction
         const logo = document.querySelector('.logo');
-        logo.style.direction = 'ltr';
-        logo.style.marginLeft = '40px';
+        if (logo) {
+            logo.style.direction = 'ltr';
+            logo.style.marginLeft = '40px';
+        }
         
         // Fix navbar layout
         const navbar = document.querySelector('.navbar');
-        navbar.style.justifyContent = 'flex-start';
-        navbar.style.gap = '40px';
+        if (navbar) {
+            navbar.style.justifyContent = 'flex-start';
+            navbar.style.gap = '40px';
+        }
         
         // Ensure nav links have proper spacing
         const navLinks = document.querySelector('.nav-links');
-        navLinks.style.marginLeft = '40px';
-        navLinks.style.marginRight = 'auto';
+        if (navLinks) {
+            navLinks.style.marginLeft = '40px';
+            navLinks.style.marginRight = 'auto';
+        }
     } else {
         document.body.classList.remove('rtl');
         
         // Reset all custom spacing when not in RTL
         const logo = document.querySelector('.logo');
-        logo.style.marginLeft = '';
+        if (logo) {
+            logo.style.marginLeft = '';
+        }
         
         const navbar = document.querySelector('.navbar');
-        navbar.style.justifyContent = '';
-        navbar.style.gap = '';
+        if (navbar) {
+            navbar.style.justifyContent = '';
+            navbar.style.gap = '';
+        }
         
         const navLinks = document.querySelector('.nav-links');
-        navLinks.style.marginLeft = '';
-        navLinks.style.marginRight = '';
+        if (navLinks) {
+            navLinks.style.marginLeft = '';
+            navLinks.style.marginRight = '';
+        }
     }
     
     // Update active button state
     document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.classList.remove('active');
     });
-    document.querySelector(`.lang-btn[data-lang="${lang}"]`).classList.add('active');
+    const activeBtn = document.querySelector(`.lang-btn[data-lang="${lang}"]`);
+    if (activeBtn) {
+        activeBtn.classList.add('active');
+    }
     
     // Force language switcher to always maintain LTR direction
-    document.querySelector('.language-switcher').style.direction = 'ltr';
+    const languageSwitcher = document.querySelector('.language-switcher');
+    if (languageSwitcher) {
+        languageSwitcher.style.direction = 'ltr';
+    }
     
-    // Navigation
-    document.querySelectorAll('#navLinks li a').forEach((link, index) => {
-        if (index === 0) link.textContent = translations[lang]['nav-home'];
-        if (index === 1) link.textContent = translations[lang]['nav-services'];
-        if (index === 2) link.textContent = translations[lang]['nav-about'];
-        if (index === 3) link.textContent = translations[lang]['nav-contact'];
+    // Update all elements with data-translate attribute
+    document.querySelectorAll('[data-translate]').forEach(element => {
+        const key = element.getAttribute('data-translate');
+        if (translations[lang] && translations[lang][key]) {
+            // Handle different element types
+            if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                element.placeholder = translations[lang][key];
+            } else if (element.tagName === 'OPTION') {
+                element.textContent = translations[lang][key];
+            } else {
+                element.textContent = translations[lang][key];
+            }
+        }
     });
-    
-    // Hero Section
-    document.querySelector('.hero-content h2').textContent = translations[lang]['hero-title'];
-    document.querySelector('.hero-content p').textContent = translations[lang]['hero-subtitle'];
-    document.querySelector('.cta-buttons .btn-primary').textContent = translations[lang]['hero-cta-quote'];
-    document.querySelector('.cta-buttons .btn-secondary').textContent = translations[lang]['hero-cta-services'];
-    
-    // Services Section
-    document.querySelector('#services .section-title h2').textContent = translations[lang]['services-title'];
-    document.querySelector('#services .section-title p').textContent = translations[lang]['services-subtitle'];
-    
-    // Update service cards
-    const serviceCards = document.querySelectorAll('.service-card');
-    serviceCards[0].querySelector('h3').textContent = translations[lang]['service-boundary'];
-    serviceCards[0].querySelector('p').textContent = translations[lang]['service-boundary-desc'];
-    serviceCards[1].querySelector('h3').textContent = translations[lang]['service-topo'];
-    serviceCards[1].querySelector('p').textContent = translations[lang]['service-topo-desc'];
-    serviceCards[2].querySelector('h3').textContent = translations[lang]['service-construction'];
-    serviceCards[2].querySelector('p').textContent = translations[lang]['service-construction-desc'];
-    serviceCards[3].querySelector('h3').textContent = translations[lang]['service-alta'];
-    serviceCards[3].querySelector('p').textContent = translations[lang]['service-alta-desc'];
-    
-    // About Section
-    document.querySelector('.about-content h2').textContent = translations[lang]['about-title'];
-    const aboutParagraphs = document.querySelectorAll('.about-content p');
-    aboutParagraphs[0].textContent = translations[lang]['about-paragraph1'];
-    aboutParagraphs[1].textContent = translations[lang]['about-paragraph2'];
-    
-    const credentials = document.querySelectorAll('.credential span');
-    credentials[0].textContent = translations[lang]['credential-licensed'];
-    credentials[1].textContent = translations[lang]['credential-experience'];
-    credentials[2].textContent = translations[lang]['credential-iso'];
-    
-    // Contact Section
-    document.querySelector('#contact .section-title h2').textContent = translations[lang]['contact-title'];
-    document.querySelector('#contact .section-title p').textContent = translations[lang]['contact-subtitle'];
-    
-    // Form elements
-    document.querySelector('label[for="name"]').textContent = translations[lang]['contact-name'];
-    document.querySelector('label[for="email"]').textContent = translations[lang]['contact-email'];
-    document.querySelector('label[for="phone"]').textContent = translations[lang]['contact-phone'];
-    document.querySelector('label[for="service"]').textContent = translations[lang]['contact-service'];
-    document.querySelector('label[for="message"]').textContent = translations[lang]['contact-message'];
-    
-    // Update select options
-    const selectOptions = document.querySelector('#service').options;
-    selectOptions[0].textContent = translations[lang]['contact-select'];
-    selectOptions[1].textContent = translations[lang]['contact-boundary'];
-    selectOptions[2].textContent = translations[lang]['contact-topo'];
-    selectOptions[3].textContent = translations[lang]['contact-construction'];
-    selectOptions[4].textContent = translations[lang]['contact-alta'];
-    selectOptions[5].textContent = translations[lang]['contact-other'];
-    
-    document.querySelector('#contactForm button').textContent = translations[lang]['contact-submit'];
-    
-    // Contact info
-    const contactItems = document.querySelectorAll('.contact-item .contact-text h3');
-    contactItems[0].textContent = translations[lang]['contact-location'];
-    contactItems[1].textContent = translations[lang]['contact-phone-label'];
-    contactItems[2].textContent = translations[lang]['contact-email-label'];
-    contactItems[3].textContent = translations[lang]['contact-hours'];
-    document.querySelectorAll('.contact-item .contact-text p')[3].textContent = translations[lang]['contact-hours-value'];
-    
-    // Footer
-    document.querySelector('.footer-column p').textContent = translations[lang]['footer-tagline'];
-    document.querySelectorAll('.footer-column h3')[0].textContent = translations[lang]['footer-quicklinks'];
-    document.querySelectorAll('.footer-column h3')[1].textContent = translations[lang]['footer-services'];
-    document.querySelectorAll('.footer-column h3')[2].textContent = translations[lang]['footer-connect'];
-    document.querySelector('.copyright p').textContent = translations[lang]['footer-copyright'];
-    
-    // Update footer links
-    const footerLinks = document.querySelectorAll('.footer-links')[0].querySelectorAll('a');
-    footerLinks[0].textContent = translations[lang]['nav-home'];
-    footerLinks[1].textContent = translations[lang]['nav-services'];
-    footerLinks[2].textContent = translations[lang]['nav-about'];
-    footerLinks[3].textContent = translations[lang]['nav-contact'];
-    
-    const footerServiceLinks = document.querySelectorAll('.footer-links')[1].querySelectorAll('a');
-    footerServiceLinks[0].textContent = translations[lang]['service-boundary'];
-    footerServiceLinks[1].textContent = translations[lang]['service-topo'];
-    footerServiceLinks[2].textContent = translations[lang]['service-construction'];
-    footerServiceLinks[3].textContent = translations[lang]['service-alta'];
 }
 
-// Add event listeners to language buttons
+// Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
-// Create language switcher if it doesn't exist
+    // Create language switcher if it doesn't exist
     if (!document.querySelector('.language-switcher-container')) {
         const navLinks = document.getElementById('navLinks');
         
-        // Create container with specific class for positioning
+        // Create container
         const container = document.createElement('li');
         container.className = 'language-switcher-container';
         
-        // Create the actual language switcher with forced LTR direction
+        // Create the actual language switcher
         const langSwitcher = document.createElement('div');
         langSwitcher.className = 'language-switcher';
         langSwitcher.style.direction = 'ltr'; // Force LTR direction
@@ -446,13 +572,24 @@ document.addEventListener('DOMContentLoaded', function() {
     updatePageLanguage(currentLang);
     
     // Force language switcher direction after initialization
-    document.querySelector('.language-switcher').style.direction = 'ltr';
-    
-    // Override the form submission alert to use the translated message
-    const originalFormSubmit = document.getElementById('contactForm').onsubmit;
-    document.getElementById('contactForm').onsubmit = function(e) {
-        e.preventDefault();
-        alert(translations[currentLang]['form-success']);
-        this.reset();
-    };
+    const languageSwitcher = document.querySelector('.language-switcher');
+    if (languageSwitcher) {
+        languageSwitcher.style.direction = 'ltr';
+    }
+        
+    // Form submission handler - show confirmation but still submit
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            // Show a quick alert (optional)
+            // Note: Alert will pause submission briefly
+            const message = translations[currentLang]['form-success'] || 
+                        'Thank you for your message! We will respond soon.';
+            
+            // Don't prevent default - form will submit after alert
+            setTimeout(() => {
+                alert(message);
+            }, 100);
+        });
+    }
 });
