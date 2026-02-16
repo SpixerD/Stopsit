@@ -161,8 +161,8 @@ const translations = {
         'contact-phone-label': 'Numéros de téléphone',
         'contact-email-label': 'Adresse e-mail',
         'contact-hours': 'Heures d\'ouverture',
-        'contact-hours-mon-fri': 'Lundi - Vendredi: 8h00 - 18h00',
-        'contact-hours-sat': 'Samedi: 8h00 - 12h00',
+        'contact-hours-mon-fri': 'Lundi - Vendredi: 9h00 - 18h00',
+        'contact-hours-sat': 'Samedi: 9h00 - 13h00',
         
         // Footer
         'footer-tagline': 'Services professionnels de topographie à Kenitra et dans tout le Maroc depuis 2005.',
