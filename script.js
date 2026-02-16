@@ -301,8 +301,8 @@ const translations = {
         'contact-phone-label': 'Phone Numbers',
         'contact-email-label': 'Email Address',
         'contact-hours': 'Working Hours',
-        'contact-hours-mon-fri': 'Monday - Friday: 8:00 AM - 6:00 PM',
-        'contact-hours-sat': 'Saturday: 8:00 AM - 12:00 PM',
+        'contact-hours-mon-fri': 'Monday - Friday: 9:00 AM - 6:00 PM',
+        'contact-hours-sat': 'Saturday: 9:00 AM - 01:00 PM',
         
         // Footer
         'footer-tagline': 'Professional land surveying services in Kenitra and throughout Morocco since 2005.',
@@ -441,8 +441,8 @@ const translations = {
         'contact-phone-label': 'أرقام الهاتف',
         'contact-email-label': 'البريد الإلكتروني',
         'contact-hours': 'ساعات العمل',
-        'contact-hours-mon-fri': 'الاثنين - الجمعة: 8:00 صباحًا - 6:00 مساءً',
-        'contact-hours-sat': 'السبت: 8:00 صباحًا - 12:00 ظهرًا',
+        'contact-hours-mon-fri': 'الاثنين - الجمعة: 9:00 صباحًا - 6:00 مساءً',
+        'contact-hours-sat': 'السبت: 9:00 صباحًا - 13:00 ظهرًا',
         
         // Footer
         'footer-tagline': 'خدمات مسح الأراضي المهنية في القنيطرة وجميع أنحاء المغرب منذ 2005.',
