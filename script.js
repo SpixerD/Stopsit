@@ -42,7 +42,7 @@ const translations = {
         
         // Hero Section
         'hero-title': 'Topographie de précision pour un développement intelligent',
-        'hero-subtitle': 'Au service de Kenitra et de tout le Maroc avec une technologie de topographie de pointe et une expertise inégalée depuis 2007',
+        'hero-subtitle': 'Au service de Kenitra et de tout le Maroc avec une technologie de topographie de pointe et une expertise inégalée depuis 2005',
         'hero-cta-quote': 'Demander un devis',
         'hero-cta-services': 'Nos services',
         
@@ -92,8 +92,8 @@ const translations = {
         
         // About Section
         'about-title': 'Les experts en topographie de confiance au Maroc',
-        'about-paragraph1': 'Fondée en 2007, STOPSIT est une société professionnelle de topographie basée à Kenitra. Avec plus de 2 900 levés cadastraux réalisés, nous sommes devenus un partenaire de confiance pour l\'ANCFCC (Agence Nationale de la Conservation Foncière, du Cadastre et de la Cartographie) et l\'Agence Nationale des Eaux et Forêts.',
-        'about-paragraph2': 'Dirigée par Fayçal Barrouch, Topographe SIG, notre équipe combine les principes traditionnels de topographie avec une technologie de pointe pour fournir des résultats précis et fiables. Notre engagement envers l\'excellence nous a permis de servir efficacement Kenitra, Sidi Slimane, Fquih Ben Saleh et l\'ensemble du Maroc.',
+        'about-paragraph1': 'Fondée en 2005, STOPSIT est une société professionnelle de topographie basée à Kenitra. Avec plus de 2 900 levés cadastraux réalisés, nous sommes devenus un partenaire de confiance pour l\'ANCFCC (Agence Nationale de la Conservation Foncière, du Cadastre et de la Cartographie) et l\'Agence Nationale des Eaux et Forêts.',
+        'about-paragraph2': 'Notre équipe d\'ingénieurs géomètres topographes et de techniciens spécialisés combine les principes traditionnels de topographie avec une technologie de pointe pour fournir des résultats précis et fiables. Notre engagement envers l\'excellence nous a permis de servir efficacement Kenitra, Sidi Slimane, Fquih Ben Saleh et l\'ensemble du Maroc.',
         'stat-founded': 'Année de création',
         'stat-projects': 'Projets réalisés',
         'stat-years': 'Années d\'expérience',
@@ -108,6 +108,8 @@ const translations = {
         'portfolio-ancfcc': 'Partenaire principal depuis 2006',
         'portfolio-forests': 'Agence Eaux et Forêts',
         'portfolio-forests-desc': 'Projets environnementaux',
+        'project-recent-desc': '4,346 hectares immatriculés - Commune Rurale de TAMCHACHAT (3,192 Ha) et SEBT JAHJOUH (1,154 Ha) - Réceptionnés juin 2024',
+        'project-khenifra-desc': '3,667 hectares - Forêt domaniale d\'Azrou N\'Ait Lahcen à El Kbab - Réceptionné décembre 2025',
         'project-1-desc': '335 affaires cadastrales traitées',
         'project-2-desc': '197 affaires cadastrales traitées',
         'project-3-desc': '2,025 affaires cadastrales traitées - Notre plus grand projet',
@@ -117,17 +119,17 @@ const translations = {
         'tech-title': 'Moyens Techniques',
         'tech-subtitle': 'Équipements de pointe pour des résultats précis',
         'tech-1-title': 'GNSS/GPS',
-        'tech-1-desc': 'Récepteurs de positionnement par satellite pour une précision centimétrique',
+        'tech-1-desc': '14 récepteurs de positionnement par satellite (Kolida, Trimble, CHC HUACE) pour une précision centimétrique',
         'tech-2-title': 'Stations Totales',
-        'tech-2-desc': 'Instruments de mesure topographique de haute précision',
+        'tech-2-desc': '2 stations totales SOKKIA pour mesures topographiques de haute précision',
         'tech-3-title': 'Logiciels CAO/DAO',
-        'tech-3-desc': 'Conception assistée par ordinateur pour plans et dessins techniques',
+        'tech-3-desc': 'AutoCAD 2012 et Geomedia COVADIS V.12 pour conception assistée par ordinateur',
         'tech-4-title': 'Traitement GNSS',
-        'tech-4-desc': 'Logiciels professionnels de post-traitement des données satellitaires',
+        'tech-4-desc': 'Trimble Business Center (TBC) pour post-traitement professionnel des données satellitaires',
         'tech-5-title': 'Flotte de Véhicules',
-        'tech-5-desc': 'Véhicules professionnels pour opérations sur terrain',
-        'tech-6-title': 'Analyse Géospatiale',
-        'tech-6-desc': 'Outils modernes d\'analyse de données géographiques',
+        'tech-5-desc': '3 véhicules professionnels 4x4 pour opérations sur terrain',
+        'tech-6-title': 'Équipement Bureau',
+        'tech-6-desc': '13 ordinateurs, traceurs format A0, scanners et imprimantes professionnelles',
         
         // Testimonials Section
         'testimonials-title': 'Témoignages Clients',
@@ -153,14 +155,14 @@ const translations = {
         'contact-message': 'Message',
         'contact-submit': 'Envoyer la demande',
         'contact-location': 'Notre emplacement',
-        'contact-phone-label': 'Numéro de téléphone',
+        'contact-phone-label': 'Numéros de téléphone',
         'contact-email-label': 'Adresse e-mail',
         'contact-hours': 'Heures d\'ouverture',
         'contact-hours-mon-fri': 'Lundi - Vendredi: 8h00 - 18h00',
         'contact-hours-sat': 'Samedi: 8h00 - 12h00',
         
         // Footer
-        'footer-tagline': 'Services professionnels de topographie à Kenitra et dans tout le Maroc depuis 2007.',
+        'footer-tagline': 'Services professionnels de topographie à Kenitra et dans tout le Maroc depuis 2005.',
         'footer-quicklinks': 'Liens rapides',
         'footer-services': 'Services Principaux',
         'footer-connect': 'Connectez-vous avec nous',
@@ -180,7 +182,7 @@ const translations = {
         
         // Hero Section
         'hero-title': 'Precision Land Surveying for Smart Development',
-        'hero-subtitle': 'Serving Kenitra and all of Morocco with cutting-edge surveying technology and unmatched expertise since 2007',
+        'hero-subtitle': 'Serving Kenitra and all of Morocco with cutting-edge surveying technology and unmatched expertise since 2005',
         'hero-cta-quote': 'Request a Quote',
         'hero-cta-services': 'Our Services',
         
@@ -230,8 +232,8 @@ const translations = {
         
         // About Section
         'about-title': 'Morocco\'s Trusted Land Surveying Experts',
-        'about-paragraph1': 'Founded in 2007, STOPSIT is a professional surveying company based in Kenitra. With over 2,900 cadastral surveys completed, we have become a trusted partner for ANCFCC (National Agency for Land Conservation, Cadastre and Cartography) and the National Agency for Water and Forests.',
-        'about-paragraph2': 'Led by Fayçal Barrouch, Surveyor and GIS Engineer, our team combines traditional surveying principles with cutting-edge technology to deliver accurate, reliable results. Our commitment to excellence has enabled us to effectively serve Kenitra, Sidi Slimane, Fquih Ben Saleh and all of Morocco.',
+        'about-paragraph1': 'Founded in 2005, STOPSIT is a professional surveying company based in Kenitra. With over 2,900 cadastral surveys completed, we have become a trusted partner for ANCFCC (National Agency for Land Conservation, Cadastre and Cartography) and the National Agency for Water and Forests.',
+        'about-paragraph2': 'Our team of professional surveying engineers and specialized technicians combines traditional surveying principles with cutting-edge technology to deliver accurate, reliable results. Our commitment to excellence has enabled us to effectively serve Kenitra, Sidi Slimane, Fquih Ben Saleh and all of Morocco.',
         'stat-founded': 'Year founded',
         'stat-projects': 'Projects completed',
         'stat-years': 'Years of experience',
@@ -246,6 +248,8 @@ const translations = {
         'portfolio-ancfcc': 'Main partner since 2006',
         'portfolio-forests': 'Water and Forests Agency',
         'portfolio-forests-desc': 'Environmental projects',
+        'project-recent-desc': '4,346 hectares registered - Rural Commune of TAMCHACHAT (3,192 Ha) and SEBT JAHJOUH (1,154 Ha) - Completed June 2024',
+        'project-khenifra-desc': '3,667 hectares - State forest of Azrou N\'Ait Lahcen in El Kbab - Completed December 2025',
         'project-1-desc': '335 cadastral cases processed',
         'project-2-desc': '197 cadastral cases processed',
         'project-3-desc': '2,025 cadastral cases processed - Our largest project',
@@ -255,17 +259,17 @@ const translations = {
         'tech-title': 'Technical Capabilities',
         'tech-subtitle': 'State-of-the-art equipment for precise results',
         'tech-1-title': 'GNSS/GPS',
-        'tech-1-desc': 'Satellite positioning receivers for centimeter-level precision',
+        'tech-1-desc': '14 satellite positioning receivers (Kolida, Trimble, CHC HUACE) for centimeter-level precision',
         'tech-2-title': 'Total Stations',
-        'tech-2-desc': 'High-precision topographic measurement instruments',
+        'tech-2-desc': '2 SOKKIA total stations for high-precision topographic measurements',
         'tech-3-title': 'CAD Software',
-        'tech-3-desc': 'Computer-aided design for plans and technical drawings',
+        'tech-3-desc': 'AutoCAD 2012 and Geomedia COVADIS V.12 for computer-aided design',
         'tech-4-title': 'GNSS Processing',
-        'tech-4-desc': 'Professional satellite data post-processing software',
+        'tech-4-desc': 'Trimble Business Center (TBC) for professional satellite data post-processing',
         'tech-5-title': 'Vehicle Fleet',
-        'tech-5-desc': 'Professional vehicles for field operations',
-        'tech-6-title': 'Geospatial Analysis',
-        'tech-6-desc': 'Modern geographic data analysis tools',
+        'tech-5-desc': '3 professional 4x4 vehicles for field operations',
+        'tech-6-title': 'Office Equipment',
+        'tech-6-desc': '13 computers, A0 format plotters, scanners and professional printers',
         
         // Testimonials Section
         'testimonials-title': 'Client Testimonials',
@@ -291,14 +295,14 @@ const translations = {
         'contact-message': 'Message',
         'contact-submit': 'Submit Request',
         'contact-location': 'Our Location',
-        'contact-phone-label': 'Phone Number',
+        'contact-phone-label': 'Phone Numbers',
         'contact-email-label': 'Email Address',
         'contact-hours': 'Working Hours',
         'contact-hours-mon-fri': 'Monday - Friday: 8:00 AM - 6:00 PM',
         'contact-hours-sat': 'Saturday: 8:00 AM - 12:00 PM',
         
         // Footer
-        'footer-tagline': 'Professional land surveying services in Kenitra and throughout Morocco since 2007.',
+        'footer-tagline': 'Professional land surveying services in Kenitra and throughout Morocco since 2005.',
         'footer-quicklinks': 'Quick Links',
         'footer-services': 'Main Services',
         'footer-connect': 'Connect With Us',
@@ -318,7 +322,7 @@ const translations = {
         
         // Hero Section
         'hero-title': 'مسح الأراضي بدقة للتطوير الذكي',
-        'hero-subtitle': 'نخدم القنيطرة وجميع أنحاء المغرب بأحدث تقنيات المسح وخبرة لا مثيل لها منذ عام 2007',
+        'hero-subtitle': 'نخدم القنيطرة وجميع أنحاء المغرب بأحدث تقنيات المسح وخبرة لا مثيل لها منذ عام 2005',
         'hero-cta-quote': 'طلب عرض سعر',
         'hero-cta-services': 'خدماتنا',
         
@@ -368,8 +372,8 @@ const translations = {
         
         // About Section
         'about-title': 'خبراء مسح الأراضي الموثوق بهم في المغرب',
-        'about-paragraph1': 'تأسست شركة STOPSIT في عام 2007، وهي شركة مسح مهنية مقرها القنيطرة. مع أكثر من 2900 مسح عقاري منجز، أصبحنا شريكًا موثوقًا به للوكالة الوطنية للمحافظة العقارية والمسح والخرائط والوكالة الوطنية للمياه والغابات.',
-        'about-paragraph2': 'بقيادة فيصل بروش، المساح ومهندس نظم المعلومات الجغرافية، يجمع فريقنا بين مبادئ المسح التقليدية والتكنولوجيا المتطورة لتقديم نتائج دقيقة وموثوقة. لقد مكننا التزامنا بالتميز من خدمة القنيطرة وسيدي سليمان والفقيه بن صالح وكل المغرب بفعالية.',
+        'about-paragraph1': 'تأسست شركة STOPSIT في عام 2005، وهي شركة مسح مهنية مقرها القنيطرة. مع أكثر من 2900 مسح عقاري منجز، أصبحنا شريكًا موثوقًا به للوكالة الوطنية للمحافظة العقارية والمسح والخرائط والوكالة الوطنية للمياه والغابات.',
+        'about-paragraph2': 'يجمع فريقنا من المهندسين المساحين المحترفين والفنيين المتخصصين بين مبادئ المسح التقليدية والتكنولوجيا المتطورة لتقديم نتائج دقيقة وموثوقة. لقد مكننا التزامنا بالتميز من خدمة القنيطرة وسيدي سليمان والفقيه بن صالح وكل المغرب بفعالية.',
         'stat-founded': 'سنة التأسيس',
         'stat-projects': 'المشاريع المنجزة',
         'stat-years': 'سنوات الخبرة',
@@ -384,6 +388,8 @@ const translations = {
         'portfolio-ancfcc': 'شريك رئيسي منذ 2006',
         'portfolio-forests': 'وكالة المياه والغابات',
         'portfolio-forests-desc': 'مشاريع بيئية',
+        'project-recent-desc': '4,346 هكتارًا مسجلًا - جماعة TAMCHACHAT القروية (3,192 هكتار) و SEBT JAHJOUH (1,154 هكتار) - اكتملت في يونيو 2024',
+        'project-khenifra-desc': '3,667 هكتار - غابة ولاية أزرو نايت لحسن في الكباب - اكتملت في ديسمبر 2025',
         'project-1-desc': '335 قضية عقارية معالجة',
         'project-2-desc': '197 قضية عقارية معالجة',
         'project-3-desc': '2,025 قضية عقارية معالجة - أكبر مشروع لنا',
@@ -393,17 +399,17 @@ const translations = {
         'tech-title': 'الوسائل التقنية',
         'tech-subtitle': 'معدات متطورة لنتائج دقيقة',
         'tech-1-title': 'GNSS/GPS',
-        'tech-1-desc': 'أجهزة استقبال تحديد المواقع بالأقمار الصناعية بدقة سنتيمترية',
+        'tech-1-desc': '14 جهاز استقبال تحديد المواقع بالأقمار الصناعية (كوليدا، تريمبل، CHC HUACE) بدقة سنتيمترية',
         'tech-2-title': 'المحطات الشاملة',
-        'tech-2-desc': 'أدوات قياس طبوغرافية عالية الدقة',
+        'tech-2-desc': 'محطتان شاملتان SOKKIA للقياسات الطبوغرافية عالية الدقة',
         'tech-3-title': 'برامج CAD',
-        'tech-3-desc': 'التصميم بمساعدة الكمبيوتر للخطط والرسومات التقنية',
+        'tech-3-desc': 'AutoCAD 2012 و Geomedia COVADIS V.12 للتصميم بمساعدة الكمبيوتر',
         'tech-4-title': 'معالجة GNSS',
-        'tech-4-desc': 'برامج معالجة بيانات الأقمار الصناعية المهنية',
+        'tech-4-desc': 'Trimble Business Center (TBC) لمعالجة بيانات الأقمار الصناعية المهنية',
         'tech-5-title': 'أسطول المركبات',
-        'tech-5-desc': 'مركبات مهنية للعمليات الميدانية',
-        'tech-6-title': 'التحليل الجغرافي المكاني',
-        'tech-6-desc': 'أدوات حديثة لتحليل البيانات الجغرافية',
+        'tech-5-desc': '3 مركبات مهنية 4x4 للعمليات الميدانية',
+        'tech-6-title': 'معدات المكتب',
+        'tech-6-desc': '13 جهاز كمبيوتر، راسمات بتنسيق A0، ماسحات ضوئية وطابعات مهنية',
         
         // Testimonials Section
         'testimonials-title': 'شهادات العملاء',
@@ -429,14 +435,14 @@ const translations = {
         'contact-message': 'الرسالة',
         'contact-submit': 'إرسال الطلب',
         'contact-location': 'موقعنا',
-        'contact-phone-label': 'رقم الهاتف',
+        'contact-phone-label': 'أرقام الهاتف',
         'contact-email-label': 'البريد الإلكتروني',
         'contact-hours': 'ساعات العمل',
         'contact-hours-mon-fri': 'الاثنين - الجمعة: 8:00 صباحًا - 6:00 مساءً',
         'contact-hours-sat': 'السبت: 8:00 صباحًا - 12:00 ظهرًا',
         
         // Footer
-        'footer-tagline': 'خدمات مسح الأراضي المهنية في القنيطرة وجميع أنحاء المغرب منذ 2007.',
+        'footer-tagline': 'خدمات مسح الأراضي المهنية في القنيطرة وجميع أنحاء المغرب منذ 2005.',
         'footer-quicklinks': 'روابط سريعة',
         'footer-services': 'الخدمات الرئيسية',
         'footer-connect': 'تواصل معنا',
