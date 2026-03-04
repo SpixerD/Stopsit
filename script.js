@@ -13,21 +13,8 @@ document.getElementById('menuBtn').addEventListener('click', function() {
     document.getElementById('navLinks').classList.toggle('active');
 });
 
-// Smooth Scrolling
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        
-        document.getElementById('navLinks').classList.remove('active');
-        
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth'
-            });
-        }
-    });
-});
+
+
 
 // Comprehensive translations object
 const translations = {
@@ -39,16 +26,17 @@ const translations = {
         'nav-portfolio': 'Réalisations',
         'nav-testimonials': 'Témoignages',
         'nav-contact': 'Contact',
+        'nav-faq': 'FAQ',
         
         // Hero Section
-        'hero-title': 'Topographie de précision pour un développement intelligent',
+        'hero-title': 'Ingénieur Topographe à Kenitra | STOPSIT',
         'hero-subtitle': 'Au service de Kenitra et de tout le Maroc avec une technologie de topographie de pointe et une expertise inégalée depuis 2005',
         'hero-cta-quote': 'Demander un devis',
         'hero-cta-services': 'Nos services',
         
         // Who We Serve Section
         'who-title': 'Qui Nous Servons',
-        'who-subtitle': 'Nous servons aussi bien les institutions que les particuliers',
+        'who-subtitle': 'Nous servons aussi bien les institutions que les particuliers à Kenitra et dans tout le Maroc',
         'who-institutional': 'Clients Institutionnels',
         'who-inst-1': 'Agences gouvernementales',
         'who-inst-2': 'Promoteurs immobiliers',
@@ -122,17 +110,17 @@ const translations = {
         'tech-title': 'Moyens Techniques',
         'tech-subtitle': 'Équipements de pointe pour des résultats précis',
         'tech-1-title': 'GNSS/GPS',
-        'tech-1-desc': '14 récepteurs de positionnement par satellite (Kolida, Trimble, CHC HUACE) pour une précision centimétrique',
+        'tech-1-desc': 'Récepteurs de positionnement par satellite haute précision pour une précision centimétrique',
         'tech-2-title': 'Stations Totales',
-        'tech-2-desc': '2 stations totales SOKKIA pour mesures topographiques de haute précision',
+        'tech-2-desc': 'Stations totales professionnelles pour mesures topographiques de haute précision',
         'tech-3-title': 'Logiciels CAO/DAO',
-        'tech-3-desc': 'AutoCAD 2012 et Geomedia COVADIS V.12 pour conception assistée par ordinateur',
+        'tech-3-desc': 'Logiciels professionnels de conception assistée par ordinateur',
         'tech-4-title': 'Traitement GNSS',
-        'tech-4-desc': 'Trimble Business Center (TBC) pour post-traitement professionnel des données satellitaires',
+        'tech-4-desc': 'Logiciels spécialisés pour le post-traitement professionnel des données satellitaires',
         'tech-5-title': 'Flotte de Véhicules',
-        'tech-5-desc': '3 véhicules professionnels 4x4 pour opérations sur terrain',
+        'tech-5-desc': 'Véhicules professionnels 4x4 pour opérations sur terrain',
         'tech-6-title': 'Équipement Bureau',
-        'tech-6-desc': '13 ordinateurs, traceurs format A0, scanners et imprimantes professionnelles',
+        'tech-6-desc': 'Postes de travail haute performance, traceurs grand format, scanners et imprimantes professionnelles',
         
         // Testimonials Section
         'testimonials-title': 'Témoignages Clients',
@@ -169,8 +157,22 @@ const translations = {
         'footer-quicklinks': 'Liens rapides',
         'footer-services': 'Services Principaux',
         'footer-connect': 'Connectez-vous avec nous',
-        'footer-copyright': '© 2025 STOPSIT Topographie. Tous droits réservés.',
+        'footer-copyright': '© 2026 STOPSIT Topographie. Tous droits réservés.',        
+
+        // FAQ Section
+        'faq-title': 'Questions Fréquentes — Topographie au Maroc',
+        'faq-subtitle': 'Tout ce que vous devez savoir avant de contacter un ingénieur topographe à Kenitra',
+        'faq-1-q': 'Qu\'est-ce qu\'un levé topographique et pourquoi en ai-je besoin ?',
+        'faq-1-a': 'Un levé topographique est une mesure précise du terrain : relief, courbes de niveau, limites, bâtiments existants, végétation et réseaux. Il est <strong>indispensable avant toute construction, division de terrain ou immatriculation foncière</strong>. Chez STOPSIT, nous réalisons des levés avec une précision centimétrique grâce à nos équipements et technologies de pointe.',
+        'faq-2-q': 'Combien coûtent nos services ?',
+        'faq-2-a': 'Le coût dépend de la superficie du terrain, de sa localisation (accès, relief) et de la complexité administrative. STOPSIT propose des <strong>devis gratuits et personnalisés</strong> dans les 24 heures. Appelez le <a href=\"tel:+212661688603\">+212 661-688603</a> ou écrivez-nous à <a href=\"mailto:stopsit.sarl@gmail.com\">stopsit.sarl@gmail.com</a>.',
+        'faq-3-q': 'Quelles villes STOPSIT couvre-t-il ?',
+        'faq-3-a': 'STOPSIT est basé à <strong>Kénitra</strong> mais intervient dans tout le Maroc : Kenitra, Sidi Slimane, Sidi Yahya, Ouazzane, Meknès, Salé, Fquih Ben Salah, Khénifra, El Hajeb, Azilal, Chefchaouen, Rabat et au-delà.',
+        'faq-4-q': 'Combien de temps prend une prestation topographique ?',
+        'faq-4-a': 'Les délais dépendent du type de prestation et de la complexité du travail. STOPSIT prépare des dossiers complets et conformes pour minimiser les délais de traitement administratif.',
         
+        // Footer Zones
+        'footer-zones': 'Zones d\'intervention',
         // Form Alert
         'form-success': 'Merci pour votre message! Nous vous répondrons dans les plus brefs délais.'
     },
@@ -182,16 +184,16 @@ const translations = {
         'nav-portfolio': 'Portfolio',
         'nav-testimonials': 'Testimonials',
         'nav-contact': 'Contact',
-        
+        'nav-faq': 'FAQ',        
         // Hero Section
-        'hero-title': 'Precision Land Surveying for Smart Development',
+        'hero-title': 'Land Serveying Engineer in Kenitra | STOPSIT',
         'hero-subtitle': 'Serving Kenitra and all of Morocco with cutting-edge surveying technology and unmatched expertise since 2005',
         'hero-cta-quote': 'Request a Quote',
         'hero-cta-services': 'Our Services',
         
         // Who We Serve Section
         'who-title': 'Who We Serve',
-        'who-subtitle': 'We serve both institutions and individuals',
+        'who-subtitle': 'We serve both institutions and individuals in Kenitra and all over Morocco',
         'who-institutional': 'Institutional Clients',
         'who-inst-1': 'Government agencies',
         'who-inst-2': 'Property developers',
@@ -253,6 +255,8 @@ const translations = {
         'portfolio-forests-desc': 'Environmental projects',
         'project-recent-desc': '4,346 hectares registered - Rural Commune of TAMCHACHAT (3,192 Ha) and SEBT JAHJOUH (1,154 Ha) - Completed June 2024',
         'project-khenifra-desc': '3,667 hectares - State forest of Azrou N\'Ait Lahcen in El Kbab - Completed December 2025',
+        'project-chefchaouen-desc': '5,959 hectares — Taïnza and BabBerred forest canton — Project in progress',
+        'project-alomrane-desc': 'Boundary surveys and cadastral technical files — Jnane TR 2 subdivision, Kenitra',
         'project-1-desc': '335 cadastral cases processed',
         'project-2-desc': '197 cadastral cases processed',
         'project-3-desc': '2,025 cadastral cases processed - Our largest project',
@@ -262,17 +266,17 @@ const translations = {
         'tech-title': 'Technical Capabilities',
         'tech-subtitle': 'State-of-the-art equipment for precise results',
         'tech-1-title': 'GNSS/GPS',
-        'tech-1-desc': '14 satellite positioning receivers (Kolida, Trimble, CHC HUACE) for centimeter-level precision',
+        'tech-1-desc': 'High-precision satellite positioning receivers for centimeter-level accuracy',
         'tech-2-title': 'Total Stations',
-        'tech-2-desc': '2 SOKKIA total stations for high-precision topographic measurements',
+        'tech-2-desc': 'Professional total stations for high-precision topographic measurements',
         'tech-3-title': 'CAD Software',
-        'tech-3-desc': 'AutoCAD 2012 and Geomedia COVADIS V.12 for computer-aided design',
+        'tech-3-desc': 'Professional computer-aided design and drafting software',
         'tech-4-title': 'GNSS Processing',
-        'tech-4-desc': 'Trimble Business Center (TBC) for professional satellite data post-processing',
+        'tech-4-desc': 'Specialised software for professional satellite data post-processing',
         'tech-5-title': 'Vehicle Fleet',
-        'tech-5-desc': '3 professional 4x4 vehicles for field operations',
+        'tech-5-desc': 'Professional 4x4 vehicles for field operations',
         'tech-6-title': 'Office Equipment',
-        'tech-6-desc': '13 computers, A0 format plotters, scanners and professional printers',
+        'tech-6-desc': 'High-performance workstations, large-format plotters, scanners and professional printers',
         
         // Testimonials Section
         'testimonials-title': 'Client Testimonials',
@@ -309,8 +313,23 @@ const translations = {
         'footer-quicklinks': 'Quick Links',
         'footer-services': 'Main Services',
         'footer-connect': 'Connect With Us',
-        'footer-copyright': '© 2025 STOPSIT Land Surveying. All Rights Reserved.',
+        'footer-copyright': '© 2026 STOPSIT Land Surveying. All Rights Reserved.',
         
+
+        // FAQ Section
+        'faq-title': 'Frequently Asked Questions — Land Surveying in Morocco',
+        'faq-subtitle': 'Everything you need to know before contacting a land surveyor in Kenitra',
+        'faq-1-q': 'What is a topographic survey and why do I need one?',
+        'faq-1-a': 'A topographic survey is a precise measurement of the land: elevations, contours, boundaries, existing buildings, vegetation and utilities. It is <strong>essential before any construction, land division or property registration</strong>. At STOPSIT, we carry out surveys with centimeter-level precision using our professional equipment and technology.',
+        'faq-2-q': 'How much do your services cost?',
+        'faq-2-a': 'The cost depends on the land area, its location (access, terrain) and administrative complexity. STOPSIT offers <strong>free, personalised quotes</strong> within 24 hours. Call <a href=\"tel:+212661688603\">+212 661-688603</a> or email us at <a href=\"mailto:stopsit.sarl@gmail.com\">stopsit.sarl@gmail.com</a>.',
+        'faq-3-q': 'Which cities does STOPSIT cover?',
+        'faq-3-a': 'STOPSIT is based in <strong>Kénitra</strong> but operates across all of Morocco: Kenitra, Sidi Slimane, Sidi Yahya, Ouazzane, Meknès, Salé, Fquih Ben Salah, Khénifra, El Hajeb, Azilal, Chefchaouen, Rabat and beyond.',
+        'faq-4-q': 'How long does a surveying service take?',
+        'faq-4-a': 'Timelines depend on the type of service and the complexity of the work. STOPSIT prepares complete, compliant files to minimise administrative processing times.',
+        
+        // Footer Zones
+        'footer-zones': 'Service Areas',
         // Form Alert
         'form-success': 'Thank you for your message! We will get back to you shortly.'
     },
@@ -322,9 +341,10 @@ const translations = {
         'nav-portfolio': 'إنجازاتنا',
         'nav-testimonials': 'الشهادات',
         'nav-contact': 'اتصل بنا',
+        'nav-faq': 'الأسئلة الشائعة',
         
         // Hero Section
-        'hero-title': 'مسح الأراضي بدقة للتطوير الذكي',
+        'hero-title': 'مهندس طبوغرافي بالقنيطرة | STOPSIT',
         'hero-subtitle': 'نخدم القنيطرة وجميع أنحاء المغرب بأحدث تقنيات المسح وخبرة لا مثيل لها منذ عام 2005',
         'hero-cta-quote': 'طلب عرض سعر',
         'hero-cta-services': 'خدماتنا',
@@ -393,6 +413,8 @@ const translations = {
         'portfolio-forests-desc': 'مشاريع بيئية',
         'project-recent-desc': '4,346 هكتارًا مسجلًا - جماعة TAMCHACHAT القروية (3,192 هكتار) و SEBT JAHJOUH (1,154 هكتار) - اكتملت في يونيو 2024',
         'project-khenifra-desc': '3,667 هكتار - غابة ولاية أزرو نايت لحسن في الكباب - اكتملت في ديسمبر 2025',
+        'project-chefchaouen-desc': '5,959 هكتار — مقاطعة غابة تاينزا وبابابريد — مشروع قيد التنفيذ',
+        'project-alomrane-desc': 'أعمال التحديد والملفات التقنية المساحية — تجزئة جنان TR 2، القنيطرة',
         'project-1-desc': '335 قضية عقارية معالجة',
         'project-2-desc': '197 قضية عقارية معالجة',
         'project-3-desc': '2,025 قضية عقارية معالجة - أكبر مشروع لنا',
@@ -402,17 +424,17 @@ const translations = {
         'tech-title': 'الوسائل التقنية',
         'tech-subtitle': 'معدات متطورة لنتائج دقيقة',
         'tech-1-title': 'GNSS/GPS',
-        'tech-1-desc': '14 جهاز استقبال تحديد المواقع بالأقمار الصناعية (كوليدا، تريمبل، CHC HUACE) بدقة سنتيمترية',
+        'tech-1-desc': 'أجهزة استقبال تحديد المواقع بالأقمار الصناعية عالية الدقة بدقة سنتيمترية',
         'tech-2-title': 'المحطات الشاملة',
-        'tech-2-desc': 'محطتان شاملتان SOKKIA للقياسات الطبوغرافية عالية الدقة',
+        'tech-2-desc': 'محطات شاملة احترافية للقياسات الطبوغرافية عالية الدقة',
         'tech-3-title': 'برامج CAD',
-        'tech-3-desc': 'AutoCAD 2012 و Geomedia COVADIS V.12 للتصميم بمساعدة الكمبيوتر',
+        'tech-3-desc': 'برامج احترافية للتصميم بمساعدة الكمبيوتر',
         'tech-4-title': 'معالجة GNSS',
-        'tech-4-desc': 'Trimble Business Center (TBC) لمعالجة بيانات الأقمار الصناعية المهنية',
+        'tech-4-desc': 'برامج متخصصة لمعالجة بيانات الأقمار الصناعية المهنية',
         'tech-5-title': 'أسطول المركبات',
-        'tech-5-desc': '3 مركبات مهنية 4x4 للعمليات الميدانية',
+        'tech-5-desc': 'مركبات مهنية 4x4 للعمليات الميدانية',
         'tech-6-title': 'معدات المكتب',
-        'tech-6-desc': '13 جهاز كمبيوتر، راسمات بتنسيق A0، ماسحات ضوئية وطابعات مهنية',
+        'tech-6-desc': 'محطات عمل عالية الأداء، راسمات بتنسيق كبير، ماسحات ضوئية وطابعات مهنية',
         
         // Testimonials Section
         'testimonials-title': 'شهادات العملاء',
@@ -449,8 +471,23 @@ const translations = {
         'footer-quicklinks': 'روابط سريعة',
         'footer-services': 'الخدمات الرئيسية',
         'footer-connect': 'تواصل معنا',
-        'footer-copyright': '© 2025 STOPSIT لمسح الأراضي. جميع الحقوق محفوظة.',
+        'footer-copyright': '© 2026 STOPSIT لمسح الأراضي. جميع الحقوق محفوظة.',
         
+
+        // FAQ Section
+        'faq-title': 'الأسئلة الشائعة — المسح الطبوغرافي في المغرب',
+        'faq-subtitle': 'كل ما تحتاج معرفته قبل التواصل مع مهندس مساح في القنيطرة',
+        'faq-1-q': 'ما هو المسح الطبوغرافي ولماذا أحتاجه؟',
+        'faq-1-a': 'المسح الطبوغرافي هو قياس دقيق للأرض: الارتفاعات، منحنيات المستوى، الحدود، المباني القائمة، الغطاء النباتي والشبكات. إنه <strong>ضروري قبل أي بناء أو تقسيم أرض أو تسجيل عقاري</strong>. في STOPSIT نُنجز المسوحات بدقة سنتيمترية باستخدام أجهزتنا وتقنياتنا المتطورة.',
+        'faq-2-q': 'ما هي تكلفة خدماتكم؟',
+        'faq-2-a': 'تعتمد التكلفة على مساحة الأرض وموقعها (إمكانية الوصول، التضاريس) والتعقيد الإداري. تقدم STOPSIT <strong>عروض أسعار مجانية وشخصية</strong> خلال 24 ساعة. اتصل بنا على <a href=\"tel:+212661688603\">+212 661-688603</a> أو راسلنا على <a href=\"mailto:stopsit.sarl@gmail.com\">stopsit.sarl@gmail.com</a>.',
+        'faq-3-q': 'ما هي المدن التي تغطيها STOPSIT؟',
+        'faq-3-a': 'تتخذ STOPSIT من <strong>القنيطرة</strong> مقراً لها، لكنها تعمل في جميع أنحاء المغرب: القنيطرة، سيدي سليمان، سيدي يحيى، وزان، مكناس، سلا، الفقيه بن صالح، خنيفرة، الحاجب، أزيلال، شفشاون، الرباط وما وراءها.',
+        'faq-4-q': 'كم من الوقت تستغرق خدمة المسح؟',
+        'faq-4-a': 'تعتمد المدة على نوع الخدمة وتعقيد العمل. تُعدّ STOPSIT ملفات كاملة ومطابقة للمعايير للحد من أوقات المعالجة الإدارية.',
+        
+        // Footer Zones
+        'footer-zones': 'مناطق التدخل',
         // Form Alert
         'form-success': 'شكرًا لرسالتك! سنرد عليك في أقرب وقت ممكن.'
     }
@@ -530,14 +567,16 @@ function updatePageLanguage(lang) {
     }
     
     // Update all elements with data-translate attribute
-    document.querySelectorAll('[data-translate]').forEach(element => {
-        const key = element.getAttribute('data-translate');
+    document.querySelectorAll('[data-translate], [data-translate-html]').forEach(element => {
+        const key = element.getAttribute('data-translate') || element.getAttribute('data-translate-html');
         if (translations[lang] && translations[lang][key]) {
             // Handle different element types
             if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
                 element.placeholder = translations[lang][key];
             } else if (element.tagName === 'OPTION') {
                 element.textContent = translations[lang][key];
+            } else if (element.getAttribute('data-translate-html')) {
+                element.innerHTML = translations[lang][key];
             } else {
                 element.textContent = translations[lang][key];
             }
@@ -586,19 +625,4 @@ document.addEventListener('DOMContentLoaded', function() {
         languageSwitcher.style.direction = 'ltr';
     }
         
-    // Form submission handler - show confirmation but still submit
-    const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            // Show a quick alert (optional)
-            // Note: Alert will pause submission briefly
-            const message = translations[currentLang]['form-success'] || 
-                        'Thank you for your message! We will respond soon.';
-            
-            // Don't prevent default - form will submit after alert
-            setTimeout(() => {
-                alert(message);
-            }, 100);
-        });
-    }
 });

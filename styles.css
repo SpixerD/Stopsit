@@ -15,10 +15,14 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
 body {
     line-height: 1.6;
     color: var(--dark);
-    overflow-x: hidden;
 }
 
 /* Header & Navigation */
@@ -65,12 +69,13 @@ header.scrolled {
     transition: color 0.3s ease;
 }
 
-header.scrolled .logo h1 {
-    color: var(--primary);
-}
 .logo h1 a {
     color: inherit;
     text-decoration: none;
+}
+
+header.scrolled .logo h1 {
+    color: var(--primary);
 }
 
 .nav-links {
@@ -162,7 +167,7 @@ header.scrolled .lang-btn:hover {
 /* Hero Section */
 .hero {
     height: 100vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/hero.jpg') center/cover no-repeat;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/hero.webp') center/cover no-repeat;
     display: flex;
     align-items: center;
     text-align: center;
@@ -381,18 +386,40 @@ header.scrolled .lang-btn:hover {
 .about-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
+    grid-template-rows: auto auto;
+    gap: 1rem 4rem;
 }
 
-.about-content h2 {
+.about-content-top {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.about-content-bottom {
+    grid-column: 1;
+    grid-row: 2;
+    align-self: start;
+}
+
+.about-image {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    align-self: center;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    height: 400px;
+}
+
+.about-content-top h2 {
     font-size: 2.2rem;
     color: var(--primary);
     margin-bottom: 1.5rem;
     font-weight: 700;
 }
 
-.about-content p {
+.about-content-top p,
+.about-content-bottom p {
     margin-bottom: 1.5rem;
     font-size: 1.05rem;
     line-height: 1.8;
@@ -911,9 +938,21 @@ body.rtl .footer-links a:hover {
 
 /* Media Queries */
 @media (max-width: 992px) {
-    .about-grid,
+.about-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+
+    .about-content-top  { grid-column: 1; grid-row: 1; }
+    .about-image        { grid-column: 1; grid-row: 2; height: auto; }
+    .about-content-bottom { grid-column: 1; grid-row: 3; }
+
     .contact-grid {
         grid-template-columns: 1fr;
+    }
+
+    .about-image {
+        height: auto;
     }
 
     .hero h2 {
@@ -961,6 +1000,18 @@ body.rtl .footer-links a:hover {
         color: var(--dark);
         font-size: 1.1rem;
     }
+    /* Language buttons need dark text on white mobile menu background */
+    .lang-btn {
+        color: var(--dark) !important;
+        border-color: rgba(0, 0, 0, 0.2) !important;
+        background: rgba(0, 0, 0, 0.05) !important;
+    }
+    .lang-btn.active {
+        background-color: var(--accent) !important;
+        color: white !important;
+        border-color: var(--accent) !important;
+    }
+
 
     .hamburger {
         display: block;
@@ -1023,4 +1074,139 @@ body.rtl .footer-links a:hover {
     .services-grid {
         grid-template-columns: 1fr;
     }
+}
+
+/* ══════════════════════════════════════════════════════════
+   STOPSIT — SEO CSS ADDITIONS (append to end of styles.css)
+   ══════════════════════════════════════════════════════════ */
+
+/* ── Logo text (replaces h1 in header) ── */
+.logo-text {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--light);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+header.scrolled .logo-text { color: var(--primary); }
+
+/* ── Hero trust bar ── */
+.hero-trust {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+}
+.hero-trust span {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.35);
+    border-radius: 20px;
+    padding: 0.4rem 1rem;
+    font-size: 0.9rem;
+    color: var(--light);
+    backdrop-filter: blur(4px);
+}
+.hero-trust span i { margin-right: 0.4rem; color: var(--gold); }
+
+/* ── FAQ Section ── */
+.faq-section { background: var(--light); }
+
+.faq-list { max-width: 860px; margin: 0 auto; }
+
+.faq-item {
+    background: white;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+}
+.faq-item:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
+
+.faq-item summary {
+    padding: 1.3rem 1.5rem;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+    content: '+';
+    font-size: 1.4rem;
+    color: var(--primary);
+    font-weight: 300;
+    flex-shrink: 0;
+    margin-left: 1rem;
+    transition: transform 0.3s ease;
+}
+.faq-item[open] summary::after { transform: rotate(45deg); }
+
+.faq-item summary h3 {
+    font-size: 1.05rem;
+    color: var(--primary);
+    margin: 0;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.faq-answer {
+    padding: 0 1.5rem 1.3rem;
+    border-top: 1px solid var(--medium);
+}
+.faq-answer p {
+    margin-top: 1rem;
+    font-size: 0.97rem;
+    color: var(--dark);
+    opacity: 0.85;
+    line-height: 1.75;
+}
+.faq-answer a { color: var(--primary); font-weight: 500; }
+.faq-answer strong { color: var(--primary); }
+
+/* ── Contact link styles ── */
+.contact-text a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500;
+}
+.contact-text a:hover { text-decoration: underline; }
+
+/* ── Footer address links ── */
+.footer-contact a {
+    color: var(--light);
+    opacity: 0.85;
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+.footer-contact a:hover { opacity: 1; color: var(--accent); }
+
+/* ── Portfolio H3 (was H4 before) ── */
+.project-details h3 {
+    font-size: 1.15rem;
+    color: var(--primary);
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+}
+
+/* ── Accessibility: focus-visible ring ── */
+a:focus-visible, button:focus-visible, details summary:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 3px;
+}
+
+/* ── RTL FAQ ── */
+body.rtl .faq-item summary { flex-direction: row-reverse; }
+body.rtl .faq-item summary::after { margin-left: 0; margin-right: 1rem; }
+body.rtl .hero-trust span i { margin-right: 0; margin-left: 0.4rem; }
+
+/* ══ Mobile additions ══ */
+@media (max-width: 768px) {
+    .hero-trust { gap: 0.8rem; }
+    .hero-trust span { font-size: 0.8rem; padding: 0.35rem 0.75rem; }
+    .faq-item summary h3 { font-size: 0.95rem; }
 }
