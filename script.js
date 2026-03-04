@@ -13,27 +13,25 @@ document.getElementById('menuBtn').addEventListener('click', function() {
     document.getElementById('navLinks').classList.toggle('active');
 });
 
-
-
-
 // Comprehensive translations object
 const translations = {
     'fr': {
         // Navigation
         'nav-home': 'Accueil',
         'nav-services': 'Services',
+        'nav-who': 'Qui Nous Servons',
         'nav-about': 'À propos',
         'nav-portfolio': 'Réalisations',
         'nav-testimonials': 'Témoignages',
         'nav-contact': 'Contact',
         'nav-faq': 'FAQ',
-        
+
         // Hero Section
         'hero-title': 'Ingénieur Topographe à Kenitra | STOPSIT',
         'hero-subtitle': 'Au service de Kenitra et de tout le Maroc avec une technologie de topographie de pointe et une expertise inégalée depuis 2005',
         'hero-cta-quote': 'Demander un devis',
         'hero-cta-services': 'Nos services',
-        
+
         // Who We Serve Section
         'who-title': 'Qui Nous Servons',
         'who-subtitle': 'Nous servons aussi bien les institutions que les particuliers à Kenitra et dans tout le Maroc',
@@ -49,7 +47,7 @@ const translations = {
         'who-ind-3': 'Investisseurs privés',
         'who-ind-4': 'Futurs acquéreurs',
         'who-ind-5': 'Héritiers en succession',
-        
+
         // Services Section
         'services-title': 'Nos Services',
         'services-subtitle': 'Solutions complètes de topographie pour tous vos projets fonciers et cadastraux',
@@ -77,11 +75,11 @@ const translations = {
         'service-11-desc': 'Relevés standards internationaux pour clients internationaux.',
         'service-12-title': 'SIG & Géomatique',
         'service-12-desc': 'Analyse géospatiale et systèmes d\'information géographique.',
-        
+
         // About Section
         'about-title': 'Les experts en topographie de confiance au Maroc',
-        'about-paragraph1': 'Fondée en 2005, STOPSIT est une société professionnelle de topographie basée à Kenitra. Avec plus de 2 900 levés cadastraux réalisés, nous sommes devenus un partenaire de confiance pour l\'ANCFCC (Agence Nationale de la Conservation Foncière, du Cadastre et de la Cartographie) et l\'Agence Nationale des Eaux et Forêts.',
-        'about-paragraph2': 'Notre équipe d\'ingénieurs géomètres topographes et de techniciens spécialisés combine les principes traditionnels de topographie avec une technologie de pointe pour fournir des résultats précis et fiables. Notre engagement envers l\'excellence nous a permis de servir efficacement Kenitra, Sidi Slimane, Fquih Ben Saleh et l\'ensemble du Maroc.',
+        'about-paragraph1': 'Fondée en 2005, STOPSIT est une société professionnelle de topographie basée à Kenitra. Avec plus de 2 900 levés cadastraux réalisés, nous sommes devenus un partenaire de confiance pour l\'ANCFCC et l\'Agence Nationale des Eaux et Forêts.',
+        'about-paragraph2': 'Notre équipe d\'ingénieurs géomètres topographes et de techniciens spécialisés combine les principes traditionnels de topographie avec une technologie de pointe pour fournir des résultats précis et fiables.',
         'stat-founded': 'Année de création',
         'stat-projects': 'Projets réalisés',
         'stat-years': 'Années d\'expérience',
@@ -89,23 +87,23 @@ const translations = {
         'credential-ancfcc': 'Prestataire Agréé ANCFCC',
         'credential-licensed': 'Topographes Agréés',
         'credential-experience': '20+ ans d\'expérience',
-        
+
         // Portfolio Section
         'portfolio-title': 'Nos Réalisations',
         'portfolio-subtitle': 'Projets majeurs réalisés pour des institutions nationales',
         'portfolio-ancfcc': 'Partenaire principal depuis 2006',
         'portfolio-forests': 'Agence Eaux et Forêts',
         'portfolio-forests-desc': 'Projets environnementaux',
-        'project-recent-desc': '4,346 hectares immatriculés - Commune Rurale de TAMCHACHAT (3,192 Ha) et SEBT JAHJOUH (1,154 Ha) - Réceptionnés juin 2024',
-        'project-chefchaouen-desc': '5,959 hectares - Canton forestier de Taïnza et BabBerred - Projet en cours',
-        'project-alomrane-desc': 'Travaux de bornage et dossiers techniques cadastraux - Lotissement Jnane TR 2, Kenitra',
-        'project-azilal-desc': '14,500 hectares - Dossiers cadastraux des cantons de Ighir N\'Tmich, Jbel Iskt et Sidi Meskour',
-        'project-khenifra-desc': '3,667 hectares - Forêt domaniale d\'Azrou N\'Ait Lahcen à El Kbab - Réceptionné décembre 2025',
+        'project-recent-desc': '4 346 hectares immatriculés — Commune Rurale de TAMCHACHAT (3 192 Ha) et SEBT JAHJOUH (1 154 Ha)',
+        'project-chefchaouen-desc': '5 959 hectares — Canton forestier de Taïnza et BabBerred — Projet en cours',
+        'project-alomrane-desc': 'Travaux de bornage et dossiers techniques cadastraux — Lotissement Jnane TR 2, Kenitra',
+        'project-azilal-desc': '14 500 hectares — Dossiers cadastraux des cantons de Ighir N\'Tmich, Jbel Iskt et Sidi Meskour',
+        'project-khenifra-desc': '3 667 hectares — Forêt domaniale d\'Azrou N\'Ait Lahcen à El Kbab',
         'project-1-desc': '335 affaires cadastrales traitées',
         'project-2-desc': '197 affaires cadastrales traitées',
-        'project-3-desc': '2,025 affaires cadastrales traitées - Notre plus grand projet',
+        'project-3-desc': '2 025 affaires cadastrales traitées — Notre plus grand projet',
         'project-4-desc': '404 affaires cadastrales traitées',
-        
+
         // Technical Capabilities
         'tech-title': 'Moyens Techniques',
         'tech-subtitle': 'Équipements de pointe pour des résultats précis',
@@ -121,11 +119,11 @@ const translations = {
         'tech-5-desc': 'Véhicules professionnels 4x4 pour opérations sur terrain',
         'tech-6-title': 'Équipement Bureau',
         'tech-6-desc': 'Postes de travail haute performance, traceurs grand format, scanners et imprimantes professionnelles',
-        
-        // Testimonials Section
+
+        // Testimonials
         'testimonials-title': 'Témoignages Clients',
         'testimonials-subtitle': 'Ce que nos clients disent de nous',
-        
+
         // Contact Section
         'contact-title': 'Contactez-nous',
         'contact-subtitle': 'Vous avez des questions ou êtes prêt à démarrer votre projet? Contactez notre équipe dès aujourd\'hui',
@@ -151,13 +149,28 @@ const translations = {
         'contact-hours': 'Heures d\'ouverture',
         'contact-hours-mon-fri': 'Lundi - Vendredi: 9h00 - 18h00',
         'contact-hours-sat': 'Samedi: 9h00 - 13h00',
-        
+
         // Footer
         'footer-tagline': 'Services professionnels de topographie à Kenitra et dans tout le Maroc depuis 2005.',
         'footer-quicklinks': 'Liens rapides',
         'footer-services': 'Services Principaux',
         'footer-connect': 'Connectez-vous avec nous',
-        'footer-copyright': '© 2026 STOPSIT Topographie. Tous droits réservés.',        
+        'footer-copyright': '© 2026 STOPSIT Topographie. Tous droits réservés.',
+
+        // *** NEW: Footer services links ***
+        'footer-svc-1': 'Dossiers Techniques Cadastrales',
+        'footer-svc-2': 'Levés Topographiques',
+        'footer-svc-3': 'Délimitation de Propriété',
+        'footer-svc-4': 'Lotissements',
+        'footer-svc-5': 'SIG & Géomatique',
+
+        // *** NEW: Footer zones heading + links ***
+        'footer-zones': 'Zones d\'intervention',
+        'footer-zone-kenitra': 'Topographe Kenitra',
+        'footer-zone-sidi': 'Topographe Sidi Slimane',
+        'footer-zone-fquih': 'Topographe Fquih Ben Saleh',
+        'footer-zone-rabat': 'Topographe Rabat',
+        'footer-zone-khenifra': 'Topographe Khenifra',
 
         // FAQ Section
         'faq-title': 'Questions Fréquentes — Topographie au Maroc',
@@ -165,32 +178,30 @@ const translations = {
         'faq-1-q': 'Qu\'est-ce qu\'un levé topographique et pourquoi en ai-je besoin ?',
         'faq-1-a': 'Un levé topographique est une mesure précise du terrain : relief, courbes de niveau, limites, bâtiments existants, végétation et réseaux. Il est <strong>indispensable avant toute construction, division de terrain ou immatriculation foncière</strong>. Chez STOPSIT, nous réalisons des levés avec une précision centimétrique grâce à nos équipements et technologies de pointe.',
         'faq-2-q': 'Combien coûtent nos services ?',
-        'faq-2-a': 'Le coût dépend de la superficie du terrain, de sa localisation (accès, relief) et de la complexité administrative. STOPSIT propose des <strong>devis gratuits et personnalisés</strong> dans les 24 heures. Appelez le <a href=\"tel:+212661688603\">+212 661-688603</a> ou écrivez-nous à <a href=\"mailto:stopsit.sarl@gmail.com\">stopsit.sarl@gmail.com</a>.',
+        'faq-2-a': 'Le coût dépend de la superficie du terrain, de sa localisation (accès, relief) et de la complexité administrative. STOPSIT propose des <strong>devis gratuits et personnalisés</strong> dans les 24 heures. Appelez le <a href="tel:+212661688603">+212 661-688603</a> ou écrivez-nous à <a href="mailto:stopsit.sarl@gmail.com">stopsit.sarl@gmail.com</a>.',
         'faq-3-q': 'Quelles villes STOPSIT couvre-t-il ?',
         'faq-3-a': 'STOPSIT est basé à <strong>Kénitra</strong> mais intervient dans tout le Maroc : Kenitra, Sidi Slimane, Sidi Yahya, Ouazzane, Meknès, Salé, Fquih Ben Salah, Khénifra, El Hajeb, Azilal, Chefchaouen, Rabat et au-delà.',
         'faq-4-q': 'Combien de temps prend une prestation topographique ?',
         'faq-4-a': 'Les délais dépendent du type de prestation et de la complexité du travail. STOPSIT prépare des dossiers complets et conformes pour minimiser les délais de traitement administratif.',
-        
-        // Footer Zones
-        'footer-zones': 'Zones d\'intervention',
-        // Form Alert
         'form-success': 'Merci pour votre message! Nous vous répondrons dans les plus brefs délais.'
     },
     'en': {
         // Navigation
         'nav-home': 'Home',
         'nav-services': 'Services',
+        'nav-who': 'Who We Serve',
         'nav-about': 'About',
         'nav-portfolio': 'Portfolio',
         'nav-testimonials': 'Testimonials',
         'nav-contact': 'Contact',
-        'nav-faq': 'FAQ',        
+        'nav-faq': 'FAQ',
+
         // Hero Section
-        'hero-title': 'Land Serveying Engineer in Kenitra | STOPSIT',
+        'hero-title': 'Land Surveying Engineer in Kenitra | STOPSIT',
         'hero-subtitle': 'Serving Kenitra and all of Morocco with cutting-edge surveying technology and unmatched expertise since 2005',
         'hero-cta-quote': 'Request a Quote',
         'hero-cta-services': 'Our Services',
-        
+
         // Who We Serve Section
         'who-title': 'Who We Serve',
         'who-subtitle': 'We serve both institutions and individuals in Kenitra and all over Morocco',
@@ -206,7 +217,7 @@ const translations = {
         'who-ind-3': 'Private investors',
         'who-ind-4': 'Future buyers',
         'who-ind-5': 'Inheritance heirs',
-        
+
         // Services Section
         'services-title': 'Our Services',
         'services-subtitle': 'Comprehensive surveying solutions for all your land and cadastral projects',
@@ -234,34 +245,35 @@ const translations = {
         'service-11-desc': 'International standard surveys for international clients.',
         'service-12-title': 'GIS & Geomatics',
         'service-12-desc': 'Geospatial analysis and geographic information systems.',
-        
+
         // About Section
         'about-title': 'Morocco\'s Trusted Land Surveying Experts',
-        'about-paragraph1': 'Founded in 2005, STOPSIT is a professional surveying company based in Kenitra. With over 2,900 cadastral surveys completed, we have become a trusted partner for ANCFCC (National Agency for Land Conservation, Cadastre and Cartography) and the National Agency for Water and Forests.',
-        'about-paragraph2': 'Our team of professional surveying engineers and specialized technicians combines traditional surveying principles with cutting-edge technology to deliver accurate, reliable results. Our commitment to excellence has enabled us to effectively serve Kenitra, Sidi Slimane, Fquih Ben Saleh and all of Morocco.',
+        'about-paragraph1': 'Founded in 2005, STOPSIT is a professional surveying company based in Kenitra. With over 2,900 cadastral surveys completed, we have become a trusted partner for ANCFCC and the National Agency for Water and Forests.',
+        'about-paragraph2': 'Our team of professional surveying engineers and specialized technicians combines traditional surveying principles with cutting-edge technology to deliver accurate, reliable results.',
         'stat-founded': 'Year founded',
         'stat-projects': 'Projects completed',
         'stat-years': 'Years of experience',
-        'credential-iso': 'ISO 9001 Certified',
+        'credential-iso': 'ISO 9001 Certification in progress',
         'credential-ancfcc': 'ANCFCC Approved Contractor',
         'credential-licensed': 'Licensed Surveyors',
         'credential-experience': '20+ years experience',
-        
+
         // Portfolio Section
         'portfolio-title': 'Our Portfolio',
         'portfolio-subtitle': 'Major projects completed for national institutions',
         'portfolio-ancfcc': 'Main partner since 2006',
         'portfolio-forests': 'Water and Forests Agency',
         'portfolio-forests-desc': 'Environmental projects',
-        'project-recent-desc': '4,346 hectares registered - Rural Commune of TAMCHACHAT (3,192 Ha) and SEBT JAHJOUH (1,154 Ha) - Completed June 2024',
-        'project-khenifra-desc': '3,667 hectares - State forest of Azrou N\'Ait Lahcen in El Kbab - Completed December 2025',
+        'project-recent-desc': '4,346 hectares registered — Rural Commune of TAMCHACHAT (3,192 Ha) and SEBT JAHJOUH (1,154 Ha)',
         'project-chefchaouen-desc': '5,959 hectares — Taïnza and BabBerred forest canton — Project in progress',
         'project-alomrane-desc': 'Boundary surveys and cadastral technical files — Jnane TR 2 subdivision, Kenitra',
+        'project-azilal-desc': '14,500 hectares — Cadastral files for Ighir N\'Tmich, Jbel Iskt and Sidi Meskour cantons',
+        'project-khenifra-desc': '3,667 hectares — State forest of Azrou N\'Ait Lahcen in El Kbab',
         'project-1-desc': '335 cadastral cases processed',
         'project-2-desc': '197 cadastral cases processed',
-        'project-3-desc': '2,025 cadastral cases processed - Our largest project',
+        'project-3-desc': '2,025 cadastral cases processed — Our largest project',
         'project-4-desc': '404 cadastral cases processed',
-        
+
         // Technical Capabilities
         'tech-title': 'Technical Capabilities',
         'tech-subtitle': 'State-of-the-art equipment for precise results',
@@ -277,11 +289,11 @@ const translations = {
         'tech-5-desc': 'Professional 4x4 vehicles for field operations',
         'tech-6-title': 'Office Equipment',
         'tech-6-desc': 'High-performance workstations, large-format plotters, scanners and professional printers',
-        
-        // Testimonials Section
+
+        // Testimonials
         'testimonials-title': 'Client Testimonials',
         'testimonials-subtitle': 'What our clients say about us',
-        
+
         // Contact Section
         'contact-title': 'Get In Touch',
         'contact-subtitle': 'Have questions or ready to start your project? Reach out to our team today',
@@ -307,14 +319,28 @@ const translations = {
         'contact-hours': 'Working Hours',
         'contact-hours-mon-fri': 'Monday - Friday: 9:00 AM - 6:00 PM',
         'contact-hours-sat': 'Saturday: 9:00 AM - 01:00 PM',
-        
+
         // Footer
         'footer-tagline': 'Professional land surveying services in Kenitra and throughout Morocco since 2005.',
         'footer-quicklinks': 'Quick Links',
         'footer-services': 'Main Services',
         'footer-connect': 'Connect With Us',
         'footer-copyright': '© 2026 STOPSIT Land Surveying. All Rights Reserved.',
-        
+
+        // *** NEW: Footer services links ***
+        'footer-svc-1': 'Cadastral Technical Files',
+        'footer-svc-2': 'Topographic Surveys',
+        'footer-svc-3': 'Boundary Surveys',
+        'footer-svc-4': 'Land Subdivision',
+        'footer-svc-5': 'GIS & Geomatics',
+
+        // *** NEW: Footer zones heading + links ***
+        'footer-zones': 'Service Areas',
+        'footer-zone-kenitra': 'Surveyor Kenitra',
+        'footer-zone-sidi': 'Surveyor Sidi Slimane',
+        'footer-zone-fquih': 'Surveyor Fquih Ben Saleh',
+        'footer-zone-rabat': 'Surveyor Rabat',
+        'footer-zone-khenifra': 'Surveyor Khenifra',
 
         // FAQ Section
         'faq-title': 'Frequently Asked Questions — Land Surveying in Morocco',
@@ -322,33 +348,30 @@ const translations = {
         'faq-1-q': 'What is a topographic survey and why do I need one?',
         'faq-1-a': 'A topographic survey is a precise measurement of the land: elevations, contours, boundaries, existing buildings, vegetation and utilities. It is <strong>essential before any construction, land division or property registration</strong>. At STOPSIT, we carry out surveys with centimeter-level precision using our professional equipment and technology.',
         'faq-2-q': 'How much do your services cost?',
-        'faq-2-a': 'The cost depends on the land area, its location (access, terrain) and administrative complexity. STOPSIT offers <strong>free, personalised quotes</strong> within 24 hours. Call <a href=\"tel:+212661688603\">+212 661-688603</a> or email us at <a href=\"mailto:stopsit.sarl@gmail.com\">stopsit.sarl@gmail.com</a>.',
+        'faq-2-a': 'The cost depends on the land area, its location (access, terrain) and administrative complexity. STOPSIT offers <strong>free, personalised quotes</strong> within 24 hours. Call <a href="tel:+212661688603">+212 661-688603</a> or email us at <a href="mailto:stopsit.sarl@gmail.com">stopsit.sarl@gmail.com</a>.',
         'faq-3-q': 'Which cities does STOPSIT cover?',
         'faq-3-a': 'STOPSIT is based in <strong>Kénitra</strong> but operates across all of Morocco: Kenitra, Sidi Slimane, Sidi Yahya, Ouazzane, Meknès, Salé, Fquih Ben Salah, Khénifra, El Hajeb, Azilal, Chefchaouen, Rabat and beyond.',
         'faq-4-q': 'How long does a surveying service take?',
         'faq-4-a': 'Timelines depend on the type of service and the complexity of the work. STOPSIT prepares complete, compliant files to minimise administrative processing times.',
-        
-        // Footer Zones
-        'footer-zones': 'Service Areas',
-        // Form Alert
         'form-success': 'Thank you for your message! We will get back to you shortly.'
     },
     'ar': {
         // Navigation
         'nav-home': 'الرئيسية',
         'nav-services': 'الخدمات',
+        'nav-who': 'من نخدم',
         'nav-about': 'من نحن',
         'nav-portfolio': 'إنجازاتنا',
         'nav-testimonials': 'الشهادات',
         'nav-contact': 'اتصل بنا',
         'nav-faq': 'الأسئلة الشائعة',
-        
+
         // Hero Section
         'hero-title': 'مهندس طبوغرافي بالقنيطرة | STOPSIT',
         'hero-subtitle': 'نخدم القنيطرة وجميع أنحاء المغرب بأحدث تقنيات المسح وخبرة لا مثيل لها منذ عام 2005',
         'hero-cta-quote': 'طلب عرض سعر',
         'hero-cta-services': 'خدماتنا',
-        
+
         // Who We Serve Section
         'who-title': 'من نخدم',
         'who-subtitle': 'نخدم المؤسسات والأفراد على حد سواء',
@@ -364,7 +387,7 @@ const translations = {
         'who-ind-3': 'المستثمرون الخاصون',
         'who-ind-4': 'المشترون المستقبليون',
         'who-ind-5': 'الورثة في حالات الميراث',
-        
+
         // Services Section
         'services-title': 'خدماتنا',
         'services-subtitle': 'حلول مسح شاملة لجميع مشاريعك العقارية والعقارية',
@@ -392,34 +415,35 @@ const translations = {
         'service-11-desc': 'مسوحات معايير دولية للعملاء الدوليين.',
         'service-12-title': 'نظم المعلومات الجغرافية',
         'service-12-desc': 'التحليل الجغرافي المكاني ونظم المعلومات الجغرافية.',
-        
+
         // About Section
         'about-title': 'خبراء مسح الأراضي الموثوق بهم في المغرب',
-        'about-paragraph1': 'تأسست شركة STOPSIT في عام 2005، وهي شركة مسح مهنية مقرها القنيطرة. مع أكثر من 2900 مسح عقاري منجز، أصبحنا شريكًا موثوقًا به للوكالة الوطنية للمحافظة العقارية والمسح والخرائط والوكالة الوطنية للمياه والغابات.',
-        'about-paragraph2': 'يجمع فريقنا من المهندسين المساحين المحترفين والفنيين المتخصصين بين مبادئ المسح التقليدية والتكنولوجيا المتطورة لتقديم نتائج دقيقة وموثوقة. لقد مكننا التزامنا بالتميز من خدمة القنيطرة وسيدي سليمان والفقيه بن صالح وكل المغرب بفعالية.',
+        'about-paragraph1': 'تأسست شركة STOPSIT في عام 2005، وهي شركة مسح مهنية مقرها القنيطرة. مع أكثر من 2900 مسح عقاري منجز، أصبحنا شريكًا موثوقًا به للوكالة الوطنية للمحافظة العقارية.',
+        'about-paragraph2': 'يجمع فريقنا من المهندسين المساحين المحترفين والفنيين المتخصصين بين مبادئ المسح التقليدية والتكنولوجيا المتطورة لتقديم نتائج دقيقة وموثوقة.',
         'stat-founded': 'سنة التأسيس',
         'stat-projects': 'المشاريع المنجزة',
         'stat-years': 'سنوات الخبرة',
-        'credential-iso': 'معتمد ISO 9001',
+        'credential-iso': 'شهادة ISO 9001 قيد الإنجاز',
         'credential-ancfcc': 'مقاول معتمد من الوكالة الوطنية',
         'credential-licensed': 'مساحون مرخصون',
         'credential-experience': 'أكثر من 20 عامًا من الخبرة',
-        
+
         // Portfolio Section
         'portfolio-title': 'إنجازاتنا',
         'portfolio-subtitle': 'مشاريع رئيسية منجزة للمؤسسات الوطنية',
         'portfolio-ancfcc': 'شريك رئيسي منذ 2006',
         'portfolio-forests': 'وكالة المياه والغابات',
         'portfolio-forests-desc': 'مشاريع بيئية',
-        'project-recent-desc': '4,346 هكتارًا مسجلًا - جماعة TAMCHACHAT القروية (3,192 هكتار) و SEBT JAHJOUH (1,154 هكتار) - اكتملت في يونيو 2024',
-        'project-khenifra-desc': '3,667 هكتار - غابة ولاية أزرو نايت لحسن في الكباب - اكتملت في ديسمبر 2025',
-        'project-chefchaouen-desc': '5,959 هكتار — مقاطعة غابة تاينزا وبابابريد — مشروع قيد التنفيذ',
+        'project-recent-desc': '4 346 هكتارًا مسجلًا — جماعة TAMCHACHAT القروية (3 192 هكتار) و SEBT JAHJOUH (1 154 هكتار)',
+        'project-chefchaouen-desc': '5 959 هكتار — مقاطعة غابة تاينزا وبابابريد — مشروع قيد التنفيذ',
         'project-alomrane-desc': 'أعمال التحديد والملفات التقنية المساحية — تجزئة جنان TR 2، القنيطرة',
+        'project-azilal-desc': '14 500 هكتار — ملفات عقارية لمقاطعات إغير نتميش وجبل إسكت وسيدي مسكور',
+        'project-khenifra-desc': '3 667 هكتار — غابة ولاية أزرو نايت لحسن في الكباب',
         'project-1-desc': '335 قضية عقارية معالجة',
         'project-2-desc': '197 قضية عقارية معالجة',
-        'project-3-desc': '2,025 قضية عقارية معالجة - أكبر مشروع لنا',
+        'project-3-desc': '2 025 قضية عقارية معالجة — أكبر مشروع لنا',
         'project-4-desc': '404 قضية عقارية معالجة',
-        
+
         // Technical Capabilities
         'tech-title': 'الوسائل التقنية',
         'tech-subtitle': 'معدات متطورة لنتائج دقيقة',
@@ -435,11 +459,11 @@ const translations = {
         'tech-5-desc': 'مركبات مهنية 4x4 للعمليات الميدانية',
         'tech-6-title': 'معدات المكتب',
         'tech-6-desc': 'محطات عمل عالية الأداء، راسمات بتنسيق كبير، ماسحات ضوئية وطابعات مهنية',
-        
-        // Testimonials Section
+
+        // Testimonials
         'testimonials-title': 'شهادات العملاء',
         'testimonials-subtitle': 'ما يقوله عملاؤنا عنا',
-        
+
         // Contact Section
         'contact-title': 'تواصل معنا',
         'contact-subtitle': 'هل لديك أسئلة أو مستعد لبدء مشروعك؟ تواصل مع فريقنا اليوم',
@@ -465,14 +489,28 @@ const translations = {
         'contact-hours': 'ساعات العمل',
         'contact-hours-mon-fri': 'الاثنين - الجمعة: 9:00 صباحًا - 6:00 مساءً',
         'contact-hours-sat': 'السبت: 9:00 صباحًا - 13:00 ظهرًا',
-        
+
         // Footer
         'footer-tagline': 'خدمات مسح الأراضي المهنية في القنيطرة وجميع أنحاء المغرب منذ 2005.',
         'footer-quicklinks': 'روابط سريعة',
         'footer-services': 'الخدمات الرئيسية',
         'footer-connect': 'تواصل معنا',
         'footer-copyright': '© 2026 STOPSIT لمسح الأراضي. جميع الحقوق محفوظة.',
-        
+
+        // *** NEW: Footer services links ***
+        'footer-svc-1': 'الملفات التقنية المساحية',
+        'footer-svc-2': 'المسوحات الطبوغرافية',
+        'footer-svc-3': 'تحديد الحدود',
+        'footer-svc-4': 'تقسيم الأراضي',
+        'footer-svc-5': 'نظم المعلومات الجغرافية',
+
+        // *** NEW: Footer zones heading + links ***
+        'footer-zones': 'مناطق التدخل',
+        'footer-zone-kenitra': 'مساح القنيطرة',
+        'footer-zone-sidi': 'مساح سيدي سليمان',
+        'footer-zone-fquih': 'مساح الفقيه بن صالح',
+        'footer-zone-rabat': 'مساح الرباط',
+        'footer-zone-khenifra': 'مساح خنيفرة',
 
         // FAQ Section
         'faq-title': 'الأسئلة الشائعة — المسح الطبوغرافي في المغرب',
@@ -480,97 +518,51 @@ const translations = {
         'faq-1-q': 'ما هو المسح الطبوغرافي ولماذا أحتاجه؟',
         'faq-1-a': 'المسح الطبوغرافي هو قياس دقيق للأرض: الارتفاعات، منحنيات المستوى، الحدود، المباني القائمة، الغطاء النباتي والشبكات. إنه <strong>ضروري قبل أي بناء أو تقسيم أرض أو تسجيل عقاري</strong>. في STOPSIT نُنجز المسوحات بدقة سنتيمترية باستخدام أجهزتنا وتقنياتنا المتطورة.',
         'faq-2-q': 'ما هي تكلفة خدماتكم؟',
-        'faq-2-a': 'تعتمد التكلفة على مساحة الأرض وموقعها (إمكانية الوصول، التضاريس) والتعقيد الإداري. تقدم STOPSIT <strong>عروض أسعار مجانية وشخصية</strong> خلال 24 ساعة. اتصل بنا على <a href=\"tel:+212661688603\">+212 661-688603</a> أو راسلنا على <a href=\"mailto:stopsit.sarl@gmail.com\">stopsit.sarl@gmail.com</a>.',
+        'faq-2-a': 'تعتمد التكلفة على مساحة الأرض وموقعها (إمكانية الوصول، التضاريس) والتعقيد الإداري. تقدم STOPSIT <strong>عروض أسعار مجانية وشخصية</strong> خلال 24 ساعة. اتصل بنا على <a href="tel:+212661688603">+212 661-688603</a> أو راسلنا على <a href="mailto:stopsit.sarl@gmail.com">stopsit.sarl@gmail.com</a>.',
         'faq-3-q': 'ما هي المدن التي تغطيها STOPSIT؟',
         'faq-3-a': 'تتخذ STOPSIT من <strong>القنيطرة</strong> مقراً لها، لكنها تعمل في جميع أنحاء المغرب: القنيطرة، سيدي سليمان، سيدي يحيى، وزان، مكناس، سلا، الفقيه بن صالح، خنيفرة، الحاجب، أزيلال، شفشاون، الرباط وما وراءها.',
         'faq-4-q': 'كم من الوقت تستغرق خدمة المسح؟',
         'faq-4-a': 'تعتمد المدة على نوع الخدمة وتعقيد العمل. تُعدّ STOPSIT ملفات كاملة ومطابقة للمعايير للحد من أوقات المعالجة الإدارية.',
-        
-        // Footer Zones
-        'footer-zones': 'مناطق التدخل',
-        // Form Alert
         'form-success': 'شكرًا لرسالتك! سنرد عليك في أقرب وقت ممكن.'
     }
 };
 
-// Set default language to French - CRITICAL FIX
 let currentLang = localStorage.getItem('selectedLanguage') || 'fr';
 
-// Function to update all text content on the page
 function updatePageLanguage(lang) {
-    // Save user preference
     localStorage.setItem('selectedLanguage', lang);
     currentLang = lang;
-    
-    // Update lang attribute on HTML
+
     document.documentElement.setAttribute('lang', lang);
-    
-    // Toggle RTL for Arabic
+
     if (lang === 'ar') {
         document.body.classList.add('rtl');
-        
-        // Force logo to maintain LTR direction
         const logo = document.querySelector('.logo');
-        if (logo) {
-            logo.style.direction = 'ltr';
-            logo.style.marginLeft = '40px';
-        }
-        
-        // Fix navbar layout
+        if (logo) { logo.style.direction = 'ltr'; logo.style.marginLeft = '40px'; }
         const navbar = document.querySelector('.navbar');
-        if (navbar) {
-            navbar.style.justifyContent = 'flex-start';
-            navbar.style.gap = '40px';
-        }
-        
-        // Ensure nav links have proper spacing
+        if (navbar) { navbar.style.justifyContent = 'flex-start'; navbar.style.gap = '40px'; }
         const navLinks = document.querySelector('.nav-links');
-        if (navLinks) {
-            navLinks.style.marginLeft = '40px';
-            navLinks.style.marginRight = 'auto';
-        }
+        if (navLinks) { navLinks.style.marginLeft = '40px'; navLinks.style.marginRight = 'auto'; }
     } else {
         document.body.classList.remove('rtl');
-        
-        // Reset all custom spacing when not in RTL
         const logo = document.querySelector('.logo');
-        if (logo) {
-            logo.style.marginLeft = '';
-        }
-        
+        if (logo) { logo.style.marginLeft = ''; }
         const navbar = document.querySelector('.navbar');
-        if (navbar) {
-            navbar.style.justifyContent = '';
-            navbar.style.gap = '';
-        }
-        
+        if (navbar) { navbar.style.justifyContent = ''; navbar.style.gap = ''; }
         const navLinks = document.querySelector('.nav-links');
-        if (navLinks) {
-            navLinks.style.marginLeft = '';
-            navLinks.style.marginRight = '';
-        }
+        if (navLinks) { navLinks.style.marginLeft = ''; navLinks.style.marginRight = ''; }
     }
-    
-    // Update active button state
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.remove('active');
-    });
+
+    document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
     const activeBtn = document.querySelector(`.lang-btn[data-lang="${lang}"]`);
-    if (activeBtn) {
-        activeBtn.classList.add('active');
-    }
-    
-    // Force language switcher to always maintain LTR direction
+    if (activeBtn) activeBtn.classList.add('active');
+
     const languageSwitcher = document.querySelector('.language-switcher');
-    if (languageSwitcher) {
-        languageSwitcher.style.direction = 'ltr';
-    }
-    
-    // Update all elements with data-translate attribute
+    if (languageSwitcher) languageSwitcher.style.direction = 'ltr';
+
     document.querySelectorAll('[data-translate], [data-translate-html]').forEach(element => {
         const key = element.getAttribute('data-translate') || element.getAttribute('data-translate-html');
         if (translations[lang] && translations[lang][key]) {
-            // Handle different element types
             if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
                 element.placeholder = translations[lang][key];
             } else if (element.tagName === 'OPTION') {
@@ -584,45 +576,31 @@ function updatePageLanguage(lang) {
     });
 }
 
-// Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
-    // Create language switcher if it doesn't exist
     if (!document.querySelector('.language-switcher-container')) {
         const navLinks = document.getElementById('navLinks');
-        
-        // Create container
         const container = document.createElement('li');
         container.className = 'language-switcher-container';
-        
-        // Create the actual language switcher
         const langSwitcher = document.createElement('div');
         langSwitcher.className = 'language-switcher';
-        langSwitcher.style.direction = 'ltr'; // Force LTR direction
+        langSwitcher.style.direction = 'ltr';
         langSwitcher.innerHTML = `
             <button class="lang-btn" data-lang="fr">FR</button>
             <button class="lang-btn" data-lang="en">EN</button>
             <button class="lang-btn" data-lang="ar">عربي</button>
         `;
-        
         container.appendChild(langSwitcher);
         navLinks.appendChild(container);
     }
-    
-    // Add click event listeners to language buttons
+
     document.querySelectorAll('.lang-btn').forEach(button => {
         button.addEventListener('click', function() {
-            const lang = this.getAttribute('data-lang');
-            updatePageLanguage(lang);
+            updatePageLanguage(this.getAttribute('data-lang'));
         });
     });
-    
-    // Initialize the page with saved language or default to French
+
     updatePageLanguage(currentLang);
-    
-    // Force language switcher direction after initialization
+
     const languageSwitcher = document.querySelector('.language-switcher');
-    if (languageSwitcher) {
-        languageSwitcher.style.direction = 'ltr';
-    }
-        
+    if (languageSwitcher) languageSwitcher.style.direction = 'ltr';
 });
