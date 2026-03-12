@@ -1081,13 +1081,24 @@ body.rtl .footer-links a:hover {
    ══════════════════════════════════════════════════════════ */
 
 /* ── Logo text (replaces h1 in header) ── */
+.logo-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    gap: 4px;
+}
+
 .logo-text {
+    font-family: 'Montserrat', sans-serif;
     font-size: 1.8rem;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--light);
     text-decoration: none;
     transition: color 0.3s ease;
+    line-height: 1;
 }
+
 header.scrolled .logo-text { color: var(--primary); }
 
 /* ── Hero trust bar ── */
@@ -1210,3 +1221,10 @@ body.rtl .hero-trust span i { margin-right: 0; margin-left: 0.4rem; }
     .hero-trust span { font-size: 0.8rem; padding: 0.35rem 0.75rem; }
     .faq-item summary h3 { font-size: 0.95rem; }
 }
+
+.logo-img { height: 74px; width: auto; }
+.logo-img--dark  { display: none; }
+.logo-img--light { display: block; }
+
+header.scrolled .logo-img--light { display: none; }
+header.scrolled .logo-img--dark  { display: block; }
