@@ -26,7 +26,7 @@ body {
 }
 
 /* Header & Navigation */
-header {
+header {    
     position: fixed;
     width: 100%;
     z-index: 1000;
@@ -58,7 +58,7 @@ header.scrolled {
 }
 
 .logo img {
-    height: 40px;
+    height: 56px;
     margin-right: 10px;
 }
 
@@ -1081,22 +1081,22 @@ body.rtl .footer-links a:hover {
    ══════════════════════════════════════════════════════════ */
 
 /* ── Logo text (replaces h1 in header) ── */
-.logo-link {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-decoration: none;
-    gap: 4px;
-}
+
+
+
+
+
+
+
 
 .logo-text {
-    font-family: 'Montserrat', sans-serif;
+
     font-size: 1.8rem;
-    font-weight: 700;
+    font-weight: 600;
     color: var(--light);
     text-decoration: none;
     transition: color 0.3s ease;
-    line-height: 1;
+
 }
 
 header.scrolled .logo-text { color: var(--primary); }
@@ -1222,7 +1222,7 @@ body.rtl .hero-trust span i { margin-right: 0; margin-left: 0.4rem; }
     .faq-item summary h3 { font-size: 0.95rem; }
 }
 
-.logo-img { height: 74px; width: auto; }
+.logo-img { height: 50px; width: auto; }
 .logo-img--dark  { display: none; }
 .logo-img--light { display: block; }
 
