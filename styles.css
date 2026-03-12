@@ -1,7 +1,7 @@
 :root {
     --primary: #2c6e49;
     --secondary: #4c956c;
-    --accent: #d68c45;
+    --accent: #EE6A2E;
     --dark: #333333;
     --light: #f8f9fa;
     --medium: #e9ecef;
@@ -214,14 +214,13 @@ header.scrolled .lang-btn:hover {
 }
 
 .btn-primary {
-    background-color: var(--accent);
+    background: linear-gradient(135deg, #EE6A2E, #FBAE1F);
     color: var(--light);
 }
-
 .btn-primary:hover {
-    background-color: #c07a35;
+    background: linear-gradient(135deg, #d55e26, #e09c1a);
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(214, 140, 69, 0.4);
+    box-shadow: 0 5px 15px rgba(238, 106, 46, 0.4);
 }
 
 .btn-secondary {
@@ -1007,9 +1006,9 @@ body.rtl .footer-links a:hover {
         background: rgba(0, 0, 0, 0.05) !important;
     }
     .lang-btn.active {
-        background-color: var(--accent) !important;
-        color: white !important;
-        border-color: var(--accent) !important;
+        background: linear-gradient(135deg, #EE6A2E, #FBAE1F);
+        color: white;
+        border-color: #EE6A2E;
     }
 
 
@@ -1118,8 +1117,7 @@ header.scrolled .logo-text { color: var(--primary); }
     color: var(--light);
     backdrop-filter: blur(4px);
 }
-.hero-trust span i { margin-right: 0.4rem; color: var(--gold); }
-
+.hero-trust span i { margin-right: 0.4rem; color: #FBAE1F; }
 /* ── FAQ Section ── */
 .faq-section { background: var(--light); }
 
