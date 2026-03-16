@@ -18,6 +18,7 @@ const translations = {
     'fr': {
         // Navigation
         'nav-home': 'Accueil',
+        'nav-articles': 'Articles',
         'nav-services': 'Services',
         'nav-who': 'Qui Nous Servons',
         'nav-about': 'À propos',
@@ -188,6 +189,7 @@ const translations = {
     'en': {
         // Navigation
         'nav-home': 'Home',
+        'nav-articles': 'Articles',
         'nav-services': 'Services',
         'nav-who': 'Who We Serve',
         'nav-about': 'About',
@@ -358,6 +360,7 @@ const translations = {
     'ar': {
         // Navigation
         'nav-home': 'الرئيسية',
+        'nav-articles': 'المقالات',
         'nav-services': 'الخدمات',
         'nav-who': 'من نخدم',
         'nav-about': 'من نحن',

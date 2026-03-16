@@ -1,0 +1,74 @@
+name: Publish Scheduled Articles
+
+on:
+  schedule:
+    - cron: '0 7 * * 1'   # Every Monday 7am UTC
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Publish due articles
+        run: |
+          TODAY=$(date -u +%Y-%m-%d)
+          PUBLISHED_ANY=false
+
+          for file in articles/drafts/*.html; do
+            [ -f "$file" ] || continue
+
+            # Read the publish date from the first line comment
+            PUBLISH_DATE=$(head -1 "$file" | grep -oP '\d{4}-\d{2}-\d{2}')
+            [ -z "$PUBLISH_DATE" ] && continue
+
+            if [[ "$PUBLISH_DATE" <= "$TODAY" ]]; then
+              FILENAME=$(basename "$file")
+              echo "Publishing: $FILENAME (scheduled: $PUBLISH_DATE)"
+
+              # Move file to published/
+              mv "$file" "articles/published/$FILENAME"
+
+              # Extract metadata from the HTML file
+              TITLE=$(grep -oP '(?<=<title>).*?(?= \| STOPSIT)' "articles/published/$FILENAME" | head -1)
+              DESC=$(grep -oP '(?<=name="description" content=").*?(?=")' "articles/published/$FILENAME" | head -1)
+              READ_TIME=$(grep -oP '(?<=<i class="fas fa-clock"></i> )[\d]+ min' "articles/published/$FILENAME" | head -1)
+              [ -z "$READ_TIME" ] && READ_TIME="5 min"
+
+              # Append to articles-list.js
+              node -e "
+                const fs = require('fs');
+                const content = fs.readFileSync('articles/articles-list.js', 'utf8');
+                const newEntry = \`    {
+                    slug: \"published/${FILENAME}\",
+                    title: \"${TITLE}\",
+                    description: \"${DESC}\",
+                    date: \"${PUBLISH_DATE}\",
+                    readTime: \"${READ_TIME}\"
+                }\`;
+                const updated = content.replace(
+                  /(\nconst articles = \[)/,
+                  '\$1\n' + newEntry + ','
+                );
+                fs.writeFileSync('articles/articles-list.js', updated);
+              "
+
+              PUBLISHED_ANY=true
+            fi
+          done
+
+          if [ "$PUBLISHED_ANY" = true ]; then
+            git config user.name  "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add articles/
+            git commit -m "chore: publish scheduled articles for $TODAY"
+            git push
+          else
+            echo "No articles due today."
+          fi
