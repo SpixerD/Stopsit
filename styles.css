@@ -26,14 +26,14 @@ body {
 }
 
 /* Header & Navigation */
-header {    
+#header {    
     position: fixed;
     width: 100%;
     z-index: 1000;
     transition: background-color 0.3s ease;
 }
 
-header.scrolled {
+#header.scrolled {
     background-color: rgba(255, 255, 255, 0.98);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
@@ -74,7 +74,7 @@ header.scrolled {
     text-decoration: none;
 }
 
-header.scrolled .logo h1 {
+#header.scrolled .logo h1 {
     color: var(--primary);
 }
 
@@ -96,7 +96,7 @@ header.scrolled .logo h1 {
     font-size: 0.95rem;
 }
 
-header.scrolled .nav-links a {
+#header.scrolled .nav-links a {
     color: var(--dark);
 }
 
@@ -111,7 +111,7 @@ header.scrolled .nav-links a {
     font-size: 1.5rem;
 }
 
-header.scrolled .hamburger {
+#header.scrolled .hamburger {
     color: var(--dark);
 }
 
@@ -144,7 +144,7 @@ header.scrolled .hamburger {
     font-weight: 500;
 }
 
-header.scrolled .lang-btn {
+#header.scrolled .lang-btn {
     background: rgba(44, 110, 73, 0.1);
     border-color: var(--primary);
     color: var(--primary);
@@ -154,7 +154,7 @@ header.scrolled .lang-btn {
     background-color: rgba(255, 255, 255, 0.3);
 }
 
-header.scrolled .lang-btn:hover {
+#header.scrolled .lang-btn:hover {
     background-color: rgba(44, 110, 73, 0.2);
 }
 
@@ -1098,7 +1098,7 @@ body.rtl .footer-links a:hover {
 
 }
 
-header.scrolled .logo-text { color: var(--primary); }
+#header.scrolled .logo-text { color: var(--primary); }
 
 /* ── Hero trust bar ── */
 .hero-trust {
@@ -1224,5 +1224,5 @@ body.rtl .hero-trust span i { margin-right: 0; margin-left: 0.4rem; }
 .logo-img--dark  { display: none; }
 .logo-img--light { display: block; }
 
-header.scrolled .logo-img--light { display: none; }
-header.scrolled .logo-img--dark  { display: block; }
+#header.scrolled .logo-img--light { display: none; }
+#header.scrolled .logo-img--dark  { display: block; }
