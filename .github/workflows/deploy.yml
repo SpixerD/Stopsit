@@ -14,17 +14,22 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4.2.2
 
       - name: Publish due articles
         run: |
           TODAY=$(date -u +%Y-%m-%d)
           PUBLISHED_ANY=false
 
-          for file in articles/drafts/*.html; do
-            [ -f "$file" ] || continue
+          shopt -s nullglob
+          files=(articles/drafts/*.html)
 
-            # Read the publish date from the first line comment
+          if [ ${#files[@]} -eq 0 ]; then
+            echo "No draft articles found. Nothing to publish."
+            exit 0
+          fi
+
+          for file in "${files[@]}"; do
             PUBLISH_DATE=$(head -1 "$file" | grep -oP '\d{4}-\d{2}-\d{2}')
             [ -z "$PUBLISH_DATE" ] && continue
 
@@ -32,16 +37,13 @@ jobs:
               FILENAME=$(basename "$file")
               echo "Publishing: $FILENAME (scheduled: $PUBLISH_DATE)"
 
-              # Move file to published/
               mv "$file" "articles/published/$FILENAME"
 
-              # Extract metadata from the HTML file
               TITLE=$(grep -oP '(?<=<title>).*?(?= \| STOPSIT)' "articles/published/$FILENAME" | head -1)
               DESC=$(grep -oP '(?<=name="description" content=").*?(?=")' "articles/published/$FILENAME" | head -1)
               READ_TIME=$(grep -oP '(?<=<i class="fas fa-clock"></i> )[\d]+ min' "articles/published/$FILENAME" | head -1)
               [ -z "$READ_TIME" ] && READ_TIME="5 min"
 
-              # Append to articles-list.js
               node -e "
                 const fs = require('fs');
                 const content = fs.readFileSync('articles/articles-list.js', 'utf8');
