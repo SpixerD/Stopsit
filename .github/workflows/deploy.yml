@@ -2,7 +2,7 @@ name: Publish Scheduled Articles
 
 on:
   schedule:
-    - cron: '0 7 * * 1'   # Every Monday 7am UTC
+    - cron: '0 7 * * 1'
   push:
     branches: [main]
   workflow_dispatch:
@@ -19,6 +19,7 @@ jobs:
       - name: Publish due articles
         run: |
           TODAY=$(date -u +%Y-%m-%d)
+          echo "Today is: $TODAY"
           PUBLISHED_ANY=false
 
           shopt -s nullglob
@@ -33,35 +34,47 @@ jobs:
             PUBLISH_DATE=$(head -1 "$file" | grep -oP '\d{4}-\d{2}-\d{2}')
             [ -z "$PUBLISH_DATE" ] && continue
 
-            if [[ "$PUBLISH_DATE" <= "$TODAY" ]]; then
+            echo "Found draft: $file with publish date: $PUBLISH_DATE"
+
+            # Compare dates as plain strings (YYYY-MM-DD format sorts correctly)
+            if [ "$PUBLISH_DATE" \<= "$TODAY" ]; then
               FILENAME=$(basename "$file")
-              echo "Publishing: $FILENAME (scheduled: $PUBLISH_DATE)"
+              echo "Publishing: $FILENAME"
 
               mv "$file" "articles/published/$FILENAME"
 
               TITLE=$(grep -oP '(?<=<title>).*?(?= \| STOPSIT)' "articles/published/$FILENAME" | head -1)
               DESC=$(grep -oP '(?<=name="description" content=").*?(?=")' "articles/published/$FILENAME" | head -1)
-              READ_TIME=$(grep -oP '(?<=<i class="fas fa-clock"></i> )[\d]+ min' "articles/published/$FILENAME" | head -1)
+              READ_TIME=$(grep -oP '(?<=<i class="fas fa-clock"></i> )\d+ min' "articles/published/$FILENAME" | head -1)
               [ -z "$READ_TIME" ] && READ_TIME="5 min"
+
+              echo "Title: $TITLE"
+              echo "Desc: $DESC"
+              echo "Read time: $READ_TIME"
 
               node -e "
                 const fs = require('fs');
                 const content = fs.readFileSync('articles/articles-list.js', 'utf8');
-                const newEntry = \`    {
-                    slug: \"published/${FILENAME}\",
-                    title: \"${TITLE}\",
-                    description: \"${DESC}\",
-                    date: \"${PUBLISH_DATE}\",
-                    readTime: \"${READ_TIME}\"
-                }\`;
+                const newEntry = [
+                  '    {',
+                  '        slug: \"published/$FILENAME\",',
+                  '        title: \"$TITLE\",',
+                  '        description: \"$DESC\",',
+                  '        date: \"$PUBLISH_DATE\",',
+                  '        readTime: \"$READ_TIME\"',
+                  '    }'
+                ].join('\n');
                 const updated = content.replace(
-                  /(\nconst articles = \[)/,
-                  '\$1\n' + newEntry + ','
+                  'const articles = [',
+                  'const articles = [\n' + newEntry + ','
                 );
                 fs.writeFileSync('articles/articles-list.js', updated);
+                console.log('articles-list.js updated');
               "
 
               PUBLISHED_ANY=true
+            else
+              echo "Not yet due: $PUBLISH_DATE > $TODAY, skipping."
             fi
           done
 
