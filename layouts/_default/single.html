@@ -1,0 +1,49 @@
+{{ define "main" }}
+<article class="section blog-article">
+    <div class="container blog-container">
+
+        <!-- Language switcher -->
+        {{ if .Translations }}
+        <div class="blog-lang-switcher">
+            {{ range .Translations }}
+            <a href="{{ .Permalink }}" lang="{{ .Language.Lang }}">
+                {{ .Language.LanguageName }}
+            </a>
+            {{ end }}
+        </div>
+        {{ end }}
+
+        <header class="article-header">
+            <h1>{{ .Title }}</h1>
+            <div class="article-meta">
+                <time datetime="{{ .Date.Format "2006-01-02" }}">
+                    <i class="fas fa-calendar"></i>
+                    {{ .Date.Format "02 January 2006" }}
+                </time>
+                <span>
+                    <i class="fas fa-map-marker-alt"></i>
+                    STOPSIT Kenitra
+                </span>
+            </div>
+        </header>
+
+        <div class="article-body">
+            {{ .Content }}
+        </div>
+
+        <!-- CTA at end of every article -->
+        <div class="article-cta">
+            <h3>Besoin d'un ingénieur topographe à Kenitra ?</h3>
+            <p>STOPSIT réalise tous types de travaux topographiques au Maroc depuis 2005.</p>
+            <a href="{{ "/" | absURL }}#contact" class="btn btn-primary">
+                Demander un devis gratuit
+            </a>
+        </div>
+
+        <a href="{{ .CurrentSection.Permalink }}" class="back-link">
+            ← Retour aux articles
+        </a>
+
+    </div>
+</article>
+{{ end }}

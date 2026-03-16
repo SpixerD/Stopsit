@@ -1,0 +1,38 @@
+{{ define "main" }}
+<section class="section blog-index">
+    <div class="container">
+        <div class="section-title">
+            <h1>{{ .Title }}</h1>
+            <p>Guides et conseils topographiques par STOPSIT Kenitra</p>
+        </div>
+
+        <!-- Language switcher for blog -->
+        <div class="blog-lang-switcher">
+            {{ range .Translations }}
+            <a href="{{ .Permalink }}" lang="{{ .Language.Lang }}">
+                {{ .Language.LanguageName }}
+            </a>
+            {{ end }}
+        </div>
+
+        <div class="blog-grid">
+            {{ range .Pages }}
+            <article class="blog-card">
+                <div class="blog-card-content">
+                    <div class="blog-meta">
+                        <time datetime="{{ .Date.Format "2006-01-02" }}">
+                            {{ .Date.Format "02 January 2006" }}
+                        </time>
+                    </div>
+                    <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+                    <p>{{ .Params.description }}</p>
+                    <a href="{{ .Permalink }}" class="btn btn-primary" style="margin-top:1rem;">
+                        Lire l'article →
+                    </a>
+                </div>
+            </article>
+            {{ end }}
+        </div>
+    </div>
+</section>
+{{ end }}

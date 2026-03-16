@@ -1,0 +1,38 @@
+baseURL = "https://SpixerD.github.io/stopsit-test/"
+defaultContentLanguage = "fr"
+defaultContentLanguageInSubdir = false
+
+# Hugo should NOT overwrite your existing index.html
+# It only manages the /blog section
+disableKinds = ["home", "RSS"]
+
+[languages]
+  [languages.fr]
+    languageName = "Français"
+    languageCode = "fr"
+    weight = 1
+    contentDir = "content/fr"
+    [languages.fr.params]
+      dir = "ltr"
+
+  [languages.en]
+    languageName = "English"
+    languageCode = "en"
+    weight = 2
+    contentDir = "content/en"
+    [languages.en.params]
+      dir = "ltr"
+
+  [languages.ar]
+    languageName = "عربي"
+    languageCode = "ar"
+    weight = 3
+    contentDir = "content/ar"
+    languageDirection = "rtl"
+    [languages.ar.params]
+      dir = "rtl"
+
+[outputs]
+  home    = ["HTML"]
+  section = ["HTML"]
+  page    = ["HTML"]

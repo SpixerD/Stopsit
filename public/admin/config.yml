@@ -1,0 +1,59 @@
+backend:
+  name: github
+  repo: SpixerD/stopsit-test
+  branch: main
+  base_url: https://api.netlify.com
+  auth_endpoint: auth
+
+media_folder: "static/images/blog"
+public_folder: "/images/blog"
+
+# Multilingual structure
+i18n:
+  structure: multiple_folders
+  locales: [fr, en, ar]
+  default_locale: fr
+
+collections:
+  - name: "blog"
+    label: "Articles de blog"
+    label_singular: "Article"
+    i18n: true
+    folder: "content"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - label: "Titre"
+        name: "title"
+        widget: "string"
+        i18n: true
+
+      - label: "Date de publication"
+        name: "date"
+        widget: "datetime"
+        date_format: "YYYY-MM-DD"
+        time_format: false
+        i18n: duplicate
+
+      - label: "Brouillon"
+        name: "draft"
+        widget: "boolean"
+        default: false
+        i18n: duplicate
+
+      - label: "Description SEO"
+        name: "description"
+        widget: "string"
+        i18n: true
+        hint: "Résumé affiché dans Google (max 160 caractères)"
+
+      - label: "Mots-clés"
+        name: "keywords"
+        widget: "list"
+        i18n: true
+        hint: "Ex: levé topographique, topographe kenitra"
+
+      - label: "Contenu de l'article"
+        name: "body"
+        widget: "markdown"
+        i18n: true

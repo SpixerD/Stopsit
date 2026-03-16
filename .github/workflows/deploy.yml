@@ -1,0 +1,79 @@
+name: Build and Deploy Hugo Blog
+
+on:
+  # Runs every Monday at 7:00 AM UTC (8:00 AM Morocco time)
+  schedule:
+    - cron: '0 7 * * 1'
+
+  # Also runs on every push to main (e.g. when you write a new article)
+  push:
+    branches:
+      - main
+
+  # Allows you to trigger a build manually from GitHub's UI
+  workflow_dispatch:
+
+# Required permissions for GitHub Pages deployment
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Prevent multiple concurrent deployments
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0    # Needed for Hugo's .GitInfo and .Lastmod
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: '0.157.0'
+          extended: true
+
+      - name: Setup GitHub Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Build with Hugo
+        env:
+          HUGO_ENVIRONMENT: production
+        run: |
+          hugo \
+            --minify \
+            --baseURL "${{ steps.pages.outputs.base_url }}/"
+
+      - name: Copy existing static site files into Hugo output
+        # This ensures your index.html, styles.css etc. are kept alongside the blog
+        run: |
+          cp index.html    public/index.html
+          cp styles.css    public/styles.css
+          cp script.js     public/script.js
+          cp merci.html    public/merci.html
+          cp -r images     public/images   2>/dev/null || true
+          cp robots.txt    public/robots.txt
+          cp sitemap.xml   public/sitemap.xml 2>/dev/null || true
+
+      - name: Upload artifact for GitHub Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./public
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
