@@ -36,7 +36,7 @@ jobs:
             PUBLISH_DATE=$(head -1 "$file" | grep -oP '\d{4}-\d{2}-\d{2}')
             [ -z "$PUBLISH_DATE" ] && continue
 
-            if [[ "$PUBLISH_DATE" <= "$TODAY" ]]; then    # ← fix here
+            if [[ "$PUBLISH_DATE" <= "$TODAY" ]]; then
               mv "$file" "articles/$FILENAME"
 
               TITLE=$(grep -oP '(?<=<title>).*?(?= \| STOPSIT)' "articles/$FILENAME" | head -1)
@@ -60,7 +60,6 @@ jobs:
                 AR_SLUG="ar/$FILENAME"
               fi
 
-              # articles-list.js update (unchanged)
               node -e "
                 const fs = require('fs');
                 const content = fs.readFileSync('articles/articles-list.js', 'utf8');
