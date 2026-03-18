@@ -1,92 +1,166 @@
-name: Publish Scheduled Articles
+name: Publish Scheduled Articles & Deploy
 
 on:
   schedule:
-    - cron: '0 7 * * 1'
+    - cron: '0 7 * * 1'   # Every Monday 07:00 UTC (08:00 Morocco time)
   push:
     branches: [main]
-  workflow_dispatch:
+  workflow_dispatch:        # ← Manual trigger: GitHub UI → Actions → "Run workflow"
 
 permissions:
   contents: write
 
 jobs:
+  # ───────────────────────────────────────────────────────────
+  # JOB 1: Move due drafts into articles/, update articles-list.js
+  # ───────────────────────────────────────────────────────────
   publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.2.2
 
-      - name: Publish due articles
+      - name: Publish due articles (FR + EN + AR)
         run: |
           TODAY=$(date -u +%Y-%m-%d)
           echo "Today is: $TODAY"
           PUBLISHED_ANY=false
 
           shopt -s nullglob
-          files=(articles/drafts/*.html)
 
-          if [ ${#files[@]} -eq 0 ]; then
-            echo "No draft articles found. Nothing to publish."
-            exit 0
-          fi
+          # ── Helper: process one draft file ──────────────────
+          publish_file() {
+            local file="$1"
+            local dest_dir="$2"   # e.g. "articles" or "articles/en" or "articles/ar"
+            local lang="$3"       # fr | en | ar
 
-          for file in "${files[@]}"; do
+            local PUBLISH_DATE
+            PUBLISH_DATE=$(head -1 "$file" | grep -oP '\d{4}-\d{2}-\d{2}')
+            [ -z "$PUBLISH_DATE" ] && { echo "  Skipping $file — no publish date."; return 1; }
+
+            echo "  Draft: $file | date: $PUBLISH_DATE | lang: $lang"
+
+            if [ "$PUBLISH_DATE" \<= "$TODAY" ]; then
+              local FILENAME
+              FILENAME=$(basename "$file")
+              local DEST="$dest_dir/$FILENAME"
+              echo "  → Publishing to $DEST"
+
+              mv "$file" "$DEST"
+
+              # Extract metadata
+              local TITLE DESC READ_TIME
+              TITLE=$(grep -oP '(?<=<title>).*?(?= \| STOPSIT)' "$DEST" | head -1)
+              DESC=$(grep -oP '(?<=name="description" content=").*?(?=")' "$DEST" | head -1)
+              READ_TIME=$(grep -oP '(?<=fa-clock" aria-hidden="true"></i> )\d+ min' "$DEST" | head -1)
+              [ -z "$READ_TIME" ] && READ_TIME="5 min"
+
+              echo "    Title : $TITLE"
+              echo "    Desc  : $DESC"
+              echo "    Time  : $READ_TIME"
+
+              # Add to sitemap (only for FR — canonical URL)
+              if [ "$lang" = "fr" ]; then
+                local ARTICLE_URL="https://stopsit.ma/articles/$FILENAME"
+                sed -i "s|</urlset>|  <url>\n    <loc>$ARTICLE_URL</loc>\n    <lastmod>$PUBLISH_DATE</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.8</priority>\n  </url>\n</urlset>|" sitemap.xml
+              fi
+
+              return 0
+            else
+              echo "  Not yet due ($PUBLISH_DATE > $TODAY) — staying in drafts."
+              return 1
+            fi
+          }
+
+          # ── Process FR drafts (articles/drafts/*.html) ──────
+          fr_files=(articles/drafts/*.html)
+          declare -A published_slugs   # track which FR slugs got published
+
+          for file in "${fr_files[@]}"; do
+            FILENAME=$(basename "$file")
+            SLUG="${FILENAME%.html}"
             PUBLISH_DATE=$(head -1 "$file" | grep -oP '\d{4}-\d{2}-\d{2}')
             [ -z "$PUBLISH_DATE" ] && continue
 
-            echo "Found draft: $file with publish date: $PUBLISH_DATE"
-
-            # Compare dates as plain strings (YYYY-MM-DD format sorts correctly)
             if [ "$PUBLISH_DATE" \<= "$TODAY" ]; then
-              FILENAME=$(basename "$file")
-              echo "Publishing: $FILENAME"
+              mv "$file" "articles/$FILENAME"
 
-              mv "$file" "articles/published/$FILENAME"
-
-              TITLE=$(grep -oP '(?<=<title>).*?(?= \| STOPSIT)' "articles/published/$FILENAME" | head -1)
-              DESC=$(grep -oP '(?<=name="description" content=").*?(?=")' "articles/published/$FILENAME" | head -1)
-              READ_TIME=$(grep -oP '(?<=<i class="fas fa-clock"></i> )\d+ min' "articles/published/$FILENAME" | head -1)
+              TITLE=$(grep -oP '(?<=<title>).*?(?= \| STOPSIT)' "articles/$FILENAME" | head -1)
+              DESC=$(grep -oP '(?<=name="description" content=").*?(?=")' "articles/$FILENAME" | head -1)
+              READ_TIME=$(grep -oP '(?<=fa-clock" aria-hidden="true"></i> )\d+ min' "articles/$FILENAME" | head -1)
               [ -z "$READ_TIME" ] && READ_TIME="5 min"
 
-              echo "Title: $TITLE"
-              echo "Desc: $DESC"
-              echo "Read time: $READ_TIME"
+              echo "Publishing FR: $FILENAME"
+              echo "  Title : $TITLE"
 
+              # Add to sitemap
+              ARTICLE_URL="https://stopsit.ma/articles/$FILENAME"
+              sed -i "s|</urlset>|  <url>\n    <loc>$ARTICLE_URL</loc>\n    <lastmod>$PUBLISH_DATE</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.8</priority>\n  </url>\n</urlset>|" sitemap.xml
+
+              # Find matching EN and AR drafts (same filename in en/ and ar/ subfolders)
+              EN_SLUG=""
+              AR_SLUG=""
+              if [ -f "articles/drafts/en/$FILENAME" ]; then
+                mv "articles/drafts/en/$FILENAME" "articles/en/$FILENAME"
+                EN_SLUG="en/$FILENAME"
+                echo "  → Published EN: articles/en/$FILENAME"
+              fi
+              if [ -f "articles/drafts/ar/$FILENAME" ]; then
+                mv "articles/drafts/ar/$FILENAME" "articles/ar/$FILENAME"
+                AR_SLUG="ar/$FILENAME"
+                echo "  → Published AR: articles/ar/$FILENAME"
+              fi
+
+              # Append to articles-list.js
               node -e "
                 const fs = require('fs');
                 const content = fs.readFileSync('articles/articles-list.js', 'utf8');
+                const enSlug = '$EN_SLUG';
+                const arSlug = '$AR_SLUG';
+                const translationsField = (enSlug || arSlug)
+                  ? ',\n        translations: {' +
+                    (enSlug ? '\n            en: \"' + enSlug + '\"' : '') +
+                    (enSlug && arSlug ? ',' : '') +
+                    (arSlug ? '\n            ar: \"' + arSlug + '\"' : '') +
+                    '\n        }'
+                  : '';
                 const newEntry = [
                   '    {',
-                  '        slug: \"published/$FILENAME\",',
+                  '        slug: \"$FILENAME\",',
                   '        title: \"$TITLE\",',
                   '        description: \"$DESC\",',
                   '        date: \"$PUBLISH_DATE\",',
-                  '        readTime: \"$READ_TIME\"',
-                  '    }'
+                  '        readTime: \"$READ_TIME\"' + translationsField,
+                  '    },'
                 ].join('\n');
                 const updated = content.replace(
                   'const articles = [',
-                  'const articles = [\n' + newEntry + ','
+                  'const articles = [\n' + newEntry
                 );
                 fs.writeFileSync('articles/articles-list.js', updated);
-                console.log('articles-list.js updated');
+                console.log('articles-list.js updated: $FILENAME');
               "
 
               PUBLISHED_ANY=true
             else
-              echo "Not yet due: $PUBLISH_DATE > $TODAY, skipping."
+              echo "FR draft $FILENAME not yet due ($PUBLISH_DATE > $TODAY)"
             fi
           done
 
+          # ── Commit and push if anything was published ────────
           if [ "$PUBLISHED_ANY" = true ]; then
             git config user.name  "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add articles/
+            git add articles/ sitemap.xml
             git commit -m "chore: publish scheduled articles for $TODAY"
             git push
+            echo "Done — articles published and pushed."
           else
-            echo "No articles due today."
+            echo "No articles due today. Nothing committed."
           fi
+
+  # ───────────────────────────────────────────────────────────
+  # JOB 2: Deploy to GitHub Pages (runs after publish)
+  # ───────────────────────────────────────────────────────────
   deploy:
     runs-on: ubuntu-latest
     needs: publish
@@ -98,6 +172,8 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4.2.2
+        with:
+          ref: main   # Always pull latest (includes any publish bot commit)
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
