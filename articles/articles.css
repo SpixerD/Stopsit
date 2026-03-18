@@ -519,25 +519,40 @@
     font-weight: bold; /* Ensures it stays bold */
 }
 
+/* ── Permanent Step List Fix ── */
 .step-list {
-    list-style: none; /* We will handle numbering or use counter-reset */
-    padding-right: 0;
+    list-style: none !important;
+    padding: 0 !important; /* Forces browser user-agent styles to 0 */
+    margin: 1.5rem 0;
     counter-reset: step-counter;
 }
 
 .step-list li {
-    display: flex;
-    flex-direction: row; /* Stays RTL by default if dir="rtl" is on the body */
-    margin-bottom: 20px;
+    display: flex !important;
+    flex-direction: row; /* In RTL, 'row' starts from the right automatically */
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+    align-items: flex-start;
+    counter-increment: step-counter;
 }
 
 .step-list li::before {
-    content: counter(step-counter) ".";
-    counter-increment: step-counter;
-    margin-left: 10px; /* Space between number and text */
-    font-weight: bold;
+    content: counter(step-counter);
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    flex-shrink: 0;
+    box-shadow: 0 3px 10px rgba(44,110,73,0.3);
 }
 
 .step-content {
-    padding-right: 0; /* Now you have 0 padding by default */
+    padding: 0 !important;
+    margin: 0 !important;
+    flex: 1; /* Ensures text takes up the remaining space */
 }
