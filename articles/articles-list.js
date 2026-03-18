@@ -4,6 +4,17 @@
 
 const articles = [
     {
+        slug: "immatriculation-fonciere-ancfcc-maroc.html",
+        title: "Immatriculation foncière à l'ANCFCC : guide complet pour le Maroc",
+        description: "Tout comprendre sur l'immatriculation foncière au Maroc : procédure complète, documents requis, délais et rôle de l'ANCFCC. Guide pratique par STOPSIT Kénitra.",
+        date: "2026-03-17",
+        readTime: "6 min",
+        translations: {
+            en: "en/immatriculation-fonciere-ancfcc-maroc.html",
+            ar: "ar/immatriculation-fonciere-ancfcc-maroc.html"
+        }
+    },
+    {
         slug: "bornage-propriete-maroc.html",
         title: "Le bornage de propriété au Maroc : pourquoi et comment faire ?",
         description: "Tout savoir sur le bornage de propriété au Maroc : définition, déroulement, documents requis et valeur juridique. Par STOPSIT Kénitra.",
