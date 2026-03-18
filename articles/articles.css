@@ -117,26 +117,33 @@
 .article-body a:hover { color: var(--accent); }
 
 /* ── Float-right inline image ── */
-.article-img-float {
+/* ── Container for floated image + caption ── */
+.article-figure-float {
     float: right;
-    width: 320px;
+    width: 320px; /* Controls the width of both image and text */
+    margin: 0 0 1.5rem 2rem;
+}
+
+.article-figure-float img {
+    width: 100%; /* Fills the 320px container */
     height: 220px;
     object-fit: cover;
     border-radius: 8px;
-    margin: 0 0 1.5rem 2rem;
     box-shadow: 0 5px 20px rgba(0,0,0,0.12);
     border: 3px solid var(--medium);
+    display: block; /* Removes tiny gap at bottom of image */
 }
-.article-img-caption {
-    float: right;
-    width: 320px;
+
+.article-figure-float figcaption {
     font-size: 0.8rem;
     color: var(--dark);
     opacity: 0.65;
     text-align: center;
-    margin: -1.3rem 0 1.5rem 2rem;
+    margin-top: 0.6rem; /* Space between image and caption */
     font-style: italic;
+    line-height: 1.4;
 }
+
 .clearfix::after {
     content: "";
     display: table;
@@ -406,6 +413,15 @@
     .article-cta h3 { font-size: 1.3rem; }
     .articles-hero { padding: 3.5rem 1rem 2rem; }
     .articles-hero h1 { font-size: 1.8rem; }
+    .article-figure-float {
+        float: none;
+        width: 100%;
+        margin: 0 0 1.5rem 0;
+    }
+    
+    .article-figure-float img {
+        height: 220px;
+    }    
 }
 
 @media (max-width: 480px) {
@@ -496,4 +512,9 @@
 .article-lang-switcher a[aria-current="page"] {
     background: var(--primary);
     color: white;
+}
+
+.info-box ul li strong {
+    display: contents;
+    font-weight: bold; /* Ensures it stays bold */
 }
