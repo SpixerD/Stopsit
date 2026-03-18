@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Articles &amp; Topography Guides | STOPSIT Kénitra</title>
+    <meta name="description" content="Expert guides on topography in Morocco — land surveys, boundary marking, cadastre, subdivisions and property registration. STOPSIT Kénitra expertise since 2005.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://stopsit.ma/articles/en/">
+    <link rel="icon" type="image/png" href="../../images/logo.png">
+
+    <link rel="alternate" hreflang="fr"        href="https://stopsit.ma/articles/">
+    <link rel="alternate" hreflang="en"        href="https://stopsit.ma/articles/en/">
+    <link rel="alternate" hreflang="ar"        href="https://stopsit.ma/articles/ar/">
+    <link rel="alternate" hreflang="x-default" href="https://stopsit.ma/articles/">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../articles.css">
+</head>
+<body class="article-page">
+
+    <!-- HEADER -->
+    <header id="header">
+        <div class="container">
+            <nav class="navbar" aria-label="Main navigation">
+                <div class="logo">
+                    <a href="../../index.html" class="logo-text">
+                        <img src="../../images/logo_text_dark-bg.png" alt="STOPSIT Topographie" class="logo-img logo-img--light" width="96" height="96">
+                        <img src="../../images/logo_text_light-bg.png" alt="STOPSIT Topographie" class="logo-img logo-img--dark" width="96" height="96">
+                    </a>
+                </div>
+                <ul class="nav-links" id="navLinks" role="list">
+                    <li><a href="../../index.html">Accueil</a></li>
+                    <li><a href="index.html" aria-current="page">Articles</a></li>
+                    <li><a href="../../index.html#services">Services</a></li>
+                    <li><a href="../../index.html#contact">Contact</a></li>
+                </ul>
+                <button class="hamburger" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+                    <i class="fas fa-bars" aria-hidden="true"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- MAIN -->
+    <main class="article-main">
+        <div class="container">
+
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <a href="../../index.html">Home</a>
+                <span>&#8250;</span>
+                <span>Articles</span>
+            </nav>
+
+            <div style="margin-bottom:2rem;">
+                <h1 style="font-size:2rem; color:var(--primary); margin-bottom:0.5rem;">Articles &amp; Topography Guides</h1>
+                <p style="opacity:0.8;">Expert advice by STOPSIT — licensed surveyor in Kénitra since 2005</p>
+            </div>
+
+            <div class="article-lang-switcher" style="margin-bottom:2rem;">
+                <a href="../index.html">Français</a>
+                <a href="index.html" aria-current="page">English</a>
+                <a href="../ar/index.html" lang="ar">العربية</a>
+            </div>
+
+            <div id="articles-grid" class="services-grid"></div>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="footer-logo"><h2>STOPSIT</h2></div>
+                    <p>Topographic survey firm, certified ANCFCC partner — Kénitra and all of Morocco since 2005.</p>
+                    <address class="footer-contact" style="font-style:normal;">
+                        <p><i class="fas fa-phone" aria-hidden="true"></i> <a href="tel:+212661688603" dir="ltr">+212 661-688603</a></p>
+                        <p><i class="fas fa-envelope" aria-hidden="true"></i> <a href="mailto:stopsit.sarl@gmail.com">stopsit.sarl@gmail.com</a></p>
+                    </address>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick links</h3>
+                    <ul class="footer-links">
+                        <li><a href="../../index.html">Home</a></li>
+                        <li><a href="../../index.html#services">Services</a></li>
+                        <li><a href="index.html">Articles</a></li>
+                        <li><a href="../../index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 STOPSIT Topographie &mdash; Kénitra, Morocco. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="../../script.js"></script>
+    <script>function renderArticles(){} function renderArticlesPreview(){}</script>
+    <script>window.ARTICLES_LANG = "en";</script>
+    <script data-cfasync="false" src="../articles-list.js"></script>
+    <script>
+    // Override renderArticles for the EN index:
+    // - Uses translations.en slug as the card href
+    // - Shows English title/description from an EN metadata map
+    // - Same buildCard visual style (service-icon, lang badges, date, readTime)
+    (function () {
+        const enMeta = {
+            'leve-topographique-maroc.html': {
+                title: 'Topographic Survey in Morocco: Definition, Steps & Uses',
+                desc: 'What is a topographic survey? Learn its definition, key steps, estimated cost, and why it\'s essential for any land project in Morocco. By STOPSIT Kénitra.'
+            },
+            'bornage-propriete-maroc.html': {
+                title: 'Property Boundary Survey in Morocco: Why and How?',
+                desc: 'Everything about property boundary surveys in Morocco: definition, procedure, required documents, and recognised value of boundary markers. Full guide by STOPSIT Kénitra.'
+            },
+            'immatriculation-fonciere-ancfcc-maroc.html': {
+                title: 'Land Registration at ANCFCC: Complete Guide for Morocco',
+                desc: 'Everything you need to know about land registration in Morocco: full procedure, required documents, timelines and the role of ANCFCC. Practical guide by STOPSIT Kénitra.'
+            },
+            'lotissement-maroc-etapes.html': {
+                title: 'Land Subdivision in Morocco: Steps from Raw Land to Title Deed',
+                desc: 'Discover all steps of a land subdivision in Morocco: feasibility, permits, boundary marking, infrastructure works and individual title deeds. By STOPSIT Kénitra.'
+            }
+        };
+
+        function renderEN() {
+            const grid = document.getElementById('articles-grid');
+            if (!grid || typeof articles === 'undefined') return;
+
+            const enArticles = articles
+                .filter(function(a) { return a.translations && a.translations.en; })
+                .slice()
+                .sort(function(a, b) { return new Date(b.date) - new Date(a.date); });
+
+            if (enArticles.length === 0) {
+                grid.innerHTML = '<p style="opacity:0.6;grid-column:1/-1;">No English articles available yet.</p>';
+                return;
+            }
+
+            enArticles.forEach(function(a) {
+                const enFilename = a.translations.en.replace(/^en\//, '');
+                const meta = enMeta[enFilename] || { title: a.title, desc: a.description };
+                const date = new Date(a.date).toLocaleDateString('en-GB', {
+                    year: 'numeric', month: 'long', day: 'numeric'
+                });
+
+                // Lang badges — EN is the active one, link back to FR and to AR
+                let langBadges = '<a href="../' + a.slug + '" class="lang-badge">FR</a>';
+                langBadges    += '<a href="' + enFilename + '" class="lang-badge lang-badge--active">EN</a>';
+                if (a.translations.ar) {
+                    const arFilename = a.translations.ar.replace(/^ar\//, '');
+                    langBadges += '<a href="../ar/' + arFilename + '" class="lang-badge" lang="ar">عربي</a>';
+                }
+
+                grid.innerHTML +=
+                    '<article class="service-card">'
+                  + '<div class="service-icon" aria-hidden="true"><i class="fas fa-newspaper"></i></div>'
+                  + '<div class="service-content">'
+                  + '<div style="font-size:0.82rem;color:var(--accent);font-weight:600;margin-bottom:0.6rem;">'
+                  + '<i class="fas fa-calendar" aria-hidden="true"></i> ' + date
+                  + ' &nbsp;&middot;&nbsp; '
+                  + '<i class="fas fa-clock" aria-hidden="true"></i> ' + a.readTime + ' read'
+                  + '</div>'
+                  + '<h3><a href="' + enFilename + '" style="color:inherit;text-decoration:none;">' + meta.title + '</a></h3>'
+                  + '<p>' + meta.desc + '</p>'
+                  + '<div class="article-card-langs" style="display:flex;gap:0.5rem;margin-top:1rem;flex-wrap:wrap;">'
+                  + langBadges
+                  + '</div>'
+                  + '</div></article>';
+            });
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', renderEN);
+        } else {
+            renderEN();
+        }
+    })();
+    </script>
+</body>
+</html>

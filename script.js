@@ -580,6 +580,9 @@ function updatePageLanguage(lang) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+
+    if (document.body.classList.contains('article-page')) return;
+
     if (!document.querySelector('.language-switcher-container')) {
         const navLinks = document.getElementById('navLinks');
         const container = document.createElement('li');

@@ -518,3 +518,26 @@
     display: contents;
     font-weight: bold; /* Ensures it stays bold */
 }
+
+.step-list {
+    list-style: none; /* We will handle numbering or use counter-reset */
+    padding-right: 0;
+    counter-reset: step-counter;
+}
+
+.step-list li {
+    display: flex;
+    flex-direction: row; /* Stays RTL by default if dir="rtl" is on the body */
+    margin-bottom: 20px;
+}
+
+.step-list li::before {
+    content: counter(step-counter) ".";
+    counter-increment: step-counter;
+    margin-left: 10px; /* Space between number and text */
+    font-weight: bold;
+}
+
+.step-content {
+    padding-right: 0; /* Now you have 0 padding by default */
+}

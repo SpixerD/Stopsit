@@ -118,8 +118,10 @@ function renderArticlesPreview() {
 }
 
 // ─── Init: run whichever function applies to the current page ────────────────
+// EN/AR index pages set window.ARTICLES_LANG before loading this script
+// to suppress the default FR renderArticles() call.
 function initArticles() {
-    renderArticles();        // no-op if #articles-grid doesn't exist
+    if (!window.ARTICLES_LANG) renderArticles(); // skip on EN/AR index pages
     renderArticlesPreview(); // no-op if #articles-preview-grid doesn't exist
 }
 
