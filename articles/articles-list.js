@@ -7,7 +7,7 @@ const articles = [
         slug: "bornage-propriete-maroc.html",
         title: "Le bornage de propriété au Maroc : pourquoi et comment faire ?",
         description: "Tout savoir sur le bornage de propriété au Maroc : définition, déroulement, documents requis et valeur juridique. Par STOPSIT Kénitra.",
-        date: "2026-04-14",
+        date: "2026-03-14",
         readTime: "5 min",
         translations: {
             en: "en/bornage-propriete-maroc.html",
@@ -18,7 +18,7 @@ const articles = [
         slug: "leve-topographique-maroc.html",
         title: "Levé topographique au Maroc : définition, étapes et utilité",
         description: "Qu'est-ce qu'un levé topographique ? Découvrez sa définition, ses étapes clés, son coût et pourquoi il est indispensable à tout projet foncier au Maroc.",
-        date: "2026-04-07",
+        date: "2026-03-09",
         readTime: "5 min",
         translations: {
             en: "en/leve-topographique-maroc.html",
