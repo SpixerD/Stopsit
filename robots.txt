@@ -1,12 +1,14 @@
 # robots.txt — stopsit.ma
-# Allow all crawlers full access
 
 User-agent: *
 Allow: /
 
-# Block admin/utility paths if they exist
+# Block draft articles (not yet published)
+Disallow: /articles/drafts/
+
+# Block utility paths
 Disallow: /admin/
 Disallow: /cgi-bin/
 
-# Sitemap location — critical for Google indexing
+# Sitemap
 Sitemap: https://stopsit.ma/sitemap.xml

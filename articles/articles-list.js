@@ -67,7 +67,7 @@ function buildCard(article, slugPrefix) {
         + ' &nbsp;&middot;&nbsp; '
         + '<i class="fas fa-clock" aria-hidden="true"></i> ' + article.readTime + ' de lecture'
         + '</div>'
-        + '<h3>' + article.title + '</h3>'
+        + '<h3><a href="' + href + '" style="color:inherit;text-decoration:none;">' + article.title + '</a></h3>'
         + '<p>' + article.description + '</p>'
         + '<div class="article-card-langs" style="display:flex;gap:0.5rem;margin-top:1rem;flex-wrap:wrap;">'
         + langBadges
@@ -76,7 +76,6 @@ function buildCard(article, slugPrefix) {
 }
 
 // ─── Articles listing page (articles/index.html) ────────────────────────────
-// Target element: <div id="articles-grid">
 function renderArticles() {
     const grid = document.getElementById('articles-grid');
     if (!grid) return;
@@ -96,7 +95,6 @@ function renderArticles() {
 }
 
 // ─── Homepage preview (index.html) ──────────────────────────────────────────
-// Target element: <div id="articles-preview-grid">
 // Shows only the 2 most recent articles; slugs prefixed with 'articles/'
 function renderArticlesPreview() {
     const grid = document.getElementById('articles-preview-grid');
@@ -111,18 +109,15 @@ function renderArticlesPreview() {
         return new Date(b.date) - new Date(a.date);
     });
 
-    // Only the 2 most recent
     sorted.slice(0, 2).forEach(function(article) {
         grid.innerHTML += buildCard(article, 'articles/');
     });
 }
 
-// ─── Init: run whichever function applies to the current page ────────────────
-// EN/AR index pages set window.ARTICLES_LANG before loading this script
-// to suppress the default FR renderArticles() call.
+// ─── Init ────────────────────────────────────────────────────────────────────
 function initArticles() {
-    if (!window.ARTICLES_LANG) renderArticles(); // skip on EN/AR index pages
-    renderArticlesPreview(); // no-op if #articles-preview-grid doesn't exist
+    if (!window.ARTICLES_LANG) renderArticles();
+    renderArticlesPreview();
 }
 
 if (document.readyState === 'loading') {
