@@ -5,7 +5,7 @@ on:
     - cron: '0 7 * * 1'   # Every Monday 07:00 UTC (08:00 Morocco time)
   push:
     branches: [main]
-  workflow_dispatch:        # ← Manual trigger: GitHub UI → Actions → "Run workflow"
+  workflow_dispatch:      # Manual trigger
 
 permissions:
   contents: write
@@ -26,29 +26,31 @@ jobs:
           PUBLISHED_ANY=false
 
           shopt -s nullglob
-
           fr_files=(articles/drafts/*.html)
-          declare -A published_slugs
 
           for file in "${fr_files[@]}"; do
             FILENAME=$(basename "$file")
-            SLUG="${FILENAME%.html}"
+            # Extract date from the first line of the file
             PUBLISH_DATE=$(head -1 "$file" | grep -oP '\d{4}-\d{2}-\d{2}')
             [ -z "$PUBLISH_DATE" ] && continue
 
-            if [[ "$PUBLISH_DATE" > "$TODAY" ]]; then
+            # Logic: If PUBLISH_DATE is NOT greater than TODAY (meaning Today or Past)
+            if [[ ! "$PUBLISH_DATE" > "$TODAY" ]]; then
+              echo "Processing: $FILENAME (Date: $PUBLISH_DATE)"
+              
               mv "$file" "articles/$FILENAME"
 
+              # Extract metadata safely
               TITLE=$(grep -oP '(?<=<title>).*?(?= \| STOPSIT)' "articles/$FILENAME" | head -1)
               DESC=$(grep -oP '(?<=name="description" content=").*?(?=")' "articles/$FILENAME" | head -1)
               READ_TIME=$(grep -oP '(?<=fa-clock" aria-hidden="true"></i> )\d+ min' "articles/$FILENAME" | head -1)
               [ -z "$READ_TIME" ] && READ_TIME="5 min"
 
-              echo "Publishing FR: $FILENAME"
-
+              # Update Sitemap
               ARTICLE_URL="https://stopsit.ma/articles/$FILENAME"
               sed -i "s|</urlset>|  <url>\n    <loc>$ARTICLE_URL</loc>\n    <lastmod>$PUBLISH_DATE</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.8</priority>\n  </url>\n</urlset>|" sitemap.xml
 
+              # Move translations if they exist
               EN_SLUG=""
               AR_SLUG=""
               if [ -f "articles/drafts/en/$FILENAME" ]; then
@@ -60,38 +62,48 @@ jobs:
                 AR_SLUG="ar/$FILENAME"
               fi
 
+              # --- SAFE NODE.JS EXECUTION USING ENV VARS ---
+              export JS_FILENAME="$FILENAME"
+              export JS_TITLE="$TITLE"
+              export JS_DESC="$DESC"
+              export JS_DATE="$PUBLISH_DATE"
+              export JS_READTIME="$READ_TIME"
+              export JS_EN_SLUG="$EN_SLUG"
+              export JS_AR_SLUG="$AR_SLUG"
+
               node -e "
                 const fs = require('fs');
                 const content = fs.readFileSync('articles/articles-list.js', 'utf8');
-                const enSlug = '$EN_SLUG';
-                const arSlug = '$AR_SLUG';
-                const translationsField = (enSlug || arSlug)
-                  ? ',\n        translations: {' +
-                    (enSlug ? '\n            en: \"' + enSlug + '\"' : '') +
-                    (enSlug && arSlug ? ',' : '') +
-                    (arSlug ? '\n            ar: \"' + arSlug + '\"' : '') +
-                    '\n        }'
-                  : '';
+                
+                const en = process.env.JS_EN_SLUG;
+                const ar = process.env.JS_AR_SLUG;
+
+                let translationsField = '';
+                if (en || ar) {
+                  translationsField = ',\n        translations: {';
+                  if (en) translationsField += '\n            en: \"' + en + '\"' + (ar ? ',' : '');
+                  if (ar) translationsField += '\n            ar: \"' + ar + '\"';
+                  translationsField += '\n        }';
+                }
+
                 const newEntry = [
                   '    {',
-                  '        slug: \"$FILENAME\",',
-                  '        title: \"$TITLE\",',
-                  '        description: \"$DESC\",',
-                  '        date: \"$PUBLISH_DATE\",',
-                  '        readTime: \"$READ_TIME\"' + translationsField,
+                  '        slug: \"' + process.env.JS_FILENAME + '\",',
+                  '        title: \"' + process.env.JS_TITLE.replace(/\"/g, '\\\"') + '\",',
+                  '        description: \"' + process.env.JS_DESC.replace(/\"/g, '\\\"') + '\",',
+                  '        date: \"' + process.env.JS_DATE + '\",',
+                  '        readTime: \"' + process.env.JS_READTIME + '\"' + translationsField,
                   '    },'
                 ].join('\n');
-                const updated = content.replace(
-                  'const articles = [',
-                  'const articles = [\n' + newEntry
-                );
+
+                const updated = content.replace('const articles = [', 'const articles = [\n' + newEntry);
                 fs.writeFileSync('articles/articles-list.js', updated);
-                console.log('articles-list.js updated: $FILENAME');
+                console.log('Updated articles-list.js for: ' + process.env.JS_FILENAME);
               "
 
               PUBLISHED_ANY=true
             else
-              echo "FR draft $FILENAME not yet due ($PUBLISH_DATE > $TODAY)"
+              echo "Skipping $FILENAME: Scheduled for $PUBLISH_DATE (Future)"
             fi
           done
 
@@ -102,7 +114,7 @@ jobs:
             git commit -m "chore: publish scheduled articles for $TODAY"
             git push
           else
-            echo "No articles due today. Nothing committed."
+            echo "No articles due today."
           fi
 
   # ───────────────────────────────────────────────────────────
@@ -120,7 +132,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4.2.2
         with:
-          ref: main   # Always pull latest (includes any publish bot commit)
+          ref: main   # Pull latest changes from the 'publish' job commit
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
