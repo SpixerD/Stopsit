@@ -141,35 +141,39 @@
             }
 
             enArticles.forEach(function(a) {
-                const enFilename = a.translations.en.replace(/^en\//, '');
-                const meta = enMeta[enFilename] || { title: a.title, desc: a.description };
+                const slugHref = (a.slug || '').replace(/\\-/g, '-');
+                const enFilename = a.translations.en.replace(/^en\//, '').replace(/\\-/g, '-');
+                const enMetaKey = enFilename.replace(/\/$/, '') + '.html';
+                const meta = enMeta[enMetaKey] || { title: a.title, desc: a.description };
                 const date = new Date(a.date).toLocaleDateString('en-GB', {
                     year: 'numeric', month: 'long', day: 'numeric'
                 });
 
-                // Lang badges — EN is the active one, link back to FR and to AR
-                let langBadges = '<a href="../' + a.slug + '" class="lang-badge">FR</a>';
+                let langBadges = '<a href="../' + slugHref + '" class="lang-badge">FR</a>';
                 langBadges    += '<a href="' + enFilename + '" class="lang-badge lang-badge--active">EN</a>';
                 if (a.translations.ar) {
-                    const arFilename = a.translations.ar.replace(/^ar\//, '');
+                    const arFilename = a.translations.ar.replace(/^ar\//, '').replace(/\\-/g, '-');
                     langBadges += '<a href="../ar/' + arFilename + '" class="lang-badge" lang="ar">عربي</a>';
                 }
 
                 grid.innerHTML +=
                     '<article class="service-card">'
-                  + '<div class="service-icon" aria-hidden="true"><i class="fas fa-newspaper"></i></div>'
-                  + '<div class="service-content">'
-                  + '<div style="font-size:0.82rem;color:var(--accent);font-weight:600;margin-bottom:0.6rem;">'
-                  + '<i class="fas fa-calendar" aria-hidden="true"></i> ' + date
-                  + ' &nbsp;&middot;&nbsp; '
-                  + '<i class="fas fa-clock" aria-hidden="true"></i> ' + a.readTime + ' read'
-                  + '</div>'
-                  + '<h3><a href="' + enFilename + '" style="color:inherit;text-decoration:none;">' + meta.title + '</a></h3>'
-                  + '<p>' + meta.desc + '</p>'
-                  + '<div class="article-card-langs" style="display:flex;gap:0.5rem;margin-top:1rem;flex-wrap:wrap;">'
-                  + langBadges
-                  + '</div>'
-                  + '</div></article>';
+                    // CORRECTED: Clickable icon with flex centering
+                + '<a href="' + enFilename + '" class="service-icon" aria-hidden="true" style="display: flex; align-items: center; justify-content: center; text-decoration: none; color: inherit;">'
+                + '<i class="fas fa-newspaper"></i>'
+                + '</a>'
+                + '<div class="service-content">'
+                + '<div style="font-size:0.82rem;color:var(--accent);font-weight:600;margin-bottom:0.6rem;">'
+                + '<i class="fas fa-calendar" aria-hidden="true"></i> ' + date
+                + ' &nbsp;&middot;&nbsp; '
+                + '<i class="fas fa-clock" aria-hidden="true"></i> ' + a.readTime + ' read'
+                + '</div>'
+                + '<h3><a href="' + enFilename + '" style="color:inherit;text-decoration:none;">' + meta.title + '</a></h3>'
+                + '<p>' + meta.desc + '</p>'
+                + '<div class="article-card-langs" style="display:flex;gap:0.5rem;margin-top:1rem;flex-wrap:wrap;">'
+                + langBadges
+                + '</div>'
+                + '</div></article>';
             });
         }
 

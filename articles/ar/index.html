@@ -142,35 +142,39 @@
             }
 
             arArticles.forEach(function(a) {
-                const arFilename = a.translations.ar.replace(/^ar\//, '');
-                const meta = arMeta[arFilename] || { title: a.title, desc: a.description };
+                const slugHref = (a.slug || '').replace(/\\-/g, '-');
+                const arFilename = a.translations.ar.replace(/^ar\//, '').replace(/\\-/g, '-');
+                const arMetaKey = arFilename.replace(/\/$/, '') + '.html';
+                const meta = arMeta[arMetaKey] || { title: a.title, desc: a.description };
                 const date = new Date(a.date).toLocaleDateString('ar-MA', {
                     year: 'numeric', month: 'long', day: 'numeric'
                 });
 
-                // Lang badges — AR is active
-                let langBadges = '<a href="../' + a.slug + '" class="lang-badge">FR</a>';
+                let langBadges = '<a href="../' + slugHref + '" class="lang-badge">FR</a>';
                 if (a.translations.en) {
-                    const enFilename = a.translations.en.replace(/^en\//, '');
+                    const enFilename = a.translations.en.replace(/^en\//, '').replace(/\\-/g, '-');
                     langBadges += '<a href="../en/' + enFilename + '" class="lang-badge">EN</a>';
                 }
                 langBadges += '<a href="' + arFilename + '" class="lang-badge lang-badge--active" lang="ar">عربي</a>';
 
                 grid.innerHTML +=
                     '<article class="service-card">'
-                  + '<div class="service-icon" aria-hidden="true"><i class="fas fa-newspaper"></i></div>'
-                  + '<div class="service-content">'
-                  + '<div style="font-size:0.82rem;color:var(--accent);font-weight:600;margin-bottom:0.6rem;">'
-                  + '<i class="fas fa-calendar" aria-hidden="true"></i> ' + date
-                  + ' &nbsp;&middot;&nbsp; '
-                  + '<i class="fas fa-clock" aria-hidden="true"></i> ' + a.readTime.replace(/\s*min\s*/i, '') + ' دقائق قراءة'
-                  + '</div>'
-                  + '<h3><a href="' + arFilename + '" style="color:inherit;text-decoration:none;">' + meta.title + '</a></h3>'
-                  + '<p>' + meta.desc + '</p>'
-                  + '<div class="article-card-langs" style="display:flex;gap:0.5rem;margin-top:1rem;flex-wrap:wrap;justify-content:flex-end;">'
-                  + langBadges
-                  + '</div>'
-                  + '</div></article>';
+                    // CORRECTED: Clickable icon with flex centering
+                + '<a href="' + arFilename + '" class="service-icon" aria-hidden="true" style="display: flex; align-items: center; justify-content: center; text-decoration: none; color: inherit;">'
+                + '<i class="fas fa-newspaper"></i>'
+                + '</a>'
+                + '<div class="service-content">'
+                + '<div style="font-size:0.82rem;color:var(--accent);font-weight:600;margin-bottom:0.6rem;">'
+                + '<i class="fas fa-calendar" aria-hidden="true"></i> ' + date
+                + ' &nbsp;&middot;&nbsp; '
+                + '<i class="fas fa-clock" aria-hidden="true"></i> ' + a.readTime.replace(/\s*min\s*/i, '') + ' دقائق قراءة'
+                + '</div>'
+                + '<h3><a href="' + arFilename + '" style="color:inherit;text-decoration:none;">' + meta.title + '</a></h3>'
+                + '<p>' + meta.desc + '</p>'
+                + '<div class="article-card-langs" style="display:flex;gap:0.5rem;margin-top:1rem;flex-wrap:wrap;justify-content:flex-end;">'
+                + langBadges
+                + '</div>'
+                + '</div></article>';
             });
         }
 

@@ -30,52 +30,56 @@ jobs:
 
           for file in "${fr_files[@]}"; do
             FILENAME=$(basename "$file")
-            # Extract date from the first line of the file
+            SLUG="${FILENAME%.html}"
+
             PUBLISH_DATE=$(head -1 "$file" | grep -oP '\d{4}-\d{2}-\d{2}')
             [ -z "$PUBLISH_DATE" ] && continue
 
-            # Logic: If PUBLISH_DATE is NOT greater than TODAY (meaning Today or Past)
             if [[ ! "$PUBLISH_DATE" > "$TODAY" ]]; then
               echo "Processing: $FILENAME (Date: $PUBLISH_DATE)"
-              
-              mv "$file" "articles/$FILENAME"
 
-              # Extract metadata safely
-              TITLE=$(grep -oP '(?<=<title>).*?(?= \| STOPSIT)' "articles/$FILENAME" | head -1)
-              DESC=$(grep -oP '(?<=name="description" content=").*?(?=")' "articles/$FILENAME" | head -1)
-              READ_TIME=$(grep -oP '(?<=fa-clock" aria-hidden="true"></i> )\d+ min' "articles/$FILENAME" | head -1)
+              DEST_FR="articles/$SLUG/index.html"
+              mkdir -p "articles/$SLUG"
+              mv "$file" "$DEST_FR"
+
+              TITLE=$(grep -oP '(?<=<title>).*?(?= \| STOPSIT)' "$DEST_FR" | head -1)
+              DESC=$(grep -oP '(?<=name="description" content=").*?(?=")' "$DEST_FR" | head -1)
+              READ_TIME=$(grep -oP '(?<=fa-clock" aria-hidden="true"></i> )\d+ min' "$DEST_FR" | head -1)
               [ -z "$READ_TIME" ] && READ_TIME="5 min"
 
-              # Update Sitemap — guard against duplicate FR URL
-              ARTICLE_URL="https://stopsit.ma/articles/$FILENAME"
+              ARTICLE_URL="https://stopsit.ma/articles/$SLUG/"
               if ! grep -qF "<loc>$ARTICLE_URL</loc>" sitemap.xml; then
                 sed -i "s|</urlset>|  <url>\n    <loc>$ARTICLE_URL</loc>\n    <lastmod>$PUBLISH_DATE</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.8</priority>\n  </url>\n</urlset>|" sitemap.xml
               fi
 
-              # Move translations if they exist and add to sitemap
               EN_SLUG=""
               AR_SLUG=""
 
               if [ -f "articles/drafts/en/$FILENAME" ]; then
-                mv "articles/drafts/en/$FILENAME" "articles/en/$FILENAME"
-                EN_SLUG="en/$FILENAME"
-                EN_URL="https://stopsit.ma/articles/en/$FILENAME"
+                DEST_EN="articles/en/$SLUG/index.html"
+                mkdir -p "articles/en/$SLUG"
+                mv "articles/drafts/en/$FILENAME" "$DEST_EN"
+
+                EN_SLUG="en/$SLUG/"
+                EN_URL="https://stopsit.ma/articles/en/$SLUG/"
                 if ! grep -qF "<loc>$EN_URL</loc>" sitemap.xml; then
                   sed -i "s|</urlset>|  <url>\n    <loc>$EN_URL</loc>\n    <lastmod>$PUBLISH_DATE</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n  </url>\n</urlset>|" sitemap.xml
                 fi
               fi
 
               if [ -f "articles/drafts/ar/$FILENAME" ]; then
-                mv "articles/drafts/ar/$FILENAME" "articles/ar/$FILENAME"
-                AR_SLUG="ar/$FILENAME"
-                AR_URL="https://stopsit.ma/articles/ar/$FILENAME"
+                DEST_AR="articles/ar/$SLUG/index.html"
+                mkdir -p "articles/ar/$SLUG"
+                mv "articles/drafts/ar/$FILENAME" "$DEST_AR"
+
+                AR_SLUG="ar/$SLUG/"
+                AR_URL="https://stopsit.ma/articles/ar/$SLUG/"
                 if ! grep -qF "<loc>$AR_URL</loc>" sitemap.xml; then
                   sed -i "s|</urlset>|  <url>\n    <loc>$AR_URL</loc>\n    <lastmod>$PUBLISH_DATE</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n  </url>\n</urlset>|" sitemap.xml
                 fi
               fi
 
-              # --- SAFE NODE.JS EXECUTION USING ENV VARS ---
-              export JS_FILENAME="$FILENAME"
+              export JS_FILENAME="$SLUG/"
               export JS_TITLE="$TITLE"
               export JS_DESC="$DESC"
               export JS_DATE="$PUBLISH_DATE"
@@ -86,8 +90,7 @@ jobs:
               node -e "
                 const fs = require('fs');
                 const content = fs.readFileSync('articles/articles-list.js', 'utf8');
-                
-                // Guard: don't add duplicate entries
+
                 if (content.includes('\"' + process.env.JS_FILENAME + '\"')) {
                   console.log('Already in articles-list.js, skipping: ' + process.env.JS_FILENAME);
                   process.exit(0);
@@ -98,10 +101,10 @@ jobs:
 
                 let translationsField = '';
                 if (en || ar) {
-                  translationsField = ',\n        translations: {';
-                  if (en) translationsField += '\n            en: \"' + en + '\"' + (ar ? ',' : '');
-                  if (ar) translationsField += '\n            ar: \"' + ar + '\"';
-                  translationsField += '\n        }';
+                  translationsField = ',\\n        translations: {';
+                  if (en) translationsField += '\\n            en: \"' + en + '\"' + (ar ? ',' : '');
+                  if (ar) translationsField += '\\n            ar: \"' + ar + '\"';
+                  translationsField += '\\n        }';
                 }
 
                 const newEntry = [
@@ -112,9 +115,9 @@ jobs:
                   '        date: \"' + process.env.JS_DATE + '\",',
                   '        readTime: \"' + process.env.JS_READTIME + '\"' + translationsField,
                   '    },'
-                ].join('\n');
+                ].join('\\n');
 
-                const updated = content.replace('const articles = [', 'const articles = [\n' + newEntry);
+                const updated = content.replace('const articles = [', 'const articles = [\\n' + newEntry);
                 fs.writeFileSync('articles/articles-list.js', updated);
                 console.log('Updated articles-list.js for: ' + process.env.JS_FILENAME);
               "

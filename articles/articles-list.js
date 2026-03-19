@@ -4,43 +4,42 @@
 
 const articles = [
     {
-        slug: "immatriculation-fonciere-ancfcc-maroc.html",
+        slug: "immatriculation-fonciere-ancfcc-maroc/",
         title: "Immatriculation foncière à l'ANCFCC : guide complet pour le Maroc",
         description: "Tout comprendre sur l'immatriculation foncière au Maroc : procédure complète, documents requis, délais et rôle de l'ANCFCC. Guide pratique par STOPSIT Kénitra.",
         date: "2026-03-17",
         readTime: "6 min",
         translations: {
-            en: "en/immatriculation-fonciere-ancfcc-maroc.html",
-            ar: "ar/immatriculation-fonciere-ancfcc-maroc.html"
+            en: "en/immatriculation-fonciere-ancfcc-maroc/",
+            ar: "ar/immatriculation-fonciere-ancfcc-maroc/"
         }
     },
     {
-        slug: "bornage-propriete-maroc.html",
+        slug: "bornage-propriete-maroc/",
         title: "Le bornage de propriété au Maroc : pourquoi et comment faire ?",
         description: "Tout savoir sur le bornage de propriété au Maroc : définition, déroulement, documents requis et valeur juridique. Par STOPSIT Kénitra.",
         date: "2026-03-14",
         readTime: "5 min",
         translations: {
-            en: "en/bornage-propriete-maroc.html",
-            ar: "ar/bornage-propriete-maroc.html"
+            en: "en/bornage-propriete-maroc/",
+            ar: "ar/bornage-propriete-maroc/"
         }
     },
     {
-        slug: "leve-topographique-maroc.html",
+        slug: "leve-topographique-maroc/",
         title: "Levé topographique au Maroc : définition, étapes et utilité",
         description: "Qu'est-ce qu'un levé topographique ? Découvrez sa définition, ses étapes clés, son coût et pourquoi il est indispensable à tout projet foncier au Maroc.",
         date: "2026-03-09",
         readTime: "5 min",
         translations: {
-            en: "en/leve-topographique-maroc.html",
-            ar: "ar/leve-topographique-maroc.html"
+            en: "en/leve-topographique-maroc/",
+            ar: "ar/leve-topographique-maroc/"
         }
     }
     // The GitHub Action prepends new entries here automatically when drafts are published
 ];
 
 // ─── Shared card builder ────────────────────────────────────────────────────
-// slugPrefix: '' on the articles page, 'articles/' on the homepage
 function buildCard(article, slugPrefix) {
     const date = new Date(article.date).toLocaleDateString('fr-MA', {
         year: 'numeric', month: 'long', day: 'numeric'
@@ -60,7 +59,10 @@ function buildCard(article, slugPrefix) {
     }
 
     return '<article class="service-card">'
-        + '<div class="service-icon" aria-hidden="true"><i class="fas fa-newspaper"></i></div>'
+        // Fixed: The anchor now behaves as a flex container to keep the icon centered
+        + '<a href="' + href + '" class="service-icon" aria-hidden="true" style="display: flex; align-items: center; justify-content: center; text-decoration: none; color: inherit;">'
+        + '<i class="fas fa-newspaper"></i>'
+        + '</a>'
         + '<div class="service-content">'
         + '<div style="font-size:0.82rem;color:var(--accent);font-weight:600;margin-bottom:0.6rem;">'
         + '<i class="fas fa-calendar" aria-hidden="true"></i> ' + date
@@ -74,7 +76,6 @@ function buildCard(article, slugPrefix) {
         + '</div>'
         + '</div></article>';
 }
-
 // ─── Articles listing page (articles/index.html) ────────────────────────────
 function renderArticles() {
     const grid = document.getElementById('articles-grid');
