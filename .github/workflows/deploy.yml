@@ -38,7 +38,7 @@ jobs:
             if [[ ! "$PUBLISH_DATE" > "$TODAY" ]]; then
               echo "Processing: $FILENAME (Date: $PUBLISH_DATE)"
 
-              DEST_FR="articles/$SLUG/index.html"
+              DEST_FR="articles/$SLUG/"
               mkdir -p "articles/$SLUG"
               mv "$file" "$DEST_FR"
 
@@ -56,7 +56,7 @@ jobs:
               AR_SLUG=""
 
               if [ -f "articles/drafts/en/$FILENAME" ]; then
-                DEST_EN="articles/en/$SLUG/index.html"
+                DEST_EN="articles/en/$SLUG/"
                 mkdir -p "articles/en/$SLUG"
                 mv "articles/drafts/en/$FILENAME" "$DEST_EN"
 
@@ -68,7 +68,7 @@ jobs:
               fi
 
               if [ -f "articles/drafts/ar/$FILENAME" ]; then
-                DEST_AR="articles/ar/$SLUG/index.html"
+                DEST_AR="articles/ar/$SLUG/"
                 mkdir -p "articles/ar/$SLUG"
                 mv "articles/drafts/ar/$FILENAME" "$DEST_AR"
 

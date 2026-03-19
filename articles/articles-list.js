@@ -1,6 +1,6 @@
 // articles-list.js
 // Auto-updated by the GitHub Action when articles are published.
-// Loaded by both the homepage (index.html) and the articles listing page (articles/index.html).
+// Loaded by both the homepage () and the articles listing page (articles/).
 
 const articles = [
     {
@@ -76,7 +76,7 @@ function buildCard(article, slugPrefix) {
         + '</div>'
         + '</div></article>';
 }
-// ─── Articles listing page (articles/index.html) ────────────────────────────
+// ─── Articles listing page (articles/) ────────────────────────────
 function renderArticles() {
     const grid = document.getElementById('articles-grid');
     if (!grid) return;
@@ -95,7 +95,7 @@ function renderArticles() {
     });
 }
 
-// ─── Homepage preview (index.html) ──────────────────────────────────────────
+// ─── Homepage preview () ──────────────────────────────────────────
 // Shows only the 2 most recent articles; slugs prefixed with 'articles/'
 function renderArticlesPreview() {
     const grid = document.getElementById('articles-preview-grid');
