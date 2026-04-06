@@ -4,6 +4,17 @@
 
 const articles = [
     {
+        slug: "lotissement-maroc-etapes/",
+        title: "Les étapes d'un lotissement au Maroc : du terrain brut au titre foncier",
+        description: "Découvrez toutes les étapes d'un lotissement au Maroc : études préalables, autorisations, bornage, viabilisation et obtention du titre foncier. Guide complet par STOPSIT.",
+        date: "2026-03-21",
+        readTime: "7 min",
+        translations: {
+            en: "en/lotissement-maroc-etapes/",
+            ar: "ar/lotissement-maroc-etapes/"
+        }
+    },
+    {
         slug: "immatriculation-fonciere-ancfcc-maroc/",
         title: "Immatriculation foncière à l'ANCFCC : guide complet pour le Maroc",
         description: "Tout comprendre sur l'immatriculation foncière au Maroc : procédure complète, documents requis, délais et rôle de l'ANCFCC. Guide pratique par STOPSIT Kénitra.",
