@@ -26,27 +26,34 @@ jobs:
           PUBLISHED_ANY=false
 
           shopt -s nullglob
-          fr_files=(articles/drafts/*.html)
+          # Targets index.html inside each subfolder of drafts
+          fr_files=(articles/drafts/*/index.html)
 
           for file in "${fr_files[@]}"; do
-            FILENAME=$(basename "$file")
-            SLUG="${FILENAME%.html}"
-
+            # Get the folder name to use as the SLUG
+            SLUG=$(basename $(dirname "$file"))
+            
+            # Extract publish date from the first line of index.html
             PUBLISH_DATE=$(head -1 "$file" | grep -oP '\d{4}-\d{2}-\d{2}')
             [ -z "$PUBLISH_DATE" ] && continue
 
             if [[ ! "$PUBLISH_DATE" > "$TODAY" ]]; then
-              echo "Processing: $FILENAME (Date: $PUBLISH_DATE)"
+              echo "Processing slug: $SLUG (Date: $PUBLISH_DATE)"
 
+              # 1. Move French (Main) Folder
               DEST_FR="articles/$SLUG/"
-              mkdir -p "articles/$SLUG"
-              mv "$file" "$DEST_FR"
+              mkdir -p "$DEST_FR"
+              mv articles/drafts/"$SLUG"/* "$DEST_FR"
+              # Remove the now empty draft folder
+              rm -rf articles/drafts/"$SLUG"
 
-              TITLE=$(grep -oP '(?<=<title>).*?(?= \| STOPSIT)' "$DEST_FR" | head -1)
-              DESC=$(grep -oP '(?<=name="description" content=").*?(?=")' "$DEST_FR" | head -1)
-              READ_TIME=$(grep -oP '(?<=fa-clock" aria-hidden="true"></i> )\d+ min' "$DEST_FR" | head -1)
+              # Extract metadata from the newly moved index.html
+              TITLE=$(grep -oP '(?<=<title>).*?(?= \| STOPSIT)' "$DEST_FR/index.html" | head -1)
+              DESC=$(grep -oP '(?<=name="description" content=").*?(?=")' "$DEST_FR/index.html" | head -1)
+              READ_TIME=$(grep -oP '(?<=fa-clock" aria-hidden="true"></i> )\d+ min' "$DEST_FR/index.html" | head -1)
               [ -z "$READ_TIME" ] && READ_TIME="5 min"
 
+              # Update Sitemap for FR
               ARTICLE_URL="https://stopsit.ma/articles/$SLUG/"
               if ! grep -qF "<loc>$ARTICLE_URL</loc>" sitemap.xml; then
                 sed -i "s|</urlset>|  <url>\n    <loc>$ARTICLE_URL</loc>\n    <lastmod>$PUBLISH_DATE</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.8</priority>\n  </url>\n</urlset>|" sitemap.xml
@@ -55,10 +62,12 @@ jobs:
               EN_SLUG=""
               AR_SLUG=""
 
-              if [ -f "articles/drafts/en/$FILENAME" ]; then
+              # 2. Check and Move English Version (if exists in articles/drafts/en/slug/index.html)
+              if [ -d "articles/drafts/en/$SLUG" ]; then
                 DEST_EN="articles/en/$SLUG/"
-                mkdir -p "articles/en/$SLUG"
-                mv "articles/drafts/en/$FILENAME" "$DEST_EN"
+                mkdir -p "$DEST_EN"
+                mv articles/drafts/en/"$SLUG"/* "$DEST_EN"
+                rm -rf articles/drafts/en/"$SLUG"
 
                 EN_SLUG="en/$SLUG/"
                 EN_URL="https://stopsit.ma/articles/en/$SLUG/"
@@ -67,10 +76,12 @@ jobs:
                 fi
               fi
 
-              if [ -f "articles/drafts/ar/$FILENAME" ]; then
+              # 3. Check and Move Arabic Version (if exists in articles/drafts/ar/slug/index.html)
+              if [ -d "articles/drafts/ar/$SLUG" ]; then
                 DEST_AR="articles/ar/$SLUG/"
-                mkdir -p "articles/ar/$SLUG"
-                mv "articles/drafts/ar/$FILENAME" "$DEST_AR"
+                mkdir -p "$DEST_AR"
+                mv articles/drafts/ar/"$SLUG"/* "$DEST_AR"
+                rm -rf articles/drafts/ar/"$SLUG"
 
                 AR_SLUG="ar/$SLUG/"
                 AR_URL="https://stopsit.ma/articles/ar/$SLUG/"
@@ -90,15 +101,12 @@ jobs:
               node -e "
                 const fs = require('fs');
                 const content = fs.readFileSync('articles/articles-list.js', 'utf8');
-
                 if (content.includes('\"' + process.env.JS_FILENAME + '\"')) {
-                  console.log('Already in articles-list.js, skipping: ' + process.env.JS_FILENAME);
+                  console.log('Already in articles-list.js, skipping');
                   process.exit(0);
                 }
-
                 const en = process.env.JS_EN_SLUG;
                 const ar = process.env.JS_AR_SLUG;
-
                 let translationsField = '';
                 if (en || ar) {
                   translationsField = ',\\n        translations: {';
@@ -106,7 +114,6 @@ jobs:
                   if (ar) translationsField += '\\n            ar: \"' + ar + '\"';
                   translationsField += '\\n        }';
                 }
-
                 const newEntry = [
                   '    {',
                   '        slug: \"' + process.env.JS_FILENAME + '\",',
@@ -116,15 +123,12 @@ jobs:
                   '        readTime: \"' + process.env.JS_READTIME + '\"' + translationsField,
                   '    },'
                 ].join('\\n');
-
                 const updated = content.replace('const articles = [', 'const articles = [\\n' + newEntry);
                 fs.writeFileSync('articles/articles-list.js', updated);
-                console.log('Updated articles-list.js for: ' + process.env.JS_FILENAME);
               "
-
               PUBLISHED_ANY=true
             else
-              echo "Skipping $FILENAME: Scheduled for $PUBLISH_DATE (Future)"
+              echo "Skipping $SLUG: Scheduled for $PUBLISH_DATE"
             fi
           done
 
@@ -139,7 +143,7 @@ jobs:
           fi
 
   # ───────────────────────────────────────────────────────────
-  # JOB 2: Deploy to GitHub Pages (runs after publish)
+  # JOB 2: Deploy to GitHub Pages
   # ───────────────────────────────────────────────────────────
   deploy:
     runs-on: ubuntu-latest
@@ -153,7 +157,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4.2.2
         with:
-          ref: main   # Pull latest changes from the 'publish' job commit
+          ref: main
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
